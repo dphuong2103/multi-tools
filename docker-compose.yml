@@ -37,8 +37,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3003:3000"
-    depends_on:
-      - api
+    # depends_on:
+    #   - api
     networks:
       - network
       - nginx-network
