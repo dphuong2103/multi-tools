@@ -1,0 +1,31 @@
+export type User = {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    createdTime: string;
+    lastLoggingTime: string;
+};
+
+export type AuthenticationResponse = {
+    user: User;
+    accessToken: string;
+    refreshToken: string;
+};
+
+export type FailedResult = {
+    message: string;
+};
+
+
+export type LoginRequest = {
+    email: string;
+    password: string;
+};
+
+export type SignUpRequest = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+};
