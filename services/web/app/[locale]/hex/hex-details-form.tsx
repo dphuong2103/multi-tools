@@ -1,17 +1,27 @@
 "use client";
-import TextAreaFormField from '@/components/form-fields/text-area-form-fields';
-import { Button } from '@/components/ui/button'
-import { Form } from '@/components/ui/form';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Textarea } from '@/components/ui/textarea';
-import { Dictionary } from '@/lib/dictionary';
-import { decodeHex, encodeHex } from '@/lib/hex';
-import { createHexFormSchema, HexFormModel, hexFormSchema } from '@/models/hex-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Copy } from 'lucide-react';
-import React, { useCallback, useState } from 'react'
-import { Controller, useForm } from 'react-hook-form';
-import { toast } from 'sonner';
+import TextAreaFormField from "@/components/form-fields/text-area-form-fields";
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Dictionary } from "@/lib/dictionary";
+import { decodeHex, encodeHex } from "@/lib/hex";
+import {
+  createHexFormSchema,
+  HexFormModel,
+  hexFormSchema,
+} from "@/models/hex-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Copy } from "lucide-react";
+import React, { useCallback, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 interface HexDetailsFormProps {
   dictionary: Dictionary;
@@ -21,9 +31,9 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
   const form = useForm<HexFormModel>({
     resolver: zodResolver(createHexFormSchema(dictionary)),
     defaultValues: {
-      operation: 'encode',
-      value: ""
-    }
+      operation: "encode",
+      value: "",
+    },
   });
 
   const [result, setResult] = useState("");
@@ -33,9 +43,11 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
       if (data.operation === "encode") {
         setResult(encodeHex(data.value));
       } else {
-        setResult(decodeHex(data.value))
+        setResult(decodeHex(data.value));
       }
-    }, [setResult])
+    },
+    [setResult],
+  );
 
   const onCopyClick = useCallback(() => {
     if (!result) return;
@@ -45,7 +57,11 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
     } catch (error) {
       toast.error(dictionary.page.hex.toast.copy.error);
     }
-  }, [result]);
+  }, [
+    result,
+    dictionary.page.hex.toast.copy.success,
+    dictionary.page.hex.toast.copy.error,
+  ]);
 
   const operation = form.watch("operation");
   return (
@@ -63,18 +79,27 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
             <Controller
               control={form.control}
               name="operation"
-              render={({ field }) => <Select value={field.value} onValueChange={field.onChange}>
-                <SelectTrigger className="w-[180px] ">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="encode">{dictionary.page.hex.operations.encode}</SelectItem>
-                  <SelectItem value="decode">{dictionary.page.hex.operations.decode}</SelectItem>
-                </SelectContent>
-              </Select>
-              }
+              render={({ field }) => (
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger className="w-[180px] ">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="encode">
+                      {dictionary.page.hex.operations.encode}
+                    </SelectItem>
+                    <SelectItem value="decode">
+                      {dictionary.page.hex.operations.decode}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
             />
-            <Button>{operation === "decode" ? dictionary.page.hex.buttons.decode : dictionary.page.hex.buttons.encode}</Button>
+            <Button>
+              {operation === "decode"
+                ? dictionary.page.hex.buttons.decode
+                : dictionary.page.hex.buttons.encode}
+            </Button>
           </div>
           <div className="relative">
             <Textarea
@@ -84,14 +109,19 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
               rows={5}
               readOnly={true}
             />
-            <Button className="absolute right-0 bottom-0 hidden md:inline-block" variant="ghost" type="button" onClick={onCopyClick}>
+            <Button
+              className="absolute right-0 bottom-0 hidden md:inline-block"
+              variant="ghost"
+              type="button"
+              onClick={onCopyClick}
+            >
               <Copy />
             </Button>
           </div>
         </div>
       </form>
     </Form>
-  )
+  );
 }
 
-export default HexDetailsForm
+export default HexDetailsForm;

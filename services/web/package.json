@@ -10,8 +10,8 @@
     "next-lint": "next lint",
     "typecheck": "tsc --noEmit",
     "eslint": "eslint --max-warnings=0 \"**/*.{js, jsx,ts,tsx}\"",
-    "format": "prettier --write \"**/**/*.{js, jsx,ts,tsx}\"",
-    "fast": "next 7dev --turbo"
+    "format": "prettier --write \"**/**/**/*.{js, jsx,ts,tsx}\"",
+    "fast": "next dev --turbo"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",

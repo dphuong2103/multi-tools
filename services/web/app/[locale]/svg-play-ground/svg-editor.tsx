@@ -1,16 +1,16 @@
-"use client"
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import Editor, { EditorProps } from '@monaco-editor/react';
+"use client";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import Editor, { EditorProps } from "@monaco-editor/react";
 import styles from "./styles.module.scss";
-import { useTheme } from 'next-themes';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { toast } from 'sonner';
-import { DictionaryProps } from '@/types/data-types';
+import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+import { DictionaryProps } from "@/types/data-types";
 
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
-interface SvgEditorProps extends DictionaryProps { }
+interface SvgEditorProps extends DictionaryProps {}
 
 function SvgEditor({ dictionary }: SvgEditorProps) {
   const [svgCode, setSvgCode] = useState<string>("");
@@ -25,7 +25,12 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
   const isDraggingRef = useRef(false);
 
   const handleGutterDrag = useRef((event: MouseEvent) => {
-    if (!editorContainerRef.current || !resultContainerRef.current || !editorParentRef.current) return;
+    if (
+      !editorContainerRef.current ||
+      !resultContainerRef.current ||
+      !editorParentRef.current
+    )
+      return;
 
     const parentWidth = editorParentRef.current.offsetWidth;
     const parentLeft = editorParentRef.current.getBoundingClientRect().left;
@@ -38,13 +43,6 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
     resultContainerRef.current.style.width = `${parentWidth - editorWidth}px`;
   });
 
-  const handleGutterMouseDown = useCallback(() => {
-    isDraggingRef.current = true;
-    document.addEventListener("mousemove", handleGutterDrag.current);
-    document.addEventListener("mouseup", handleGutterMouseUp);
-  }, []);
-
-  /** Handle the mouse up event to stop dragging */
   const handleGutterMouseUp = useCallback(() => {
     if (!isDraggingRef.current) return;
 
@@ -52,6 +50,12 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
     document.removeEventListener("mousemove", handleGutterDrag.current);
     document.removeEventListener("mouseup", handleGutterMouseUp);
   }, []);
+
+  const handleGutterMouseDown = useCallback(() => {
+    isDraggingRef.current = true;
+    document.addEventListener("mousemove", handleGutterDrag.current);
+    document.addEventListener("mouseup", handleGutterMouseUp);
+  }, [handleGutterMouseUp]);
 
   const handleEditorChange = useCallback((value?: string) => {
     if (!value) {
@@ -81,7 +85,7 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
   }, []);
 
   const formatSvgCode = useCallback(() => {
-    editorInstanceRef.current?.getAction('editor.action.formatDocument')?.run();
+    editorInstanceRef.current?.getAction("editor.action.formatDocument")?.run();
   }, []);
 
   const handleEditorMount = useCallback((editor: EditorType) => {
@@ -97,10 +101,14 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
     } catch (err) {
       toast.error(dictionary.page.svgPlayGround.toast.copy.error);
     }
-  }, [])
+  }, [
+    dictionary.page.svgPlayGround.toast.copy.error,
+    dictionary.page.svgPlayGround.toast.copy.success,
+  ]);
 
   useEffect(() => {
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       document.removeEventListener("mousemove", handleGutterDrag.current);
       document.removeEventListener("mouseup", handleGutterMouseUp);
     };
@@ -109,12 +117,28 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
   return (
     <div className="flex flex-col h-full w-full gap-2 p-2">
       <div className="flex gap-2 items-center">
-        <Button variant="secondary" onClick={saveSvgToFile}>{dictionary.page.svgPlayGround.buttons.save}</Button>
-        <Button variant="secondary" onClick={formatSvgCode}>{dictionary.page.svgPlayGround.buttons.format}</Button>
-        <Button variant="secondary" onClick={copySvgContent} className="hidden md:inline-block">{dictionary.page.svgPlayGround.buttons.copy}</Button>
+        <Button variant="secondary" onClick={saveSvgToFile}>
+          {dictionary.page.svgPlayGround.buttons.save}
+        </Button>
+        <Button variant="secondary" onClick={formatSvgCode}>
+          {dictionary.page.svgPlayGround.buttons.format}
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={copySvgContent}
+          className="hidden md:inline-block"
+        >
+          {dictionary.page.svgPlayGround.buttons.copy}
+        </Button>
       </div>
-      <div className="w-full flex gap-2 h-full flex-col md:flex-row" ref={editorParentRef}>
-        <div ref={editorContainerRef} className="h-3/5 md:h-full w-full md:w-3/4">
+      <div
+        className="w-full flex gap-2 h-full flex-col md:flex-row"
+        ref={editorParentRef}
+      >
+        <div
+          ref={editorContainerRef}
+          className="h-3/5 md:h-full w-full md:w-3/4"
+        >
           <Editor
             theme={theme === "dark" ? "vs-dark" : "light"}
             onMount={handleEditorMount}
@@ -131,13 +155,24 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
         </div>
 
         <div
-          className={cn("gutter h-0 md:w-3 md:h-full border bg-black cursor-ew-resize", styles.gutter)}
+          className={cn(
+            "gutter h-0 md:w-3 md:h-full border bg-black cursor-ew-resize",
+            styles.gutter,
+          )}
           onMouseDown={handleGutterMouseDown}
         />
 
-        <div ref={resultContainerRef} className="flex items-center justify-center h-2/5 md:h-full w-full md:w-1/4 ">
+        <div
+          ref={resultContainerRef}
+          className="flex items-center justify-center h-2/5 md:h-full w-full md:w-1/4 "
+        >
           {imageSrc && (
-            <img src={imageSrc} className={cn(styles["svg-image"], "max-h-full")} alt="SVG Output" />
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={imageSrc}
+              className={cn(styles["svg-image"], "max-h-full")}
+              alt="SVG Output"
+            />
           )}
         </div>
       </div>
