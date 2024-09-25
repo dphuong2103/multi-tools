@@ -1,3 +1,6 @@
+import { Locale } from "@/i18n.config";
+import { Dictionary } from "@/lib/dictionary";
+
 export type User = {
     id: string;
     firstName: string;
@@ -29,3 +32,13 @@ export type SignUpRequest = {
     email: string;
     password: string;
 };
+
+export interface LocaleParams {
+    params: {
+        locale: Locale;
+    }
+}
+
+export interface DictionaryProps {
+    dictionary: Dictionary;
+}

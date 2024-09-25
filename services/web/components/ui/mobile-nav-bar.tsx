@@ -1,5 +1,5 @@
 "use client"
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import {
     Sheet,
     SheetContent,
@@ -14,6 +14,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './collapsib
 import { cn } from '@/lib/utils'
 import multiToolsIcon from "@/assets/images/multi-tools-icon.svg";
 import Image from "next/image";
+import { title } from 'process'
+import { Route } from '@/models/routes'
 
 function MobileNavBar() {
     const [open, setOpen] = useState(false);
@@ -34,6 +36,38 @@ function MobileNavBar() {
         }
     }, []);
 
+    const items: (ItemProps | ExpandableItemProps)[] = useMemo(() => {
+        return [
+            {
+                title: "Encode/Decode",
+                key: "encode-decode",
+                items: [
+                    {
+                        href: "/hex",
+                        children: "Hex",
+                        onOpenChange: onOpenChange,
+                        onItemSelect: onItemSelect,
+                        key: "hex"
+                    },
+                    {
+                        href: "/base64",
+                        children: "Base 64",
+                        onOpenChange: onOpenChange,
+                        onItemSelect: onItemSelect,
+                        key: "base64"
+                    }
+                ],
+                onOpenChange: setShowEncodeDecode,
+                isShowing: showEncodeDecode
+            },
+            {
+                href: "/svg-play-ground",
+                children: "SVG Play Ground",
+                key: "svg-play-ground",
+            }
+        ];
+    }, [onItemSelect, onOpenChange, showEncodeDecode])
+
     return (
         <Sheet open={open} onOpenChange={onOpenChange}>
             <SheetTrigger asChild className='inline-block md:hidden'>
@@ -48,40 +82,20 @@ function MobileNavBar() {
                             src={multiToolsIcon}
                             alt="Multi Tools"
                             width={36}
-                        /></Link>
+                        />
+                    </Link>
                     <ThemeToggle />
                 </div>
                 <div>
-                    <Collapsible onOpenChange={setShowEncodeDecode}>
-                        <CollapsibleTrigger className="flex justify-between w-full">
-                            Encode/Decode
-                            <ArrowBigRightIcon
-                                className={cn({
-                                    "rotate-90": showEncodeDecode,
-                                })}
-                            />
-                        </CollapsibleTrigger>
-                        <CollapsibleContent className="ps-2 flex flex-col">
-                            <MobileLink
-                                href="/hex"
-                                onOpenChange={onItemSelect}
-                            >
-                                Hex
-                            </MobileLink>
-                            <MobileLink
-                                href="/base64"
-                                onOpenChange={onItemSelect}
-                            >
-                                Base 64
-                            </MobileLink>
-                        </CollapsibleContent>
-                    </Collapsible>
-                    <MobileLink
-                        href="/svg-play-ground"
-                        onOpenChange={onItemSelect}
-                    >
-                        SVG Play Ground
-                    </MobileLink>
+                    {items.map((item) => {
+                        if (isExpandableItem(item)) {
+                            const { key, ...rest } = item;
+                            return <ExpandableItem key={key} {...rest} />
+                        } else {
+                            const { key, ...rest } = item;
+                            return <Item key={key} {...rest} />
+                        }
+                    })}
                 </div>
             </SheetContent>
         </Sheet>
@@ -90,31 +104,75 @@ function MobileNavBar() {
 
 export default MobileNavBar
 
-interface MobileLinkProps extends LinkProps {
+interface ItemProps extends Omit<LinkProps, "href"> {
     children: React.ReactNode;
     onOpenChange?: (open: boolean) => void;
     className?: string;
+    key: string;
+    href: Route
 }
 
-function MobileLink({
+
+function Item({
     href,
     onOpenChange,
     children,
     className,
     ...props
-}: MobileLinkProps) {
+}: ItemProps) {
     const router = useRouter();
     return (
-        <Link
-            href={href}
-            onClick={() => {
-                router.push(href.toString());
-                onOpenChange?.(false);
-            }}
-            className={className}
-            {...props}
-        >
-            {children}
-        </Link>
+        <Button asChild variant="link" className={cn(className, "w-full justify-start px-0")}>
+            <Link
+                href={href}
+                onClick={() => {
+                    router.push(href.toString());
+                    onOpenChange?.(false);
+                }}
+                className={className}
+                {...props}
+            >
+                {children}
+            </Link>
+        </Button>
+
     );
+}
+
+interface ExpandableItemProps {
+    title: string,
+    items: ItemProps[],
+    onOpenChange: (open: boolean) => void,
+    isShowing: boolean,
+    key: string
+}
+
+function ExpandableItem({
+    title,
+    items,
+    onOpenChange,
+    isShowing,
+}: ExpandableItemProps) {
+    return <Collapsible onOpenChange={onOpenChange}>
+        <CollapsibleTrigger className="flex justify-between w-full" asChild>
+            <Button variant="link" className={"w-full justify-between px-0"}>
+                {title}
+                <ArrowBigRightIcon
+                    className={cn({
+                        "rotate-90": isShowing,
+                    })}
+                />
+            </Button>
+
+        </CollapsibleTrigger>
+        <CollapsibleContent className="ps-2 flex flex-col">
+            {
+                items.map(i => <Item {...i} />)
+            }
+        </CollapsibleContent>
+    </Collapsible>
+}
+
+function isExpandableItem(item: ItemProps | ExpandableItemProps): item is ExpandableItemProps {
+    return "items" in item;
 }

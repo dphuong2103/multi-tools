@@ -1,4 +1,4 @@
-import './globals.css'
+import '@/app//globals.css'
 import { Inter } from 'next/font/google'
 import AuthProvider from '@/context/auth-provider'
 import { Inter as FontSans } from "next/font/google";
@@ -7,6 +7,7 @@ import { Toaster } from '@/components/ui/sonner';
 import LoadingProvider from '@/context/loading-provider';
 import { ThemeProvider } from '@/context/theme-provider';
 import NavBar from '@/components/ui/nav-bar';
+import { Locale } from '@/i18n.config';
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -39,11 +40,15 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  params
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  params: {
+    locale: Locale
+  }
 }) {
   return (
-    <html lang="en">
+    <html lang={params.locale}>
       <body className={cn(
         "h-screen bg-background font-sans antialiased",
         fontSans.variable
@@ -54,17 +59,7 @@ export default function RootLayout({
         >
           <LoadingProvider>
             <AuthProvider>
-              <div className="h-full flex flex-col">
-                <NavBar />
-                <div className="flex justify-center h-full">
-                  <div className="w-full max-w-7xlxl h-full">
-                    <main className="flex justify-center items-start p-1 md:p-6 w-full h-full">
-                      {children}
-                    </main>
-                  </div>
-                </div>
-              </div>
-
+              {children}
             </AuthProvider>
           </LoadingProvider>
           <Toaster />

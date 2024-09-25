@@ -1,7 +1,9 @@
-// Without a defined matcher, this one line applies next-auth 
-// to the entire project
-export { default } from "next-auth/middleware"
+import { chain } from '@/middlewares/chain'
+import { withAuthMiddleware } from '@/middlewares/auth-middleware'
+import { withI18nMiddleware } from '@/middlewares/intl-middleware'
 
-// Applies next-auth only to matching routes - can be regex
-// Ref: https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
-export const config = { matcher: ["/extra", "/dashboard"] }
+export default chain([withAuthMiddleware, withI18nMiddleware])
+
+export const config = {
+    matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
+}

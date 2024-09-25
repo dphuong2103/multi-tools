@@ -5,6 +5,7 @@ import { Form } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea';
 import { decodeBase64, encodeBase64 } from '@/lib/base64';
+import { Dictionary } from '@/lib/dictionary';
 import { Base64FormModel, base64FormSchema } from '@/models/base64-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Copy } from 'lucide-react';
@@ -12,7 +13,11 @@ import React, { useCallback, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
-function Base64FormDetails() {
+interface Base64DetailsFormProps {
+    dictionary: Dictionary;
+}
+
+function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
     const form = useForm<Base64FormModel>({
         resolver: zodResolver(base64FormSchema),
         defaultValues: {
@@ -88,7 +93,7 @@ function Base64FormDetails() {
                             rows={5}
                             readOnly={true}
                         />
-                        <Button className="absolute right-0 bottom-0" variant="ghost" type="button" onClick={onCopyClick}>
+                        <Button className="absolute right-0 bottom-0 hidden md:inline-block" variant="ghost" type="button" onClick={onCopyClick}>
                             <Copy />
                         </Button>
                     </div>
@@ -98,4 +103,4 @@ function Base64FormDetails() {
     )
 }
 
-export default Base64FormDetails
+export default Base64DetailsForm
