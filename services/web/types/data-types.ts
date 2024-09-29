@@ -38,6 +38,10 @@ export interface LocaleParams {
   };
 }
 
+export interface LocaleProps {
+  locale: Locale;
+}
+
 export interface DictionaryProps {
   dictionary: Dictionary;
 }

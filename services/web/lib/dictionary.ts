@@ -3,7 +3,7 @@ import type { Locale } from "@/i18n.config";
 import en from "@/dictionaries/en.json";
 const dictionaries = {
   en: () => import("@/dictionaries/en.json").then((module) => module.default),
-  vi: () => import("@/dictionaries/vn.json").then((module) => module.default),
+  vn: () => import("@/dictionaries/vn.json").then((module) => module.default),
 };
 
 export const getDictionary = async (locale: Locale) => dictionaries[locale]();

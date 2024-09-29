@@ -10,56 +10,95 @@ import Link from "next/link";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
 import { Route } from "@/models/routes";
+import { DictionaryProps } from "@/types/data-types";
 
-function NavBarLinks() {
+interface NavBarLinkProps extends DictionaryProps {}
+
+async function NavBarLinks({ dictionary }: NavBarLinkProps) {
+  const items: (ItemProps | DropdownItemProps)[] = [
+    {
+      key: "encode-decode",
+      title: dictionary.navBar.encodeDecode.title,
+      items: [
+        {
+          key: "hex",
+          text: dictionary.navBar.encodeDecode.hex,
+          href: "/hex",
+        },
+        {
+          key: "base64",
+          text: dictionary.navBar.encodeDecode.base64,
+          href: "/base64",
+        },
+      ],
+    },
+    {
+      key: "svg-editor",
+      text: dictionary.navBar.svgEditor,
+      href: "/svg-play-ground",
+    },
+  ];
   return (
-    <div className="flex gap-4 items-center">
-      <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center" asChild>
-          <Button variant="link">
-            <>
-              Encode/Decode
-              <ChevronDown />
-            </>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem asChild className="cursor-pointer">
-            <NavLink href="/hex" text="Hex" />
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild className="cursor-pointer">
-            <NavLink href="/base64" text="Base64" />
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-
-      <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center">
-          String
-          <ChevronDown />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem asChild className="cursor-pointer">
-            <Link href="/hex">Upper Case</Link>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      <NavLink href="/svg-play-ground" text="SVG Editor" />
+    <div className="flex gap-3 items-center">
+      {items.map((item) => {
+        if (isDropdownItem(item)) {
+          const { key, ...rest } = item;
+          return <DropdownItem key={key} {...rest} />;
+        }
+        const { key, ...rest } = item;
+        return <Item key={key} {...rest} />;
+      })}
     </div>
   );
 }
 
 export default NavBarLinks;
 
-interface NavLinkProps {
+interface ItemProps {
   text: string;
   href: Route;
   className?: string;
+  key: string;
 }
-function NavLink({ href, text, className }: NavLinkProps) {
+function Item({ href, text, className }: ItemProps) {
   return (
     <Button asChild variant="link" className={cn(className, "w-full")}>
       <Link href={href}>{text}</Link>
     </Button>
   );
+}
+
+interface DropdownItemProps {
+  title: string;
+  key: string;
+  items: ItemProps[];
+}
+
+function DropdownItem({ title, items }: DropdownItemProps) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger className="flex items-center" asChild>
+        <Button variant="link">
+          {title}
+          <ChevronDown />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        {items.map((item) => {
+          const { key, ...rest } = item;
+          return <Item key={key} {...rest} />;
+          // <DropdownMenuItem asChild className="cursor-pointer" key={key}>
+          //   <Item key={key} {...rest} />
+          //   {/* <Link href={rest.href}>{rest.text}</Link> */}
+          // </DropdownMenuItem>
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+function isDropdownItem(
+  item: ItemProps | DropdownItemProps,
+): item is DropdownItemProps {
+  return "items" in item;
 }

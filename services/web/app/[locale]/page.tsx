@@ -3,32 +3,39 @@ import Card from "@/components/ui/card";
 import Layout from "@/components/ui/layout";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
+import { Metadata } from "next";
 import Link from "next/link";
 
+export const metadata: Metadata = {
+  title: "Multi-Tools for converting string, image,...",
+  description:
+    "Online tools for encoding, decoding hex, base64, online editing sv images",
+};
+
 export default async function Home({ params: { locale } }: LocaleParams) {
-  const { page } = await getDictionary(locale);
+  const dictionary = await getDictionary(locale);
   const conveterTools = [
     {
-      title: page.home.section.converterTools.items.hex,
+      title: dictionary.page.home.section.converterTools.items.hex,
       href: "/hex",
     },
     {
-      title: page.home.section.converterTools.items.base64,
+      title: dictionary.page.home.section.converterTools.items.base64,
       href: "/base64",
     },
   ];
 
   const imageTools = [
     {
-      title: page.home.section.imageTools.items.svg,
+      title: dictionary.page.home.section.imageTools.items.svg,
       href: "/svg-play-ground",
     },
   ];
 
   return (
-    <Layout title="Multi Tools">
+    <Layout title="Multi Tools" dictionary={dictionary} locale={locale}>
       <div className="flex flex-col md:flex-row">
-        <Card title={page.home.section.converterTools.title}>
+        <Card title={dictionary.page.home.section.converterTools.title}>
           <div className="flex flex-col">
             {conveterTools.map((i) => (
               <Button
@@ -41,7 +48,7 @@ export default async function Home({ params: { locale } }: LocaleParams) {
             ))}
           </div>
         </Card>
-        <Card title={page.home.section.imageTools.title}>
+        <Card title={dictionary.page.home.section.imageTools.title}>
           <div className="flex flex-col">
             {imageTools.map((i) => (
               <Button

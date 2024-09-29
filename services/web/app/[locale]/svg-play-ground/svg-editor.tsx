@@ -131,6 +131,7 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
           {dictionary.page.svgPlayGround.buttons.copy}
         </Button>
       </div>
+
       <div
         className="w-full flex gap-2 h-full flex-col md:flex-row"
         ref={editorParentRef}

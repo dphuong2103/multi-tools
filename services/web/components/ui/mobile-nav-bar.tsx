@@ -12,12 +12,13 @@ import {
   CollapsibleTrigger,
 } from "./collapsible";
 import { cn } from "@/lib/utils";
-import multiToolsIcon from "@/assets/images/multi-tools-icon.svg";
-import Image from "next/image";
-import { title } from "process";
 import { Route } from "@/models/routes";
+import LocaleSwitcher from "./locale-switcher";
+import { DictionaryProps, LocaleProps } from "@/types/data-types";
 
-function MobileNavBar() {
+interface MobileNavBarProps extends LocaleProps, DictionaryProps {}
+
+function MobileNavBar({ locale, dictionary }: MobileNavBarProps) {
   const [open, setOpen] = useState(false);
   const [showEncodeDecode, setShowEncodeDecode] = useState(false);
 
@@ -38,7 +39,7 @@ function MobileNavBar() {
   const items: (ItemProps | ExpandableItemProps)[] = useMemo(() => {
     return [
       {
-        title: "Encode/Decode",
+        title: dictionary.navBar.encodeDecode.title,
         key: "encode-decode",
         items: [
           {
@@ -61,7 +62,7 @@ function MobileNavBar() {
       },
       {
         href: "/svg-play-ground",
-        children: "SVG Play Ground",
+        children: dictionary.navBar.svgEditor,
         key: "svg-play-ground",
       },
     ];
@@ -76,9 +77,10 @@ function MobileNavBar() {
       </SheetTrigger>
       <SheetContent className="flex flex-col gap-2">
         <div className="flex items-center justify-between pt-2">
-          <Link href="/" className="text-2xl font-bold">
+          <LocaleSwitcher />
+          {/* <Link href="/" className="text-2xl font-bold">
             <Image src={multiToolsIcon} alt="Multi Tools" width={36} />
-          </Link>
+          </Link> */}
           <ThemeToggle />
         </div>
         <div>

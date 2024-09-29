@@ -7,8 +7,9 @@ import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
 
 export const metadata: Metadata = {
-  title: "SVG Playground",
-  description: "Online SVG Code Editor",
+  title: "SVG Playground for editing svg code",
+  description:
+    "Online SVG code editor tool, preview image and download directly",
 };
 
 interface SvgPlayGroundPageProps extends LocaleParams {}
@@ -18,7 +19,7 @@ async function SvgPlayGroundPage({
 }: SvgPlayGroundPageProps) {
   const dictionary = await getDictionary(locale);
   return (
-    <Layout title="SVG Playground">
+    <Layout title="SVG Playground" dictionary={dictionary} locale={locale}>
       <SvgEditor dictionary={dictionary} />
     </Layout>
   );

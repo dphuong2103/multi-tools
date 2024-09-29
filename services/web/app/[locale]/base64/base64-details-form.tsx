@@ -62,8 +62,6 @@ function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
     }
   }, [result]);
 
-  const operation = form.watch("operation");
-
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onValidSubmit)}>
@@ -85,13 +83,17 @@ function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="encode">Encode</SelectItem>
-                    <SelectItem value="decode">Decode</SelectItem>
+                    <SelectItem value="encode">
+                      {dictionary.page.base64.operations.encode}
+                    </SelectItem>
+                    <SelectItem value="decode">
+                      {dictionary.page.base64.operations.decode}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               )}
             />
-            <Button>{operation === "decode" ? "Decode" : "Encode"}</Button>
+            <Button>{dictionary.page.hex.buttons.convert}</Button>
           </div>
           <div className="relative">
             <Textarea

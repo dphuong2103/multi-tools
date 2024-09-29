@@ -1,12 +1,45 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { i18n } from "@/i18n.config";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./dropdown-menu";
+import { LocaleProps } from "@/types/data-types";
+import { Button } from "./button";
+import vietNamIcon from "@/assets/images/nav-bar/language-vietnam-icon.svg";
+import englishIcon from "@/assets/images/nav-bar/language-english-icon.svg";
+import Image from "next/image";
+import Link from "next/link";
+import { Locale } from "@/i18n.config";
+import { useMemo } from "react";
+
+interface LocaleSwitcherProps extends LocaleProps {}
 
 export default function LocaleSwitcher() {
   const pathName = usePathname();
+  const items: {
+    iconSrc: string;
+    label: string;
+    locale: Locale;
+    alt: string;
+  }[] = [
+    {
+      label: "Vietnamese",
+      iconSrc: vietNamIcon,
+      locale: "vn",
+      alt: "Vietnam flag",
+    },
+    {
+      label: "English",
+      iconSrc: englishIcon,
+      locale: "en",
+      alt: "United Kingdom flag",
+    },
+  ];
 
   const redirectedPathName = (locale: string) => {
     if (!pathName) return "/";
@@ -15,20 +48,48 @@ export default function LocaleSwitcher() {
     return segments.join("/");
   };
 
+  const currentLocale = useMemo(() => {
+    const segments = pathName.split("/");
+    const locale = segments[1] as Locale;
+    return items.find((item) => item.locale === locale);
+  }, [pathName]);
+
   return (
-    <ul className="flex gap-x-3">
-      {i18n.locales.map((locale) => {
-        return (
-          <li key={locale}>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon">
+          {!!currentLocale ? (
+            <Image
+              src={currentLocale.iconSrc}
+              width={30}
+              height={30}
+              alt={currentLocale.alt}
+            />
+          ) : (
+            "..."
+          )}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start">
+        {items.map((item) => (
+          <DropdownMenuItem asChild key={item.locale}>
             <Link
-              href={redirectedPathName(locale)}
-              className="rounded-md border bg-black px-3 py-2 text-white"
+              className="flex gap-2 items-center"
+              href={redirectedPathName(item.locale)}
             >
-              {locale}
+              {
+                <Image
+                  src={item.iconSrc}
+                  width={24}
+                  height={24}
+                  alt={item.alt}
+                />
+              }
+              {item.label}
             </Link>
-          </li>
-        );
-      })}
-    </ul>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

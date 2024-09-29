@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "eslint": "eslint --max-warnings=0 \"**/*.{js, jsx,ts,tsx}\"",
     "format": "prettier --write \"**/**/**/*.{js, jsx,ts,tsx}\"",
-    "fast": "next dev --turbo"
+    "fast": "next dev --turbo",
+    "sort-translation": "cd ./dictionaries && jsonsort --indentationCount 2 *.json"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
@@ -48,6 +49,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
+    "json-sort-cli": "^4.0.4",
     "postcss": "^8",
     "sass": "^1.79.3",
     "tailwindcss": "^3.4.1",

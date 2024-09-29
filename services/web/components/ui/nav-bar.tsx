@@ -5,10 +5,12 @@ import { ThemeToggle } from "./theme-toggle";
 import MobileNavBar from "./mobile-nav-bar";
 import multiToolIcon from "@/assets/images/multi-tools-icon.svg";
 import Image from "next/image";
-interface NavBarProps {
+import { DictionaryProps, LocaleProps } from "@/types/data-types";
+import LocaleSwitcher from "./locale-switcher";
+interface NavBarProps extends DictionaryProps, LocaleProps {
   title: string;
 }
-function NavBar({ title }: NavBarProps) {
+function NavBar({ title, dictionary, locale }: NavBarProps) {
   return (
     <nav>
       <div className="w-full pl-6 p-2 md:p-4 flex items-center justify-between border bottom-1 ">
@@ -18,10 +20,11 @@ function NavBar({ title }: NavBarProps) {
           <span className="sr-only">Multi tools logo</span>
         </Link>
         <span className="text-xl font-bold md:hidden">{title}</span>
-        <MobileNavBar />
+        <MobileNavBar locale={locale} dictionary={dictionary} />
         <div className="gap-5 hidden md:flex">
-          <NavBarLinks />
+          <NavBarLinks dictionary={dictionary} />
           <ThemeToggle />
+          <LocaleSwitcher />
         </div>
       </div>
     </nav>

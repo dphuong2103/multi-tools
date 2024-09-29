@@ -63,7 +63,6 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
     dictionary.page.hex.toast.copy.error,
   ]);
 
-  const operation = form.watch("operation");
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onValidSubmit)}>
@@ -95,11 +94,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
                 </Select>
               )}
             />
-            <Button>
-              {operation === "decode"
-                ? dictionary.page.hex.buttons.decode
-                : dictionary.page.hex.buttons.encode}
-            </Button>
+            <Button>{dictionary.page.hex.buttons.convert}</Button>
           </div>
           <div className="relative">
             <Textarea

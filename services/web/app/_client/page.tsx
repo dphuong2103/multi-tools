@@ -1,5 +1,5 @@
 "use client";
-import { LoadingContext } from "@/context/loading-provider";
+import { LoadingContext } from "@/contexts/loading-provider";
 import useAxiosAuth from "@/lib/hooks/useAxiosAuth";
 import { useDebounce } from "@/lib/hooks/useDebounce";
 import { useSession } from "next-auth/react";

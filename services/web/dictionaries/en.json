@@ -1,83 +1,89 @@
 {
-    "page": {
-        "home": {
-            "title": "Multi Tools",
-            "section": {
-                "converterTools": {
-                    "title": "Converter Tools",
-                    "items": {
-                        "hex": "Hex",
-                        "base64": "Base64"
-                    }
-                },
-                "imageTools": {
-                    "title": "Image Tools",
-                    "items": {
-                        "svg": "SVG"
-                    }
-                }
-            }
-        },
-        "base64": {
-            "title": "Base64 Converter",
-            "fields": {
-                "input": {
-                    "placeholder": "Enter text to encode/decode"
-                }
-            },
-            "buttons": {
-                "encode": "Encode",
-                "decode": "Decode"
-            },
-            "operations": {
-                "encode": "Encode",
-                "decode": "Decode"
-            },
-            "toast": {
-                "copy": {
-                    "success": "Copied to clipboard",
-                    "error": "Failed to copy to clipboard"
-                }
-            }
-        },
-        "hex": {
-            "title": "Hex Converter",
-            "fields": {
-                "input": {
-                    "placeholder": "Enter text to encode/decode",
-                    "errors": {
-                        "invalid_hex_string": "Invalid hex string"
-                    }
-                }
-            },
-            "buttons": {
-                "encode": "Encode",
-                "decode": "Decode"
-            },
-            "operations": {
-                "encode": "Encode",
-                "decode": "Decode"
-            },
-            "toast": {
-                "copy": {
-                    "success": "Copied to clipboard",
-                    "error": "Failed to copy to clipboard"
-                }
-            }
-        },
-        "svgPlayGround": {
-            "title": "SVG PlayGround",
-            "buttons": {
-                "copy": "Copy",
-                "format": "Format",
-                "save": "Save"
-            },
-            "toast":{
-                "copy": {
-                    "success": "Copied to clipboard",
-                    "error": "Failed to copy to clipboard"
-                }
-            }
+  "navBar": {
+    "encodeDecode": {
+      "base64": "Base64",
+      "hex": "Hex",
+      "title": "Encode/Decode"
+    },
+    "svgEditor": "SVG Editor"
+  },
+  "page": {
+    "base64": {
+      "buttons": {
+        "convert": "Convert"
+      },
+      "fields": {
+        "input": {
+          "placeholder": "Enter text to encode/decode"
         }
+      },
+      "operations": {
+        "decode": "Base64 to Text",
+        "encode": "Text to Base64"
+      },
+      "title": "Base64 Converter",
+      "toast": {
+        "copy": {
+          "error": "Failed to copy to clipboard",
+          "success": "Copied to clipboard"
+        }
+      }
+    },
+    "hex": {
+      "buttons": {
+        "convert": "Convert"
+      },
+      "fields": {
+        "input": {
+          "errors": {
+            "invalid_hex_string": "Invalid hex string"
+          },
+          "placeholder": "Enter text to encode/decode"
+        }
+      },
+      "operations": {
+        "decode": "Text to Hex",
+        "encode": "Hex to Text"
+      },
+      "title": "Hex Converter",
+      "toast": {
+        "copy": {
+          "error": "Failed to copy to clipboard",
+          "success": "Copied to clipboard"
+        }
+      }
+    },
+    "home": {
+      "section": {
+        "converterTools": {
+          "items": {
+            "base64": "Base64",
+            "hex": "Hex"
+          },
+          "title": "Converter Tools"
+        },
+        "imageTools": {
+          "items": {
+            "svg": "SVG"
+          },
+          "title": "Image Tools"
+        }
+      },
+      "title": "Multi Tools"
+    },
+    "svgPlayGround": {
+      "buttons": {
+        "copy": "Copy",
+        "format": "Format",
+        "save": "Save"
+      },
+      "title": "SVG PlayGround",
+      "toast": {
+        "copy": {
+          "error": "Failed to copy to clipboard",
+          "success": "Copied to clipboard"
+        }
+      }
     }
+  }
 }
