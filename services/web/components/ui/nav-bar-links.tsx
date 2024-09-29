@@ -6,11 +6,11 @@ import {
   DropdownMenuTrigger,
 } from "./dropdown-menu";
 import { ChevronDown } from "lucide-react";
-import Link from "next/link";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
 import { Route } from "@/models/routes";
 import { DictionaryProps } from "@/types/data-types";
+import { LinkWithLocale } from "../link-with-locale";
 
 interface NavBarLinkProps extends DictionaryProps {}
 
@@ -63,7 +63,7 @@ interface ItemProps {
 function Item({ href, text, className }: ItemProps) {
   return (
     <Button asChild variant="link" className={cn(className, "w-full")}>
-      <Link href={href}>{text}</Link>
+      <LinkWithLocale href={href}>{text}</LinkWithLocale>
     </Button>
   );
 }

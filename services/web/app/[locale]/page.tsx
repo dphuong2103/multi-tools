@@ -1,16 +1,28 @@
+import { LinkWithLocale } from "@/components/link-with-locale";
 import { Button } from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import Layout from "@/components/ui/layout";
+import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
 import { Metadata } from "next";
-import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Multi-Tools for converting string, image,...",
-  description:
-    "Online tools for encoding, decoding hex, base64, online editing sv images",
+type MetadataProps = {
+  params: {
+    locale: Locale;
+  };
 };
+
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
+  const locale = params.locale;
+  const dictionary = await getDictionary(locale);
+  return {
+    title: dictionary.page.home.metaData.title,
+    description: dictionary.page.home.metaData.description,
+  };
+}
 
 export default async function Home({ params: { locale } }: LocaleParams) {
   const dictionary = await getDictionary(locale);
@@ -43,7 +55,7 @@ export default async function Home({ params: { locale } }: LocaleParams) {
                 key={i.href}
                 className={"w-full justify-between px-0"}
               >
-                <Link href={i.href}>{i.title}</Link>
+                <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
               </Button>
             ))}
           </div>
@@ -56,7 +68,7 @@ export default async function Home({ params: { locale } }: LocaleParams) {
                 key={i.href}
                 className={"w-full justify-between px-0"}
               >
-                <Link href={i.href}>{i.title}</Link>
+                <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
               </Button>
             ))}
           </div>

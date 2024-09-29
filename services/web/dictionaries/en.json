@@ -17,6 +17,10 @@
           "placeholder": "Enter text to encode/decode"
         }
       },
+      "metaData": {
+        "description": "Convert base64 to text and base64 decode strings. Online tool for base64 decoding a string. Convert a base64 encoded text into an decoded string",
+        "title": "Base64 to text and viceversa"
+      },
       "operations": {
         "decode": "Base64 to Text",
         "encode": "Text to Base64"
@@ -41,6 +45,10 @@
           "placeholder": "Enter text to encode/decode"
         }
       },
+      "metaData": {
+        "description": "Convert hex to text and hex decode strings. Online tool for hex decoding a string. Convert a hexadecimaly encoded text into an decoded string",
+        "title": "Hex to text and viceversa"
+      },
       "operations": {
         "decode": "Text to Hex",
         "encode": "Hex to Text"
@@ -54,6 +62,10 @@
       }
     },
     "home": {
+      "metaData": {
+        "description": "Online tools for encoding, decoding hex, base64, online editing sv images",
+        "title": "Multi-Tools for converting string, image,..."
+      },
       "section": {
         "converterTools": {
           "items": {
@@ -76,6 +88,10 @@
         "copy": "Copy",
         "format": "Format",
         "save": "Save"
+      },
+      "metaData": {
+        "description": "Online SVG code editor tool, preview image and download directly",
+        "title": "SVG Playground for editing svg code"
       },
       "title": "SVG PlayGround",
       "toast": {

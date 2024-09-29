@@ -17,6 +17,10 @@
           "placeholder": "Nhập văn bản để mã hóa/giải mã"
         }
       },
+      "metaData": {
+        "description": "Chuyển đổi base64 sang văn bản và giải mã chuỗi base64. Công cụ trực tuyến để giải mã một chuỗi base64. Chuyển đổi văn bản được mã hóa base64 thành chuỗi đã được giải mã",
+        "title": "Base64 sang văn bản và ngược lại"
+      },
       "operations": {
         "decode": "Base64 sang Văn bản",
         "encode": "Văn bản sang Base64"
@@ -41,6 +45,10 @@
           "placeholder": "Nhập văn bản để mã hóa/giải mã"
         }
       },
+      "metaData": {
+        "description": "Chuyển đổi hex sang văn bản và giải mã chuỗi hex. Công cụ trực tuyến để giải mã một chuỗi hex. Chuyển đổi văn bản được mã hóa hex thành chuỗi đã được giải mã",
+        "title": "Công cụ chuyển đổi Hex"
+      },
       "operations": {
         "decode": "Văn bản sang Hex",
         "encode": "Hex sang Văn bản"
@@ -54,6 +62,10 @@
       }
     },
     "home": {
+      "metaData": {
+        "description": "Công cụ trực tuyến để mã hóa, giải mã hex, base64 và chỉnh sửa hình ảnh SVG trực tuyến",
+        "title": "Công cụ đa chức năng để chuyển đổi chuỗi, hình ảnh,..."
+      },
       "section": {
         "converterTools": {
           "items": {
@@ -76,6 +88,10 @@
         "copy": "Sao chép",
         "format": "Định dạng",
         "save": "Lưu"
+      },
+      "metaData": {
+        "description": "Công cụ chỉnh sửa mã SVG trực tuyến, xem trước hình ảnh và tải xuống trực tiếp",
+        "title": "Công cụ chơi SVG để chỉnh sửa mã SVG"
       },
       "title": "Công cụ chơi SVG",
       "toast": {

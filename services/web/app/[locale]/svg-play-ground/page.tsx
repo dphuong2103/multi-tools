@@ -1,17 +1,29 @@
 import React from "react";
 
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import SvgEditor from "./svg-editor";
 import Layout from "@/components/ui/layout";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
+import { Locale } from "@/i18n.config";
 
-export const metadata: Metadata = {
-  title: "SVG Playground for editing svg code",
-  description:
-    "Online SVG code editor tool, preview image and download directly",
+type MetadataProps = {
+  params: {
+    locale: Locale;
+  };
 };
 
+export async function generateMetadata(
+  { params }: MetadataProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const locale = params.locale;
+  const dictionary = await getDictionary(locale);
+  return {
+    title: dictionary.page.svgPlayGround.metaData.title,
+    description: dictionary.page.svgPlayGround.metaData.description,
+  };
+}
 interface SvgPlayGroundPageProps extends LocaleParams {}
 
 async function SvgPlayGroundPage({

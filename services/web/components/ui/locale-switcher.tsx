@@ -17,29 +17,31 @@ import Link from "next/link";
 import { Locale } from "@/i18n.config";
 import { useMemo } from "react";
 
-interface LocaleSwitcherProps extends LocaleProps {}
-
 export default function LocaleSwitcher() {
   const pathName = usePathname();
-  const items: {
-    iconSrc: string;
-    label: string;
-    locale: Locale;
-    alt: string;
-  }[] = [
+  const items = useMemo<
     {
-      label: "Vietnamese",
-      iconSrc: vietNamIcon,
-      locale: "vn",
-      alt: "Vietnam flag",
-    },
-    {
-      label: "English",
-      iconSrc: englishIcon,
-      locale: "en",
-      alt: "United Kingdom flag",
-    },
-  ];
+      iconSrc: string;
+      label: string;
+      locale: Locale;
+      alt: string;
+    }[]
+  >(() => {
+    return [
+      {
+        label: "Vietnamese",
+        iconSrc: vietNamIcon,
+        locale: "vn",
+        alt: "Vietnam flag",
+      },
+      {
+        label: "English",
+        iconSrc: englishIcon,
+        locale: "en",
+        alt: "United Kingdom flag",
+      },
+    ];
+  }, []);
 
   const redirectedPathName = (locale: string) => {
     if (!pathName) return "/";
@@ -52,7 +54,7 @@ export default function LocaleSwitcher() {
     const segments = pathName.split("/");
     const locale = segments[1] as Locale;
     return items.find((item) => item.locale === locale);
-  }, [pathName]);
+  }, [pathName, items]);
 
   return (
     <DropdownMenu>

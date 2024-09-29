@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { Route } from "@/models/routes";
 import LocaleSwitcher from "./locale-switcher";
 import { DictionaryProps, LocaleProps } from "@/types/data-types";
+import { LinkWithLocale } from "../link-with-locale";
 
 interface MobileNavBarProps extends LocaleProps, DictionaryProps {}
 
@@ -66,7 +67,13 @@ function MobileNavBar({ locale, dictionary }: MobileNavBarProps) {
         key: "svg-play-ground",
       },
     ];
-  }, [onItemSelect, onOpenChange, showEncodeDecode]);
+  }, [
+    onItemSelect,
+    onOpenChange,
+    showEncodeDecode,
+    dictionary.navBar.encodeDecode.title,
+    dictionary.navBar.svgEditor,
+  ]);
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -78,9 +85,6 @@ function MobileNavBar({ locale, dictionary }: MobileNavBarProps) {
       <SheetContent className="flex flex-col gap-2">
         <div className="flex items-center justify-between pt-2">
           <LocaleSwitcher />
-          {/* <Link href="/" className="text-2xl font-bold">
-            <Image src={multiToolsIcon} alt="Multi Tools" width={36} />
-          </Link> */}
           <ThemeToggle />
         </div>
         <div>
@@ -123,7 +127,7 @@ function Item({
       variant="link"
       className={cn(className, "w-full justify-start px-0")}
     >
-      <Link
+      <LinkWithLocale
         href={href}
         onClick={() => {
           router.push(href.toString());
@@ -133,7 +137,7 @@ function Item({
         {...props}
       >
         {children}
-      </Link>
+      </LinkWithLocale>
     </Button>
   );
 }

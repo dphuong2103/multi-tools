@@ -7,19 +7,19 @@ import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import { CustomMiddleware } from "./chain";
 
-function getLocale(request: NextRequest): string | undefined {
+function getLocale(request: NextRequest): string {
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
   // @ts-ignore locales are readonly
   const locales: string[] = i18n.locales;
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-
-  const locale = matchLocale(languages, locales, i18n.defaultLocale);
+  const locale = !!request.cookies.get("NEXT_LOCALE")?.value
+    ? request.cookies.get("NEXT_LOCALE")!.value
+    : (matchLocale(languages, locales, i18n.defaultLocale) ??
+      i18n.defaultLocale);
   return locale;
 }
-
-export function middleware(request: NextRequest) {}
 
 export function withI18nMiddleware(middleware: CustomMiddleware) {
   return async (
@@ -37,12 +37,24 @@ export function withI18nMiddleware(middleware: CustomMiddleware) {
     // Redirect if there is no locale
     if (pathnameIsMissingLocale) {
       const locale = getLocale(request);
-      return NextResponse.redirect(
+      const response = NextResponse.redirect(
         new URL(
           `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
           request.url,
         ),
       );
+      response.cookies.set({
+        name: "NEXT_LOCALE",
+        value: locale,
+        httpOnly: true,
+      });
+      return response;
+    }
+
+    const locale = pathname.split("/")[1] as string;
+
+    if (request.cookies.get("NEXT_LOCALE")?.value !== locale) {
+      response.cookies.set("NEXT_LOCALE", locale);
     }
 
     return middleware(request, event, response);

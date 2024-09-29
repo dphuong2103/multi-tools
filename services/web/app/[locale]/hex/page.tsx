@@ -1,14 +1,27 @@
-import { Metadata } from "next";
 import HexDetailsForm from "./hex-details-form";
 import Layout from "@/components/ui/layout";
 import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
+import type { Metadata, ResolvingMetadata } from "next";
+import { Locale } from "@/i18n.config";
 
-export const metadata: Metadata = {
-  title: "Hex to text and viceversa",
-  description:
-    "Convert hex to text and hex decode strings. Online tool for hex decoding a string. Convert a hexadecimaly encoded text into an decoded string",
+type MetadataProps = {
+  params: {
+    locale: Locale;
+  };
 };
+
+export async function generateMetadata(
+  { params }: MetadataProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const locale = params.locale;
+  const dictionary = await getDictionary(locale);
+  return {
+    title: dictionary.page.hex.metaData.title,
+    description: dictionary.page.hex.metaData.description,
+  };
+}
 
 interface HexPageProps extends LocaleParams {}
 

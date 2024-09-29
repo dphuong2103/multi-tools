@@ -1,14 +1,27 @@
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import Base64DetailsForm from "./base64-details-form";
 import Layout from "@/components/ui/layout";
 import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
+import { Locale } from "@/i18n.config";
 
-export const metadata: Metadata = {
-  title: "Base64 to text and viceversa",
-  description:
-    "Convert base64 to text and base64 decode strings. Online tool for base64 decoding a string. Convert a base64 encoded text into an decoded string",
+type MetadataProps = {
+  params: {
+    locale: Locale;
+  };
 };
+
+export async function generateMetadata(
+  { params }: MetadataProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const locale = params.locale;
+  const dictionary = await getDictionary(locale);
+  return {
+    title: dictionary.page.base64.metaData.title,
+    description: dictionary.page.base64.metaData.description,
+  };
+}
 
 interface Base64PageProps extends LocaleParams {}
 
