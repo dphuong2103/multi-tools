@@ -1,17 +1,17 @@
 {
   "navBar": {
+    "codeEditor": "Code Editor",
     "encodeDecode": {
       "base64": "Base64",
       "hex": "Hex",
       "title": "Mã hóa/Giải mã"
     },
-    "svgEditor": "Chỉnh sửa SVG",
-    "sqlFormatter": "Định dạng SQL",
     "localeSwitcher": {
-      "vietnamese": "Tiếng Việt",
-      "english": "English"
+      "english": "English",
+      "vietnamese": "Tiếng Việt"
     },
-    "codeEditor": "Code Editor"
+    "sqlFormatter": "Định dạng SQL",
+    "svgEditor": "Chỉnh sửa SVG"
   },
   "page": {
     "base64": {
@@ -80,38 +80,20 @@
           },
           "title": "Công cụ chuyển đổi"
         },
-        "imageTools": {
-          "items": {
-            "svg": "SVG"
-          },
-          "title": "Công cụ hình ảnh"
-        },
         "formatterTools": {
           "items": {
             "sql": "SQL"
           },
           "title": "Công cụ định dạng"
+        },
+        "imageTools": {
+          "items": {
+            "svg": "SVG"
+          },
+          "title": "Công cụ hình ảnh"
         }
       },
       "title": "Công cụ đa chức năng"
-    },
-    "svgPlayGround": {
-      "buttons": {
-        "copy": "Sao chép",
-        "format": "Định dạng",
-        "save": "Lưu"
-      },
-      "metaData": {
-        "description": "Công cụ chỉnh sửa mã SVG trực tuyến, xem trước hình ảnh và tải xuống trực tiếp",
-        "title": "Công cụ chỉnh sửa mã SVG"
-      },
-      "title": "Công cụ SVG",
-      "toast": {
-        "copy": {
-          "error": "Không thể sao chép vào clipboard",
-          "success": "Đã sao chép vào clipboard"
-        }
-      }
     },
     "sqlFormatter": {
       "buttons": {
@@ -124,6 +106,24 @@
         "title": "Định dạng SQL trực tuyến"
       },
       "title": "Định dạng SQL trực tuyến",
+      "toast": {
+        "copy": {
+          "error": "Không thể sao chép vào clipboard",
+          "success": "Đã sao chép vào clipboard"
+        }
+      }
+    },
+    "svgPlayGround": {
+      "buttons": {
+        "copy": "Sao chép",
+        "format": "Định dạng",
+        "save": "Lưu"
+      },
+      "metaData": {
+        "description": "Công cụ chỉnh sửa mã SVG trực tuyến, xem trước hình ảnh và tải xuống trực tiếp",
+        "title": "Công cụ chỉnh sửa mã SVG"
+      },
+      "title": "Công cụ SVG",
       "toast": {
         "copy": {
           "error": "Không thể sao chép vào clipboard",

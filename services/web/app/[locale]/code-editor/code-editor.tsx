@@ -107,6 +107,7 @@ function CodeEditor({ dictionary }: CodeEditorProps) {
   }, [
     dictionary.page.sqlFormatter.toast.copy.error,
     dictionary.page.sqlFormatter.toast.copy.success,
+    result
   ]);
 
   useEffect(() => {

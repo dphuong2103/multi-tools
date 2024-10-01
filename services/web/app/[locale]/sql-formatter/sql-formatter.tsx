@@ -106,6 +106,7 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
   }, [
     dictionary.page.sqlFormatter.toast.copy.error,
     dictionary.page.sqlFormatter.toast.copy.success,
+    result
   ]);
 
   useEffect(() => {
