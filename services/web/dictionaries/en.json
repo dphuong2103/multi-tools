@@ -5,7 +5,13 @@
       "hex": "Hex",
       "title": "Encode/Decode"
     },
-    "svgEditor": "SVG Editor"
+    "svgEditor": "SVG Editor",
+    "sqlFormatter": "SQL Formatter",
+    "localeSwitcher": {
+      "vietnamese": "Tiếng Việt",
+      "english": "English"
+    },
+    "codeEditor":"Code Editor"
   },
   "page": {
     "base64": {
@@ -79,6 +85,12 @@
             "svg": "SVG"
           },
           "title": "Image Tools"
+        },
+        "formatterTools": {
+          "items": {
+            "sql": "SQL"
+          },
+          "title": "Formatter Tools"
         }
       },
       "title": "Multi Tools"
@@ -94,6 +106,24 @@
         "title": "SVG Playground for editing svg code"
       },
       "title": "SVG PlayGround",
+      "toast": {
+        "copy": {
+          "error": "Failed to copy to clipboard",
+          "success": "Copied to clipboard"
+        }
+      }
+    },
+    "sqlFormatter": {
+      "buttons": {
+        "copy": "Copy",
+        "format": "Format",
+        "save": "Save"
+      },
+      "metaData": {
+        "description": "Online SQL formatter tool, format SQL code and download directly",
+        "title": "Format SQL online"
+      },
+      "title": "SQL Formatter",
       "toast": {
         "copy": {
           "error": "Failed to copy to clipboard",

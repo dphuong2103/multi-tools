@@ -12,7 +12,7 @@ import { Route } from "@/models/routes";
 import { DictionaryProps } from "@/types/data-types";
 import { LinkWithLocale } from "../link-with-locale";
 
-interface NavBarLinkProps extends DictionaryProps {}
+interface NavBarLinkProps extends DictionaryProps { }
 
 async function NavBarLinks({ dictionary }: NavBarLinkProps) {
   const items: (ItemProps | DropdownItemProps)[] = [
@@ -33,11 +33,22 @@ async function NavBarLinks({ dictionary }: NavBarLinkProps) {
       ],
     },
     {
+      key: "sql-formatter",
+      text: dictionary.navBar.sqlFormatter,
+      href: "/sql-formatter",
+    },
+    {
+      key: "code-editor",
+      text: dictionary.navBar.codeEditor,
+      href: "/code-editor",
+    },
+    {
       key: "svg-editor",
       text: dictionary.navBar.svgEditor,
       href: "/svg-play-ground",
     },
   ];
+
   return (
     <div className="flex gap-3 items-center">
       {items.map((item) => {

@@ -7,14 +7,15 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { DictionaryProps } from "@/types/data-types";
-
+import { format } from 'sql-formatter';
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
-interface SvgEditorProps extends DictionaryProps { }
+interface CodeEditorProps extends DictionaryProps { }
+type ProgrammingLanguage = "sql" | "javascript" | "typescript";
 
-function SvgEditor({ dictionary }: SvgEditorProps) {
-  const [svgCode, setSvgCode] = useState<string>("");
-  const [imageSrc, setImageSrc] = useState<string>("");
+function CodeEditor({ dictionary }: CodeEditorProps) {
+  const [input, setInput] = useState<string>("");
+  const [result, setResult] = useState("");
   const { theme } = useTheme();
 
   const editorContainerRef = useRef<HTMLDivElement | null>(null);
@@ -59,51 +60,53 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
 
   const handleEditorChange = useCallback((value?: string) => {
     if (!value) {
-      setSvgCode("");
-      setImageSrc("");
+      setInput("");
       return;
     }
-    setSvgCode(value);
-    try {
-      const encodedSvg = `data:image/svg+xml;base64,${btoa(value)}`;
-      setImageSrc(encodedSvg);
-    } catch (error) {
-      console.error("Error encoding SVG", error);
-    }
+    setInput(value);
   }, []);
 
-  const saveSvgToFile = useCallback(() => {
-    const svgContent = editorInstanceRef.current?.getValue();
-    if (!svgContent) return;
+  const onSaveClick = useCallback(() => {
+    if (!result) return;
 
-    const blob = new Blob([svgContent], { type: "text/plain" });
+    const blob = new Blob([result], { type: "text/plain" });
     const url = window.URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = "image.svg";
+    anchor.download = "script.sql";
     anchor.click();
+  }, [result]);
+
+  const onFormatClick = useCallback(() => {
+    if (!editorInstanceRef.current) return;
+    const input = editorInstanceRef.current.getValue()
+    if (!input) {
+      setResult("");
+      return;
+    }
+    setResult(format(input, {
+      language: "sql",
+      tabWidth: 2,
+      keywordCase: 'upper',
+      linesBetweenQueries: 2,
+    }));
   }, []);
 
-  const formatSvgCode = useCallback(() => {
-    editorInstanceRef.current?.getAction("editor.action.formatDocument")?.run();
-  }, []);
-
-  const handleEditorMount = useCallback((editor: EditorType) => {
+  const handleEditorMount = useCallback((editor: EditorType, monaco: Monaco) => {
     editorInstanceRef.current = editor;
   }, []);
 
-  const copySvgContent = useCallback(() => {
-    const svgContent = editorInstanceRef.current?.getValue();
-    if (!svgContent) return;
+  const onCopyClick = useCallback(() => {
+    if (!result) return;
     try {
-      navigator.clipboard.writeText(svgContent);
-      toast.success(dictionary.page.svgPlayGround.toast.copy.success);
+      navigator.clipboard.writeText(result);
+      toast.success(dictionary.page.sqlFormatter.toast.copy.success);
     } catch (err) {
-      toast.error(dictionary.page.svgPlayGround.toast.copy.error);
+      toast.error(dictionary.page.sqlFormatter.toast.copy.error);
     }
   }, [
-    dictionary.page.svgPlayGround.toast.copy.error,
-    dictionary.page.svgPlayGround.toast.copy.success,
+    dictionary.page.sqlFormatter.toast.copy.error,
+    dictionary.page.sqlFormatter.toast.copy.success,
   ]);
 
   useEffect(() => {
@@ -117,18 +120,18 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
   return (
     <div className="flex flex-col h-full w-full gap-2 p-2">
       <div className="flex gap-2 items-center">
-        <Button variant="secondary" onClick={saveSvgToFile}>
-          {dictionary.page.svgPlayGround.buttons.save}
+        <Button variant="secondary" onClick={onSaveClick}>
+          {dictionary.page.sqlFormatter.buttons.save}
         </Button>
-        <Button variant="secondary" onClick={formatSvgCode}>
-          {dictionary.page.svgPlayGround.buttons.format}
+        <Button variant="secondary" onClick={onFormatClick}>
+          {dictionary.page.sqlFormatter.buttons.format}
         </Button>
         <Button
           variant="secondary"
-          onClick={copySvgContent}
+          onClick={onCopyClick}
           className="hidden md:inline-block"
         >
-          {dictionary.page.svgPlayGround.buttons.copy}
+          {dictionary.page.sqlFormatter.buttons.copy}
         </Button>
       </div>
 
@@ -138,13 +141,13 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
       >
         <div
           ref={editorContainerRef}
-          className="h-3/5 md:h-full w-full md:w-3/4"
+          className="h-3/5 md:h-full w-full md:w-2/4"
         >
           <Editor
             theme={theme === "dark" ? "vs-dark" : "light"}
             onMount={handleEditorMount}
             height="100%"
-            defaultLanguage="html"
+            defaultLanguage="sql"
             onChange={handleEditorChange}
             options={{
               fontSize: 14,
@@ -165,20 +168,13 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
 
         <div
           ref={resultContainerRef}
-          className="flex items-center justify-center h-2/5 md:h-full w-full md:w-1/4 "
+          className="flex items-center justify-center h-2/5 md:h-full w-full md:w-2/4 "
         >
-          {imageSrc && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={imageSrc}
-              className={cn(styles["svg-image"], "max-h-full")}
-              alt="SVG Output"
-            />
-          )}
+          
         </div>
       </div>
     </div>
   );
 }
 
-export default SvgEditor;
+export default CodeEditor;

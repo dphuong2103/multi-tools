@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./dropdown-menu";
-import { LocaleProps } from "@/types/data-types";
+import { DictionaryProps } from "@/types/data-types";
 import { Button } from "./button";
 import vietNamIcon from "@/assets/images/nav-bar/language-vietnam-icon.svg";
 import englishIcon from "@/assets/images/nav-bar/language-english-icon.svg";
@@ -17,7 +17,9 @@ import Link from "next/link";
 import { Locale } from "@/i18n.config";
 import { useMemo } from "react";
 
-export default function LocaleSwitcher() {
+interface LocaleSwitcherProps extends DictionaryProps { }
+
+export default function LocaleSwitcher({ dictionary }: LocaleSwitcherProps) {
   const pathName = usePathname();
   const items = useMemo<
     {
@@ -29,13 +31,13 @@ export default function LocaleSwitcher() {
   >(() => {
     return [
       {
-        label: "Vietnamese",
+        label: dictionary.navBar.localeSwitcher.vietnamese,
         iconSrc: vietNamIcon,
         locale: "vn",
         alt: "Vietnam flag",
       },
       {
-        label: "English",
+        label: dictionary.navBar.localeSwitcher.english,
         iconSrc: englishIcon,
         locale: "en",
         alt: "United Kingdom flag",

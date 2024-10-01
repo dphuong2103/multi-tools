@@ -69,3 +69,7 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+.hide-cursor-monaco-editor .monaco-editor .cursors-layer > .cursor {
+	display: none !important;
+}

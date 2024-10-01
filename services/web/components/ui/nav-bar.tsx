@@ -27,7 +27,7 @@ function NavBar({ title, dictionary, locale }: NavBarProps) {
         <div className="gap-5 hidden md:flex">
           <NavBarLinks dictionary={dictionary} />
           <ThemeToggle />
-          <LocaleSwitcher />
+          <LocaleSwitcher dictionary={dictionary} />
         </div>
       </div>
     </nav>

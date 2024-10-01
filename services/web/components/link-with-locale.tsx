@@ -13,6 +13,7 @@ export function LinkWithLocale({
   href,
   className,
   children,
+  ...props
 }: LinkWithLocaleProps) {
   const pathName = usePathname();
 
@@ -23,7 +24,7 @@ export function LinkWithLocale({
   }, [pathName]);
 
   return (
-    <Link href={`/${currentLocale}${href}`} className={className}>
+    <Link href={`/${currentLocale}${href}`} className={className} {...props}>
       {children}
     </Link>
   );

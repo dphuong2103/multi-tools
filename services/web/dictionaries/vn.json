@@ -5,7 +5,13 @@
       "hex": "Hex",
       "title": "Mã hóa/Giải mã"
     },
-    "svgEditor": "Chỉnh sửa SVG"
+    "svgEditor": "Chỉnh sửa SVG",
+    "sqlFormatter": "Định dạng SQL",
+    "localeSwitcher": {
+      "vietnamese": "Tiếng Việt",
+      "english": "English"
+    },
+    "codeEditor": "Code Editor"
   },
   "page": {
     "base64": {
@@ -79,6 +85,12 @@
             "svg": "SVG"
           },
           "title": "Công cụ hình ảnh"
+        },
+        "formatterTools": {
+          "items": {
+            "sql": "SQL"
+          },
+          "title": "Công cụ định dạng"
         }
       },
       "title": "Công cụ đa chức năng"
@@ -91,9 +103,27 @@
       },
       "metaData": {
         "description": "Công cụ chỉnh sửa mã SVG trực tuyến, xem trước hình ảnh và tải xuống trực tiếp",
-        "title": "Công cụ chơi SVG để chỉnh sửa mã SVG"
+        "title": "Công cụ chỉnh sửa mã SVG"
       },
-      "title": "Công cụ chơi SVG",
+      "title": "Công cụ SVG",
+      "toast": {
+        "copy": {
+          "error": "Không thể sao chép vào clipboard",
+          "success": "Đã sao chép vào clipboard"
+        }
+      }
+    },
+    "sqlFormatter": {
+      "buttons": {
+        "copy": "Sao chép",
+        "format": "Định dạng",
+        "save": "Lưu"
+      },
+      "metaData": {
+        "description": "Công cụ định dạng SQL trực tuyến, định dạng mã SQL và tải xuống trực tiếp",
+        "title": "Định dạng SQL trực tuyến"
+      },
+      "title": "Định dạng SQL trực tuyến",
       "toast": {
         "copy": {
           "error": "Không thể sao chép vào clipboard",
