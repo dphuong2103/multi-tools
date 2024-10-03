@@ -24,7 +24,7 @@ function LoadingProvider({ children }: { children: React.ReactNode }) {
   return (
     <LoadingContext.Provider value={{ toggleIsLoading, isLoading }}>
       <Dialog open={isLoading}>
-        <DialogContent className="w-0">
+        <DialogContent className="w-14 flex items-cneter justify-center">
           <div>
             <Loader2 className="animate-spin" />
           </div>

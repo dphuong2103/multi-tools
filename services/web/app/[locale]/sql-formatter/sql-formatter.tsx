@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { DictionaryProps } from "@/types/data-types";
-import { format } from 'sql-formatter';
+import { format } from "sql-formatter";
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
-interface SqlFormatterProps extends DictionaryProps { }
+interface SqlFormatterProps extends DictionaryProps {}
 
 function SqlFormatter({ dictionary }: SqlFormatterProps) {
   const [input, setInput] = useState<string>("");
@@ -78,22 +78,27 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
 
   const onFormatClick = useCallback(() => {
     if (!editorInstanceRef.current) return;
-    const input = editorInstanceRef.current.getValue()
+    const input = editorInstanceRef.current.getValue();
     if (!input) {
       setResult("");
       return;
     }
-    setResult(format(input, {
-      language: "sql",
-      tabWidth: 2,
-      keywordCase: 'upper',
-      linesBetweenQueries: 2,
-    }));
+    setResult(
+      format(input, {
+        language: "sql",
+        tabWidth: 2,
+        keywordCase: "upper",
+        linesBetweenQueries: 2,
+      }),
+    );
   }, []);
 
-  const handleEditorMount = useCallback((editor: EditorType, monaco: Monaco) => {
-    editorInstanceRef.current = editor;
-  }, []);
+  const handleEditorMount = useCallback(
+    (editor: EditorType, monaco: Monaco) => {
+      editorInstanceRef.current = editor;
+    },
+    [],
+  );
 
   const onCopyClick = useCallback(() => {
     if (!result) return;
@@ -106,7 +111,7 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
   }, [
     dictionary.page.sqlFormatter.toast.copy.error,
     dictionary.page.sqlFormatter.toast.copy.success,
-    result
+    result,
   ]);
 
   useEffect(() => {
@@ -182,9 +187,8 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
               contextmenu: false,
               formatOnPaste: true,
               readOnly: true,
-              hideCursorInOverviewRuler: true
+              hideCursorInOverviewRuler: true,
             }}
-
           />
         </div>
       </div>

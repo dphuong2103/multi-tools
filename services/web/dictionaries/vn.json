@@ -1,13 +1,13 @@
 {
   "navBar": {
-    "codeEditor": "Code Editor",
+    "codeEditor": "Trình chỉnh sửa mã nguồn",
     "encodeDecode": {
       "base64": "Base64",
       "hex": "Hex",
       "title": "Mã hóa/Giải mã"
     },
     "localeSwitcher": {
-      "english": "English",
+      "english": "Tiếng Anh",
       "vietnamese": "Tiếng Việt"
     },
     "sqlFormatter": "Định dạng SQL",
@@ -36,6 +36,40 @@
         "copy": {
           "error": "Không thể sao chép vào clipboard",
           "success": "Đã sao chép vào clipboard"
+        }
+      }
+    },
+    "codeEditor": {
+      "buttons": {
+        "copy": "Sao chép",
+        "format": "Định dạng",
+        "save": "Lưu",
+        "template": "Mẫu"
+      },
+      "metaData": {
+        "description": "Công cụ trình chỉnh sửa mã trực tuyến, định dạng mã và tải xuống trực tiếp",
+        "title": "Trình chỉnh sửa mã nguồn"
+      },
+      "programmingLanguages": {
+        "csharp": "C#",
+        "go": "Go",
+        "java": "Java",
+        "javascript": "Javascript",
+        "kotlin": "Kotlin",
+        "php": "PHP",
+        "python": "Python",
+        "ruby": "Ruby",
+        "swift": "Swift",
+        "typescript": "Typescript"
+      },
+      "title": "Trình chỉnh sửa mã nguồn",
+      "toast": {
+        "copy": {
+          "error": "Không thể sao chép vào clipboard",
+          "success": "Đã sao chép vào clipboard"
+        },
+        "runCode": {
+          "error": "Không thể chạy mã"
         }
       }
     },

@@ -24,14 +24,16 @@ export async function generateMetadata(
     description: dictionary.page.sqlFormatter.metaData.description,
   };
 }
-interface SqlFormatterPageProps extends LocaleParams { }
+interface SqlFormatterPageProps extends LocaleParams {}
 
-async function SqlFormatterPage({
-  params: { locale },
-}: SqlFormatterPageProps) {
+async function SqlFormatterPage({ params: { locale } }: SqlFormatterPageProps) {
   const dictionary = await getDictionary(locale);
   return (
-    <Layout title={dictionary.page.sqlFormatter.title} dictionary={dictionary} locale={locale}>
+    <Layout
+      title={dictionary.page.sqlFormatter.title}
+      dictionary={dictionary}
+      locale={locale}
+    >
       <SqlFormatter dictionary={dictionary} />
     </Layout>
   );

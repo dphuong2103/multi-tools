@@ -10,7 +10,7 @@ import { DictionaryProps } from "@/types/data-types";
 
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
-interface SvgEditorProps extends DictionaryProps { }
+interface SvgEditorProps extends DictionaryProps {}
 
 function SvgEditor({ dictionary }: SvgEditorProps) {
   const [svgCode, setSvgCode] = useState<string>("");

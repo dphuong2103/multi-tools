@@ -20,18 +20,20 @@ export async function generateMetadata(
   const locale = params.locale;
   const dictionary = await getDictionary(locale);
   return {
-    title: dictionary.page.sqlFormatter.metaData.title,
-    description: dictionary.page.sqlFormatter.metaData.description,
+    title: dictionary.page.codeEditor.metaData.title,
+    description: dictionary.page.codeEditor.metaData.description,
   };
 }
-interface CodeEditorPageProps extends LocaleParams { }
+interface CodeEditorPageProps extends LocaleParams {}
 
-async function CodeEditorPage({
-  params: { locale },
-}: CodeEditorPageProps) {
+async function CodeEditorPage({ params: { locale } }: CodeEditorPageProps) {
   const dictionary = await getDictionary(locale);
   return (
-    <Layout title={dictionary.page.sqlFormatter.title} dictionary={dictionary} locale={locale}>
+    <Layout
+      title={dictionary.page.codeEditor.title}
+      dictionary={dictionary}
+      locale={locale}
+    >
       <CodeEditor dictionary={dictionary} />
     </Layout>
   );

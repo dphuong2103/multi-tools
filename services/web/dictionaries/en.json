@@ -39,6 +39,40 @@
         }
       }
     },
+    "codeEditor": {
+      "buttons": {
+        "copy": "Copy",
+        "format": "Format",
+        "save": "Save",
+        "template": "Template"
+      },
+      "metaData": {
+        "description": "Online code editor tool, format code and download directly",
+        "title": "Code Editor"
+      },
+      "programmingLanguages": {
+        "csharp": "C#",
+        "go": "Go",
+        "java": "Java",
+        "javascript": "Javascript",
+        "kotlin": "Kotlin",
+        "php": "PHP",
+        "python": "Python",
+        "ruby": "Ruby",
+        "swift": "Swift",
+        "typescript": "Typescript"
+      },
+      "title": "Code Editor",
+      "toast": {
+        "copy": {
+          "error": "Failed to copy to clipboard",
+          "success": "Copied to clipboard"
+        },
+        "runCode": {
+          "error": "Unable to run code"
+        }
+      }
+    },
     "hex": {
       "buttons": {
         "convert": "Convert"

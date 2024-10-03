@@ -49,7 +49,7 @@ export default async function Home({ params: { locale } }: LocaleParams) {
       title: dictionary.page.home.section.formatterTools.items.sql,
       href: "/sql-formatter",
     },
-  ]
+  ];
 
   return (
     <Layout title="Multi Tools" dictionary={dictionary} locale={locale}>

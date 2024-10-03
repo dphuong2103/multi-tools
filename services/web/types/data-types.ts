@@ -1,3 +1,4 @@
+import { programmingLanguages } from "@/constants/programming-languages";
 import { Locale } from "@/i18n.config";
 import { Dictionary } from "@/lib/dictionary";
 
@@ -45,3 +46,10 @@ export interface LocaleProps {
 export interface DictionaryProps {
   dictionary: Dictionary;
 }
+
+export type ProgrammingLanguage = (typeof programmingLanguages)[number];
+
+export type DropdownOption = {
+  label: string;
+  value: string;
+};

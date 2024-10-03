@@ -1,12 +1,11 @@
 import { z } from "zod";
 import { nonEmptyString } from "./z-custom";
+import { programmingLanguages } from "@/constants/programming-languages";
 
-const ProgrammingLanguages = ["javascript", "typescript", "sql"] as const;
-
-export const codeEditorSchema = z.object({
-    language: z.enum(ProgrammingLanguages),
-    input: nonEmptyString,
+export const codeEditorFormSchema = z.object({
+  language: z.enum(programmingLanguages),
+  input: nonEmptyString,
 });
 
-export type CodeEditorFormModel = z.infer<typeof codeEditorSchema>;
+export type CodeEditorFormModel = z.infer<typeof codeEditorFormSchema>;
 export type CodeEditorFormError = z.ZodError<CodeEditorFormModel>;

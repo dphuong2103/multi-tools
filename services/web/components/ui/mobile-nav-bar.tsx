@@ -84,7 +84,7 @@ function MobileNavBar({ locale, dictionary }: MobileNavBarProps) {
       </SheetTrigger>
       <SheetContent className="flex flex-col gap-2">
         <div className="flex items-center justify-between pt-2">
-          <LocaleSwitcher dictionary={dictionary}/>
+          <LocaleSwitcher dictionary={dictionary} />
           <ThemeToggle />
         </div>
         <div>

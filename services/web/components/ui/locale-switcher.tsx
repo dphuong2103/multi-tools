@@ -17,7 +17,7 @@ import Link from "next/link";
 import { Locale } from "@/i18n.config";
 import { useMemo } from "react";
 
-interface LocaleSwitcherProps extends DictionaryProps { }
+interface LocaleSwitcherProps extends DictionaryProps {}
 
 export default function LocaleSwitcher({ dictionary }: LocaleSwitcherProps) {
   const pathName = usePathname();
@@ -43,7 +43,10 @@ export default function LocaleSwitcher({ dictionary }: LocaleSwitcherProps) {
         alt: "United Kingdom flag",
       },
     ];
-  }, [dictionary.navBar.localeSwitcher.vietnamese, dictionary.navBar.localeSwitcher.english]);
+  }, [
+    dictionary.navBar.localeSwitcher.vietnamese,
+    dictionary.navBar.localeSwitcher.english,
+  ]);
 
   const redirectedPathName = (locale: string) => {
     if (!pathName) return "/";

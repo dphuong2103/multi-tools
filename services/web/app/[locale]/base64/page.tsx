@@ -28,7 +28,11 @@ interface Base64PageProps extends LocaleParams {}
 async function Base64Page({ params: { locale } }: Base64PageProps) {
   const dictionary = await getDictionary(locale);
   return (
-    <Layout title={dictionary.page.base64.title} dictionary={dictionary} locale={locale}>
+    <Layout
+      title={dictionary.page.base64.title}
+      dictionary={dictionary}
+      locale={locale}
+    >
       <div className="w-full flex flex-col justify-center gap-2">
         <Base64DetailsForm dictionary={dictionary} />
       </div>

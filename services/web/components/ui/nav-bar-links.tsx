@@ -12,7 +12,7 @@ import { Route } from "@/models/routes";
 import { DictionaryProps } from "@/types/data-types";
 import { LinkWithLocale } from "../link-with-locale";
 
-interface NavBarLinkProps extends DictionaryProps { }
+interface NavBarLinkProps extends DictionaryProps {}
 
 async function NavBarLinks({ dictionary }: NavBarLinkProps) {
   const items: (ItemProps | DropdownItemProps)[] = [
