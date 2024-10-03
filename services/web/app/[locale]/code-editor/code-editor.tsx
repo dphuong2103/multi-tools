@@ -31,7 +31,7 @@ import { Loader2, Play } from "lucide-react";
 import axios from "axios";
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
-interface CodeEditorProps extends DictionaryProps {}
+interface CodeEditorProps extends DictionaryProps { }
 
 function CodeEditor({ dictionary }: CodeEditorProps) {
   const [selectedLanguage, setSelectedLanguage] =
@@ -57,11 +57,8 @@ function CodeEditor({ dictionary }: CodeEditorProps) {
 
     const parentWidth = editorParentRef.current.offsetWidth;
     const parentLeft = editorParentRef.current.getBoundingClientRect().left;
-
     const mouseX = event.clientX - parentLeft;
-
     const editorWidth = Math.max(0, Math.min(mouseX, parentWidth));
-
     editorContainerRef.current.style.width = `${editorWidth}px`;
     resultContainerRef.current.style.width = `${parentWidth - editorWidth}px`;
   });
@@ -124,10 +121,10 @@ function CodeEditor({ dictionary }: CodeEditorProps) {
         setError([]);
       }
     } catch (error) {
+      console.log(error);
       if (axios.isCancel(error)) {
         return;
       }
-      console.log(error);
       toast.error(dictionary.page.codeEditor.toast.runCode.error);
     } finally {
       setIsLoading(false);

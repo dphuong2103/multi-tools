@@ -4,18 +4,22 @@ import axios from "@/lib/axios";
 import { ProgrammingLanguage } from "@/types/data-types";
 
 export const executeCode = async (
-  language: ProgrammingLanguage,
-  sourceCode: string,
-  abortController: AbortController,
+    language: ProgrammingLanguage,
+    sourceCode: string,
+    abortController: AbortController,
 ) => {
-  const response = await axios.post(CODE_EXECUTION_API_URL, {
-    language: language,
-    version: PROGRAMMING_LANGUAGE_VERSIONS[language],
-    files: [
-      {
-        content: sourceCode,
-      },
-    ],
-  });
-  return response.data;
+    const response = await axios.post(CODE_EXECUTION_API_URL, {
+        language: language,
+        version: PROGRAMMING_LANGUAGE_VERSIONS[language],
+        files: [
+            {
+                content: sourceCode,
+            },
+        ],
+    },
+        {
+            signal: abortController.signal,
+        }
+    );
+    return response.data;
 };
