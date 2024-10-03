@@ -31,7 +31,7 @@ import { Loader2, Play } from "lucide-react";
 import axios from "axios";
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
-interface CodeEditorProps extends DictionaryProps { }
+interface CodeEditorProps extends DictionaryProps {}
 
 function CodeEditor({ dictionary }: CodeEditorProps) {
   const [selectedLanguage, setSelectedLanguage] =
