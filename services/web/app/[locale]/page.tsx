@@ -51,6 +51,13 @@ export default async function Home({ params: { locale } }: LocaleParams) {
     },
   ];
 
+  const codeEditorTools = [
+    {
+      title: dictionary.page.home.section.codeEditorTools.items.codeEditor,
+      href: "/code-editor",
+    },
+  ];
+
   return (
     <Layout title="Multi Tools" dictionary={dictionary} locale={locale}>
       <div className="flex flex-col md:flex-row">
@@ -83,6 +90,19 @@ export default async function Home({ params: { locale } }: LocaleParams) {
         <Card title={dictionary.page.home.section.formatterTools.title}>
           <div className="flex flex-col">
             {formaterTools.map((i) => (
+              <Button
+                variant="link"
+                key={i.href}
+                className={"w-full justify-between px-0"}
+              >
+                <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
+              </Button>
+            ))}
+          </div>
+        </Card>
+        <Card title={dictionary.page.home.section.codeEditorTools.title}>
+          <div className="flex flex-col">
+            {codeEditorTools.map((i) => (
               <Button
                 variant="link"
                 key={i.href}

@@ -192,7 +192,7 @@ function CodeEditor({ dictionary }: CodeEditorProps) {
 
   return (
     <div className="flex flex-col h-full w-full gap-2 p-2">
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center flex-wrap">
         <Select
           value={selectedLanguage}
           onValueChange={(e) => setSelectedLanguage(e as ProgrammingLanguage)}
@@ -230,11 +230,7 @@ function CodeEditor({ dictionary }: CodeEditorProps) {
         >
           {dictionary.page.codeEditor.buttons.copy}
         </Button>
-        <Button
-          variant="secondary"
-          onClick={onTemplateClick}
-          className="hidden md:inline-block"
-        >
+        <Button variant="secondary" onClick={onTemplateClick}>
           {dictionary.page.codeEditor.buttons.template}
         </Button>
       </div>

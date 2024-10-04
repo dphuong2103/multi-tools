@@ -7,7 +7,13 @@ export const programmingLanguages = [
   "java",
   "php",
   "python",
+  "c",
+  "cpp",
+  "kotlin",
+  "ruby",
+  "dart",
 ] as const;
+
 export const PROGRAMMING_LANGUAGE_VERSIONS: Record<
   ProgrammingLanguage,
   string
@@ -18,6 +24,11 @@ export const PROGRAMMING_LANGUAGE_VERSIONS: Record<
   java: "15.0.2",
   csharp: "6.12.0",
   php: "8.2.3",
+  c: "10.2.0",
+  cpp: "10.2.0",
+  kotlin: "1.8.20",
+  ruby: "3.0.1",
+  dart: "2.19.6",
 };
 
 export const mapProgrammingLanguageToExtension: Record<
@@ -25,11 +36,16 @@ export const mapProgrammingLanguageToExtension: Record<
   string
 > = {
   javascript: "js",
-  typescript: "txt",
+  typescript: "ts",
   python: "py",
   java: "java",
   csharp: "cs",
   php: "php",
+  c: "c",
+  cpp: "cpp",
+  kotlin: "kt",
+  ruby: "rb",
+  dart: "dart",
 };
 
 export const programmingLanguageBootstrapCode: Record<
@@ -56,6 +72,23 @@ namespace HelloWorld
 `,
   typescript: "console.log('Hello, world!');",
   javascript: "console.log('Hello, world!');",
-  php: ``,
+  php: `<?php echo "Hello, world!"; ?>`,
   python: `print('Hello, world!')`,
+  c: `#include <stdio.h>
+int main() {
+   printf("Hello, World!");
+   return 0;
+}`,
+  cpp: `#include <iostream>
+int main() {
+   std::cout << "Hello, World!" << std::endl;
+   return 0;
+}`,
+  kotlin: `fun main() {
+    println("Hello, world!")
+}`,
+  ruby: `puts "Hello, world!"`,
+  dart: `void main() {
+  print('Hello, world!');
+}`,
 };

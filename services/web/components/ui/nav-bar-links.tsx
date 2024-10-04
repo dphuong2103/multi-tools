@@ -50,7 +50,7 @@ async function NavBarLinks({ dictionary }: NavBarLinkProps) {
   ];
 
   return (
-    <div className="flex gap-3 items-center">
+    <div className="flex md:gap-1 lg:gap-3 items-center">
       {items.map((item) => {
         if (isDropdownItem(item)) {
           const { key, ...rest } = item;

@@ -62,6 +62,16 @@ function MobileNavBar({ locale, dictionary }: MobileNavBarProps) {
         isShowing: showEncodeDecode,
       },
       {
+        key: "sql-formatter",
+        children: dictionary.navBar.sqlFormatter,
+        href: "/sql-formatter",
+      },
+      {
+        key: "code-editor",
+        children: dictionary.navBar.codeEditor,
+        href: "/code-editor",
+      },
+      {
         href: "/svg-play-ground",
         children: dictionary.navBar.svgEditor,
         key: "svg-play-ground",
@@ -73,6 +83,8 @@ function MobileNavBar({ locale, dictionary }: MobileNavBarProps) {
     showEncodeDecode,
     dictionary.navBar.encodeDecode.title,
     dictionary.navBar.svgEditor,
+    dictionary.navBar.codeEditor,
+    dictionary.navBar.sqlFormatter,
   ]);
 
   return (

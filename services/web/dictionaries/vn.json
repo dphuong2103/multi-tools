@@ -51,7 +51,10 @@
         "title": "Trình chỉnh sửa mã nguồn"
       },
       "programmingLanguages": {
+        "c": "C",
+        "cpp": "C++",
         "csharp": "C#",
+        "dart": "Dart",
         "go": "Go",
         "java": "Java",
         "javascript": "Javascript",
@@ -59,6 +62,7 @@
         "php": "PHP",
         "python": "Python",
         "ruby": "Ruby",
+        "rust": "Rust",
         "swift": "Swift",
         "typescript": "Typescript"
       },
@@ -107,6 +111,12 @@
         "title": "Công cụ đa chức năng để chuyển đổi chuỗi, hình ảnh,..."
       },
       "section": {
+        "codeEditorTools": {
+          "items": {
+            "codeEditor": "Code Editor"
+          },
+          "title": "Code Editor Tools"
+        },
         "converterTools": {
           "items": {
             "base64": "Base64",
