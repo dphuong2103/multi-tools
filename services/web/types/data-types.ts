@@ -1,4 +1,5 @@
 import { programmingLanguages } from "@/constants/programming-languages";
+import { sqlLanguages } from "@/constants/sql-languages";
 import { Locale } from "@/i18n.config";
 import { Dictionary } from "@/lib/dictionary";
 
@@ -53,3 +54,5 @@ export type DropdownOption = {
   label: string;
   value: string;
 };
+
+export type SqlLanguage = (typeof sqlLanguages)[number];

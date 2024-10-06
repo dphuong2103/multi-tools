@@ -145,15 +145,50 @@
         "format": "Format",
         "save": "Save"
       },
+      "fields": {
+        "dataTypeCase": {
+          "label": "Data Type Case"
+        },
+        "functionCase": {
+          "label": "Function Case"
+        },
+        "keywordCase": {
+          "label": "Keyword Case"
+        },
+        "language": {
+          "label": "Language"
+        },
+        "lineBetweenQueries": {
+          "label": "Line Between Queries"
+        },
+        "tabWidth": {
+          "label": "Tab Width"
+        }
+      },
       "metaData": {
         "description": "Online SQL formatter tool, format SQL code and download directly",
         "title": "Format SQL online"
+      },
+      "sqlLanguages": {
+        "mysql": "MySql",
+        "postgresql": "PostgreSql",
+        "sql": "Sql",
+        "sqlite": "SQLite",
+        "transactsql": "Transact-Sql"
+      },
+      "textCases": {
+        "lowercase": "Lowercase",
+        "preserve": "Preserve",
+        "uppercase": "Uppercase"
       },
       "title": "SQL Formatter",
       "toast": {
         "copy": {
           "error": "Failed to copy to clipboard",
           "success": "Copied to clipboard"
+        },
+        "format": {
+          "error": "Error while formatting SQL script, please select another language!"
         }
       }
     },

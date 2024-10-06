@@ -145,15 +145,50 @@
         "format": "Định dạng",
         "save": "Lưu"
       },
+      "fields": {
+        "dataTypeCase": {
+          "label": "Chữ hoa/thường - Kiểu dữ liệu"
+        },
+        "functionCase": {
+          "label": "Chữ hoa/thường - Tên hàm"
+        },
+        "keywordCase": {
+          "label": "Chữ hoa/thường - Từ khoá"
+        },
+        "language": {
+          "label": "Ngôn ngữ Sql"
+        },
+        "lineBetweenQueries": {
+          "label": "Số dòng giữa các câu lệnh"
+        },
+        "tabWidth": {
+          "label": "Độ rộng tab"
+        }
+      },
       "metaData": {
         "description": "Công cụ định dạng SQL trực tuyến, định dạng mã SQL và tải xuống trực tiếp",
         "title": "Định dạng SQL trực tuyến"
+      },
+      "sqlLanguages": {
+        "mysql": "MySql",
+        "postgresql": "PostgreSql",
+        "sql": "Sql",
+        "sqlite": "SQLite",
+        "transactsql": "Transact-Sql"
+      },
+      "textCases": {
+        "lowercase": "Viết hoa",
+        "preserve": "Giữ nguyên",
+        "uppercase": "Viết thường"
       },
       "title": "Định dạng SQL trực tuyến",
       "toast": {
         "copy": {
           "error": "Không thể sao chép vào clipboard",
           "success": "Đã sao chép vào clipboard"
+        },
+        "format": {
+          "error": "Không thể định dạng, vui lòng chọn ngôn ngữ Sql khác!"
         }
       }
     },

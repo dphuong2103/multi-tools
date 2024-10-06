@@ -35,9 +35,9 @@ function TextInputFormField<
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className="space-y-0">
           {label && (
-            <FormLabel className="text-gray-500 dark:text-gray-500 text-xs">
+            <FormLabel className="text-xs">
               {label} {required && "*"}
             </FormLabel>
           )}

@@ -44,9 +44,9 @@ function SelectFormField<
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className="flex flex-col gap-2 space-y-0">
           {label && (
-            <FormLabel className="text-gray-500 dark:text-gray-500 text-xs">
+            <FormLabel className="text-xs">
               {label} {required && "*"}
             </FormLabel>
           )}
