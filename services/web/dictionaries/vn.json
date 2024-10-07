@@ -94,8 +94,8 @@
         "title": "Công cụ chuyển đổi Hex"
       },
       "operations": {
-        "decode": "Văn bản sang Hex",
-        "encode": "Hex sang Văn bản"
+        "decode": "Hex sang Văn bản",
+        "encode": "Văn bản sang Hex"
       },
       "title": "Công cụ chuyển đổi Hex",
       "toast": {

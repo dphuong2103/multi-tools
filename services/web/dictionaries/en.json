@@ -94,8 +94,8 @@
         "title": "Hex to text and viceversa"
       },
       "operations": {
-        "decode": "Text to Hex",
-        "encode": "Hex to Text"
+        "decode": "Hex to Text",
+        "encode": "Text to Hex"
       },
       "title": "Hex Converter",
       "toast": {

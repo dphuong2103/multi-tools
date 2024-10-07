@@ -12,11 +12,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Dictionary } from "@/lib/dictionary";
 import { decodeHex, encodeHex } from "@/lib/hex";
-import {
-  createHexFormSchema,
-  HexFormModel,
-  hexFormSchema,
-} from "@/models/hex-form";
+import { createHexFormSchema, HexFormModel } from "@/models/hex-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Copy } from "lucide-react";
 import React, { useCallback, useState } from "react";

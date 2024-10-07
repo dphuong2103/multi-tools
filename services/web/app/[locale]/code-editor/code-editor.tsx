@@ -29,7 +29,6 @@ import {
 import { executeCode } from "@/lib/apis/code-editor-api";
 import { Loader2, Play } from "lucide-react";
 import axios from "axios";
-import { Input } from "@/components/ui/input";
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
 interface CodeEditorProps extends DictionaryProps {}
