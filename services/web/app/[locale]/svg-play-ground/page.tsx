@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import SvgEditor from "./svg-editor";
 import Layout from "@/components/ui/layout";
 import { getDictionary } from "@/lib/dictionary";
@@ -15,7 +15,6 @@ type MetadataProps = {
 
 export async function generateMetadata(
   { params }: MetadataProps,
-  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const locale = params.locale;
   const dictionary = await getDictionary(locale);

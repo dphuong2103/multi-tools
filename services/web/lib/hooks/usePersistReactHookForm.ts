@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { FieldValues, Path, UseFormWatch } from "react-hook-form";
+import { useEffect } from "react";
+import { FieldValues, UseFormWatch } from "react-hook-form";
 
 export default function usePersistReactHookForm<T extends FieldValues>(
   key: string,

@@ -26,6 +26,7 @@ export async function generateMetadata({
 
 export default async function Home({ params: { locale } }: LocaleParams) {
   const dictionary = await getDictionary(locale);
+
   const conveterTools = [
     {
       title: dictionary.page.home.section.converterTools.items.hex,

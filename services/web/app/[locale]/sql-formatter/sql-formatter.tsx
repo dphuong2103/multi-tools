@@ -110,7 +110,6 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
 
   const onSaveClick = useCallback(() => {
     if (!result) return;
-
     const blob = new Blob([result], { type: "text/plain" });
     const url = window.URL.createObjectURL(blob);
     const anchor = document.createElement("a");

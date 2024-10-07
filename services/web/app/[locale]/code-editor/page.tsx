@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import Layout from "@/components/ui/layout";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
@@ -15,7 +15,6 @@ type MetadataProps = {
 
 export async function generateMetadata(
   { params }: MetadataProps,
-  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const locale = params.locale;
   const dictionary = await getDictionary(locale);
@@ -24,7 +23,7 @@ export async function generateMetadata(
     description: dictionary.page.codeEditor.metaData.description,
   };
 }
-interface CodeEditorPageProps extends LocaleParams {}
+interface CodeEditorPageProps extends LocaleParams { }
 
 async function CodeEditorPage({ params: { locale } }: CodeEditorPageProps) {
   const dictionary = await getDictionary(locale);

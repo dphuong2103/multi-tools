@@ -22,7 +22,7 @@ export async function generateMetadata({
   };
 }
 
-interface HexPageProps extends LocaleParams {}
+interface HexPageProps extends LocaleParams { }
 
 async function HexPage({ params: { locale } }: HexPageProps) {
   const dictionary = await getDictionary(locale);
