@@ -9,7 +9,7 @@ interface LayoutProps extends DictionaryProps, LocaleProps {
 
 function Layout({ children, title, dictionary, locale }: LayoutProps) {
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col max-w-screen min-w-screen">
       <NavBar title={title} dictionary={dictionary} locale={locale} />
       <div className="flex justify-center h-full">
         <div className="w-full max-w-7xlxl h-full">

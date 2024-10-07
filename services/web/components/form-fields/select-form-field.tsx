@@ -52,7 +52,7 @@ function SelectFormField<
           )}
           <FormControl>
             <Select value={field.value} onValueChange={field.onChange}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger>
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
               <SelectContent>

@@ -177,9 +177,9 @@
         "transactsql": "Transact-Sql"
       },
       "textCases": {
-        "lowercase": "Lowercase",
+        "lowercase": "Lower Case",
         "preserve": "Preserve",
-        "uppercase": "Uppercase"
+        "uppercase": "Upper Case"
       },
       "title": "SQL Formatter",
       "toast": {

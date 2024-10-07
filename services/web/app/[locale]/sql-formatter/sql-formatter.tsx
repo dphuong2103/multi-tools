@@ -24,7 +24,7 @@ import { Form, FormField } from "@/components/ui/form";
 import TextInputFormField from "@/components/form-fields/text-input-form-field";
 import SelectFormField from "@/components/form-fields/select-form-field";
 import { sqlLanguages } from "@/constants/sql-languages";
-import { pages } from "next/dist/build/templates/app-page";
+import useReactHookFormPersist from "@/lib/hooks/useReactHookFormPersist";
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
 interface SqlFormatterProps extends DictionaryProps {}
@@ -32,9 +32,23 @@ interface SqlFormatterProps extends DictionaryProps {}
 function SqlFormatter({ dictionary }: SqlFormatterProps) {
   const { theme } = useTheme();
   const [result, setResult] = useState("");
-  const form = useForm<SqlFormatterFormModel>({
-    resolver: zodResolver(sqlFormatterFormSchema),
-    values: {
+  const initialFormValues = useCallback((key: string) => {
+    if (window) {
+      const savedData = localStorage.getItem(key);
+      if (savedData) {
+        return JSON.parse(savedData);
+      } else
+        return {
+          dataTypeCase: "upper",
+          functionCase: "upper",
+          input: "",
+          keywordCase: "upper",
+          language: "sql",
+          linesBetweenQueries: 1,
+          tabWidth: 1,
+        };
+    }
+    return {
       dataTypeCase: "upper",
       functionCase: "upper",
       input: "",
@@ -42,8 +56,16 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
       language: "sql",
       linesBetweenQueries: 1,
       tabWidth: 1,
-    },
+    };
+  }, []);
+  const form = useForm<SqlFormatterFormModel>({
+    resolver: zodResolver(sqlFormatterFormSchema),
+    defaultValues: initialFormValues("sql-formatter"),
   });
+  const { watch } = form;
+
+  useReactHookFormPersist("sql-formatter", { watch });
+
   const editorContainerRef = useRef<HTMLDivElement | null>(null);
   const resultContainerRef = useRef<HTMLDivElement | null>(null);
   const editorParentRef = useRef<HTMLDivElement | null>(null);
@@ -61,13 +83,17 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
 
     const parentWidth = editorParentRef.current.offsetWidth;
     const parentLeft = editorParentRef.current.getBoundingClientRect().left;
-
     const mouseX = event.clientX - parentLeft;
 
-    const editorWidth = Math.max(0, Math.min(mouseX, parentWidth));
+    const minEditorWidth = 100;
+    const maxEditorWidth = parentWidth - 100;
+    const editorWidth = Math.max(
+      minEditorWidth,
+      Math.min(mouseX, maxEditorWidth),
+    );
 
     editorContainerRef.current.style.width = `${editorWidth}px`;
-    resultContainerRef.current.style.width = `${parentWidth - editorWidth}px`;
+    resultContainerRef.current.style.width = `${parentWidth - editorWidth - 5}px`;
   });
 
   const handleGutterMouseUp = useCallback(() => {
@@ -182,7 +208,7 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
           onSubmit={form.handleSubmit(onValidSubmit)}
           className="h-full w-full"
         >
-          <div className="flex flex-col h-full w-full gap-2 p-2">
+          <div className="flex flex-col h-full w-full gap-2 p-2 ">
             <div className="flex gap-2 items-center">
               <Button variant="default" type="submit" className="text-white">
                 {dictionary.page.sqlFormatter.buttons.format}
@@ -200,11 +226,8 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
               </Button>
             </div>
 
-            <div
-              className="w-full flex gap-2 h-full flex-col md:flex-row"
-              ref={editorParentRef}
-            >
-              <div className="grid grid-cols-2 md:flex md:flex-col md:gap-3 pt-3">
+            <div className="flex gap-2 h-full flex-col md:flex-row w-full max-w-full">
+              <div className="grid grid-cols-2 gap-2 md:flex md:flex-col md:gap-3 pt-3 ">
                 <SelectFormField
                   control={form.control}
                   name="language"
@@ -244,58 +267,65 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
                   options={textCaseOptions}
                 />
               </div>
+
               <div
-                ref={editorContainerRef}
-                className="h-3/5 md:h-full w-full md:w-2/4"
+                ref={editorParentRef}
+                className="max-w-full w-full h-full flex overflow-hidden flex-col md:flex-row"
               >
-                <FormField
-                  control={form.control}
-                  name="input"
-                  render={({ field }) => (
-                    <Editor
-                      theme={theme === "dark" ? "vs-dark" : "light"}
-                      onMount={handleEditorMount}
-                      height="100%"
-                      defaultLanguage="sql"
-                      onChange={field.onChange}
-                      options={{
-                        fontSize: 14,
-                        minimap: { enabled: false },
-                        contextmenu: false,
-                        formatOnPaste: true,
-                      }}
-                    />
+                <div
+                  ref={editorContainerRef}
+                  className="h-3/5 md:h-full w-full md:w-2/4"
+                >
+                  <FormField
+                    control={form.control}
+                    name="input"
+                    render={({ field }) => (
+                      <Editor
+                        theme={theme === "dark" ? "vs-dark" : "light"}
+                        onMount={handleEditorMount}
+                        height="100%"
+                        defaultLanguage="sql"
+                        value={field.value}
+                        onChange={field.onChange}
+                        options={{
+                          fontSize: 14,
+                          minimap: { enabled: false },
+                          contextmenu: false,
+                          formatOnPaste: true,
+                        }}
+                      />
+                    )}
+                  />
+                </div>
+
+                <div
+                  className={cn(
+                    "gutter h-0 md:w-3 md:h-full border bg-black cursor-ew-resize",
+                    styles.gutter,
                   )}
-                />
-              </div>
+                  onMouseDown={handleGutterMouseDown}
+                ></div>
 
-              <div
-                className={cn(
-                  "gutter h-0 md:w-3 md:h-full border bg-black cursor-ew-resize",
-                  styles.gutter,
-                )}
-                onMouseDown={handleGutterMouseDown}
-              />
-
-              <div
-                ref={resultContainerRef}
-                className="flex items-center justify-center h-2/5 md:h-full w-full md:w-2/4 "
-              >
-                <Editor
-                  theme={theme === "dark" ? "vs-dark" : "light"}
-                  value={result}
-                  height="100%"
-                  defaultLanguage="sql"
-                  className="hide-cursor-monaco-editor"
-                  options={{
-                    fontSize: 14,
-                    minimap: { enabled: false },
-                    contextmenu: false,
-                    formatOnPaste: true,
-                    readOnly: true,
-                    hideCursorInOverviewRuler: true,
-                  }}
-                />
+                <div
+                  ref={resultContainerRef}
+                  className="h-2/5 md:h-full w-full md:w-2/4"
+                >
+                  <Editor
+                    theme={theme === "dark" ? "vs-dark" : "light"}
+                    value={result}
+                    height="100%"
+                    defaultLanguage="sql"
+                    className="hide-cursor-monaco-editor"
+                    options={{
+                      fontSize: 14,
+                      minimap: { enabled: false },
+                      contextmenu: false,
+                      formatOnPaste: true,
+                      readOnly: true,
+                      hideCursorInOverviewRuler: true,
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
