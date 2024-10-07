@@ -24,47 +24,45 @@ import { Form, FormField } from "@/components/ui/form";
 import TextInputFormField from "@/components/form-fields/text-input-form-field";
 import SelectFormField from "@/components/form-fields/select-form-field";
 import { sqlLanguages } from "@/constants/sql-languages";
-import useReactHookFormPersist from "@/lib/hooks/useReactHookFormPersist";
+import usePersistReactHookForm from "@/lib/hooks/usePersistReactHookForm";
+
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
-interface SqlFormatterProps extends DictionaryProps {}
+const sql_formatter_key = "sql-formatter";
+const initialValues = {
+  dataTypeCase: "upper",
+  functionCase: "upper",
+  input: "",
+  keywordCase: "upper",
+  language: "sql",
+  linesBetweenQueries: 1,
+  tabWidth: 1,
+}
+
+interface SqlFormatterProps extends DictionaryProps { }
 
 function SqlFormatter({ dictionary }: SqlFormatterProps) {
   const { theme } = useTheme();
   const [result, setResult] = useState("");
+
   const initialFormValues = useCallback((key: string) => {
     if (window) {
       const savedData = localStorage.getItem(key);
       if (savedData) {
         return JSON.parse(savedData);
       } else
-        return {
-          dataTypeCase: "upper",
-          functionCase: "upper",
-          input: "",
-          keywordCase: "upper",
-          language: "sql",
-          linesBetweenQueries: 1,
-          tabWidth: 1,
-        };
+        return initialValues;
     }
-    return {
-      dataTypeCase: "upper",
-      functionCase: "upper",
-      input: "",
-      keywordCase: "upper",
-      language: "sql",
-      linesBetweenQueries: 1,
-      tabWidth: 1,
-    };
+    return initialValues;
   }, []);
   const form = useForm<SqlFormatterFormModel>({
     resolver: zodResolver(sqlFormatterFormSchema),
-    defaultValues: initialFormValues("sql-formatter"),
+    defaultValues: initialFormValues(sql_formatter_key),
   });
+
   const { watch } = form;
 
-  useReactHookFormPersist("sql-formatter", { watch });
+  usePersistReactHookForm(sql_formatter_key, { watch });
 
   const editorContainerRef = useRef<HTMLDivElement | null>(null);
   const resultContainerRef = useRef<HTMLDivElement | null>(null);

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { FieldValues, Path, UseFormWatch } from "react-hook-form";
 
-export default function useReactHookFormPersist<T extends FieldValues>(
+export default function usePersistReactHookForm<T extends FieldValues>(
   key: string,
   {
     watch,

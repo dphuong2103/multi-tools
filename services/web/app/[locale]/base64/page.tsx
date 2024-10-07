@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import Base64DetailsForm from "./base64-details-form";
 import Layout from "@/components/ui/layout";
 import { LocaleParams } from "@/types/data-types";
@@ -13,7 +13,6 @@ type MetadataProps = {
 
 export async function generateMetadata(
   { params }: MetadataProps,
-  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const locale = params.locale;
   const dictionary = await getDictionary(locale);
