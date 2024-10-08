@@ -13,9 +13,9 @@ type MetadataProps = {
   };
 };
 
-export async function generateMetadata(
-  { params }: MetadataProps
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
   const locale = params.locale;
   const dictionary = await getDictionary(locale);
   return {
@@ -23,7 +23,7 @@ export async function generateMetadata(
     description: dictionary.page.sqlFormatter.metaData.description,
   };
 }
-interface SqlFormatterPageProps extends LocaleParams { }
+interface SqlFormatterPageProps extends LocaleParams {}
 
 async function SqlFormatterPage({ params: { locale } }: SqlFormatterPageProps) {
   const dictionary = await getDictionary(locale);

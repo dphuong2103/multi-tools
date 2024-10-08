@@ -13,9 +13,9 @@ type MetadataProps = {
   };
 };
 
-export async function generateMetadata(
-  { params }: MetadataProps,
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
   const locale = params.locale;
   const dictionary = await getDictionary(locale);
   return {
