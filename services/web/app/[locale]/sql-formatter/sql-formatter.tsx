@@ -52,8 +52,11 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
   const initialFormValues = useCallback<(key: string) => SqlFormatterFormModel>(
     (key: string) => {
       let language = searchParams.get("language");
-      const savedDataParsed = JSON.parse(
-        localStorage.getItem(key) ?? "{}",
+
+      const savedData =
+        typeof window != "undefined" ? localStorage?.getItem(key) : null;
+      const savedDataParsed = (
+        savedData ? JSON.parse(savedData) : {}
       ) as SqlFormatterFormModel;
 
       if (!language) {
@@ -126,7 +129,7 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
         linesBetweenQueries,
         dataTypeCase,
         functionCase,
-        input: "",
+        input: savedDataParsed.input ?? "",
       } as SqlFormatterFormModel;
     },
     [searchParams],
@@ -140,7 +143,7 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
   const { watch } = form;
 
   usePersistReactHookForm(sql_formatter_key, { watch });
-  useSyncFormParams({ watch: watch });
+  useSyncFormParams({ watch: watch, excludes: ["input"] });
 
   const editorContainerRef = useRef<HTMLDivElement | null>(null);
   const resultContainerRef = useRef<HTMLDivElement | null>(null);

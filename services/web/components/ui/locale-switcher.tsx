@@ -33,7 +33,7 @@ export default function LocaleSwitcher({ dictionary }: LocaleSwitcherProps) {
       {
         label: dictionary.navBar.localeSwitcher.vietnamese,
         iconSrc: vietNamIcon,
-        locale: "vn",
+        locale: "vi",
         alt: "Vietnam flag",
       },
       {
