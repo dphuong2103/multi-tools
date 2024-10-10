@@ -12,11 +12,12 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Dictionary } from "@/lib/dictionary";
-import { decodeHex, encodeHex } from "@/lib/hex";
+import { decodeHex, encodeHex, isValidUrl } from "@/lib/hex";
 import useLocalStorage from "@/lib/hooks/useLocalStorage";
 import { createHexFormSchema, HexFormModel } from "@/models/hex-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Copy } from "lucide-react";
+import Link from "next/link";
 import React, { useCallback, useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -33,25 +34,36 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
       value: "",
     },
   });
-  const { formState: { isSubmitSuccessful }, reset } = form;
+  const {
+    formState: { isSubmitSuccessful },
+    reset,
+  } = form;
 
   const [output, setOutput] = useState("");
-  const [hexHistory, setHexHistory] = useLocalStorage<{
-    input: string;
-    output: string
-  }[]>(`hex-history`, []);
+  const [hexHistory, setHexHistory] = useLocalStorage<
+    {
+      input: string;
+      output: string;
+    }[]
+  >(`hex-history`, []);
 
   const onValidSubmit = useCallback(
     (data: HexFormModel) => {
-      const result = data.operation === "encode" ? encodeHex(data.value) : decodeHex(data.value);
+      const result =
+        data.operation === "encode"
+          ? encodeHex(data.value)
+          : decodeHex(data.value);
       setOutput(result);
       if (hexHistory.length === 10) {
         hexHistory.pop();
       }
-      setHexHistory([{
-        input: data.value,
-        output: result
-      }, ...hexHistory]);
+      setHexHistory([
+        {
+          input: data.value,
+          output: result,
+        },
+        ...hexHistory,
+      ]);
     },
     [setOutput, hexHistory, setHexHistory],
   );
@@ -75,6 +87,21 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
     dictionary.page.hex.toast.copy.success,
     dictionary.page.hex.toast.copy.error,
   ]);
+
+  const onHistoryCopyClick = useCallback(
+    (item: { input: string; output: string }) => {
+      try {
+        navigator.clipboard.writeText(item.output);
+        toast.success(dictionary.page.hex.toast.copy.success);
+      } catch (error) {
+        toast.error(dictionary.page.hex.toast.copy.error);
+      }
+    },
+    [
+      dictionary.page.hex.toast.copy.success,
+      dictionary.page.hex.toast.copy.error,
+    ],
+  );
 
   return (
     <>
@@ -108,7 +135,9 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
                   </Select>
                 )}
               />
-              <Button disabled={!form.formState.isDirty}>{dictionary.page.hex.buttons.convert}</Button>
+              <Button disabled={!form.formState.isDirty}>
+                {dictionary.page.hex.buttons.convert}
+              </Button>
             </div>
             <div className="relative">
               <Textarea
@@ -130,16 +159,37 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
           </div>
         </form>
       </Form>
-      {
-        hexHistory.length > 0 && <Card className="prose bg-gray-500 text-white mt-2">
-          {hexHistory.map((item, index) => <div key={index}>
-            {index + 1}. {item.input} : {item.output}
-          </div>)}
+      {hexHistory.length > 0 && (
+        <Card className="prose bg-gray-500 text-white mt-2 flex flex-col gap-3">
+          {hexHistory.map((item, index) => (
+            <div key={index} className="flex items-center">
+              <div>
+                {index + 1}. <span className="text-sm">{item.input}</span> :{" "}
+                {isValidUrl(item.output) ? (
+                  <Link
+                    target="_blank"
+                    href={item.output}
+                    className="text-blue-300 hover:underline"
+                  >
+                    {item.output}
+                  </Link>
+                ) : (
+                  <span className="text-blue-300">{item.output}</span>
+                )}
+              </div>
+              <Button
+                className="hidden md:inline-block"
+                variant="ghost"
+                type="button"
+                onClick={() => onHistoryCopyClick(item)}
+              >
+                <Copy />
+              </Button>
+            </div>
+          ))}
         </Card>
-      }
-
+      )}
     </>
-
   );
 }
 
