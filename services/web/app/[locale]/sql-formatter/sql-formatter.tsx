@@ -13,25 +13,24 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { DictionaryProps, SqlLanguage } from "@/types/data-types";
-import { format } from "sql-formatter";
+import { format, sql } from "sql-formatter";
 import { useForm } from "react-hook-form";
 import {
   SqlFormatterFormModel,
   sqlFormatterFormSchema,
+  textCases,
 } from "@/models/sql-formatter-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormField } from "@/components/ui/form";
 import TextInputFormField from "@/components/form-fields/text-input-form-field";
 import SelectFormField from "@/components/form-fields/select-form-field";
 import { sqlLanguages } from "@/constants/sql-languages";
-import usePersistReactHookForm from "@/lib/hooks/usePersistReactHookForm";
-import { useSearchParams } from "next/navigation";
+import usePersistFormData from "@/lib/hooks/usePersistFormData";
 import useSyncFormParams from "@/lib/hooks/useSyncFormParams";
+import useDefaultFormValues from "@/lib/hooks/useDefaultFormValue";
 
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
-const textCases = ["upper", "lower", "preserve"];
-
-const sql_formatter_key = "sql-formatter";
+const sql_formatter_key = "sql-formatter-form-key";
 const initialValues = {
   dataTypeCase: "upper",
   functionCase: "upper",
@@ -47,102 +46,46 @@ interface SqlFormatterProps extends DictionaryProps {}
 function SqlFormatter({ dictionary }: SqlFormatterProps) {
   const { theme } = useTheme();
   const [result, setResult] = useState("");
-  const searchParams = useSearchParams();
 
-  const initialFormValues = useCallback<(key: string) => SqlFormatterFormModel>(
-    (key: string) => {
-      let language = searchParams.get("language");
-
-      const savedData =
-        typeof window != "undefined" ? localStorage?.getItem(key) : null;
-      const savedDataParsed = (
-        savedData ? JSON.parse(savedData) : {}
-      ) as SqlFormatterFormModel;
-
-      if (!language) {
-        language = savedDataParsed.language ?? initialValues.language;
-      } else {
-        if (!sqlLanguages.includes(language)) {
-          language = savedDataParsed.language ?? initialValues.language;
-        }
-      }
-      let tabWidth: string | number | null = searchParams.get("tabWidth");
-      if (!tabWidth) {
-        tabWidth = savedDataParsed.tabWidth ?? initialValues.tabWidth;
-      } else {
-        if (isNaN(parseInt(tabWidth))) {
-          tabWidth = savedDataParsed.tabWidth ?? initialValues.tabWidth;
-        }
-      }
-
-      let keywordCase = searchParams.get("keywordCase");
-      if (!keywordCase) {
-        keywordCase = savedDataParsed.keywordCase ?? initialValues.keywordCase;
-      } else {
-        if (!textCases.includes(keywordCase)) {
-          keywordCase =
-            savedDataParsed.keywordCase ?? initialValues.keywordCase;
-        }
-      }
-
-      let linesBetweenQueries: string | number | null = searchParams.get(
-        "linesBetweenQueries",
-      );
-      if (!linesBetweenQueries) {
-        linesBetweenQueries =
-          savedDataParsed.linesBetweenQueries ??
-          initialValues.linesBetweenQueries;
-      } else {
-        if (isNaN(parseInt(linesBetweenQueries))) {
-          linesBetweenQueries =
-            savedDataParsed.linesBetweenQueries ??
-            initialValues.linesBetweenQueries;
-        }
-      }
-
-      let dataTypeCase = searchParams.get("dataTypeCase");
-      if (!dataTypeCase) {
-        dataTypeCase =
-          savedDataParsed.dataTypeCase ?? initialValues.dataTypeCase;
-      } else {
-        if (!textCases.includes(dataTypeCase)) {
-          dataTypeCase =
-            savedDataParsed.dataTypeCase ?? initialValues.dataTypeCase;
-        }
-      }
-
-      let functionCase = searchParams.get("functionCase");
-      if (!functionCase) {
-        functionCase =
-          savedDataParsed.functionCase ?? initialValues.functionCase;
-      } else {
-        if (!textCases.includes(functionCase)) {
-          functionCase =
-            savedDataParsed.functionCase ?? initialValues.functionCase;
-        }
-      }
-
-      return {
-        language,
-        tabWidth,
-        keywordCase,
-        linesBetweenQueries,
-        dataTypeCase,
-        functionCase,
-        input: savedDataParsed.input ?? "",
-      } as SqlFormatterFormModel;
+  const defaultFormValues = useDefaultFormValues<SqlFormatterFormModel>(
+    sql_formatter_key,
+    {
+      language: {
+        initialValue: initialValues.language,
+        validationFn: (value) => sqlLanguages.includes(value),
+      },
+      dataTypeCase: {
+        initialValue: initialValues.dataTypeCase,
+        validationFn: (value) => textCases.includes(value),
+      },
+      functionCase: {
+        initialValue: initialValues.functionCase,
+        validationFn: (value) => textCases.includes(value),
+      },
+      keywordCase: {
+        initialValue: initialValues.keywordCase,
+        validationFn: (value) => textCases.includes(value),
+      },
+      linesBetweenQueries: {
+        initialValue: initialValues.linesBetweenQueries,
+        validationFn: (value) => !isNaN(parseInt(value)),
+      },
+      tabWidth: {
+        initialValue: initialValues.tabWidth,
+        validationFn: (value) => !isNaN(parseInt(value)),
+      },
+      input: { initialValue: initialValues.input },
     },
-    [searchParams],
   );
 
   const form = useForm<SqlFormatterFormModel>({
     resolver: zodResolver(sqlFormatterFormSchema),
-    defaultValues: initialFormValues(sql_formatter_key),
+    defaultValues: defaultFormValues,
   });
 
   const { watch } = form;
 
-  usePersistReactHookForm(sql_formatter_key, { watch });
+  usePersistFormData(sql_formatter_key, { watch });
   useSyncFormParams({ watch: watch, excludes: ["input"] });
 
   const editorContainerRef = useRef<HTMLDivElement | null>(null);

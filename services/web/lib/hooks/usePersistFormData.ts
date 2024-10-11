@@ -1,12 +1,15 @@
+import { LocalStorageFormKey } from "@/types/data-types";
 import { useEffect } from "react";
 import { FieldValues, UseFormWatch } from "react-hook-form";
 
-export default function usePersistReactHookForm<T extends FieldValues>(
-  key: string,
+export default function usePersistFormData<T extends FieldValues>(
+  key: LocalStorageFormKey,
   {
     watch,
+    excludes,
   }: {
     watch: UseFormWatch<T>;
+    excludes?: (keyof T)[];
   },
 ) {
   const formValue = watch();

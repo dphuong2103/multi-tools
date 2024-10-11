@@ -1,6 +1,4 @@
-import React, { HTMLAttributes } from "react";
-
-import { Input } from "../ui/input";
+import React from "react";
 import { ControllerProps, FieldPath, FieldValues } from "react-hook-form";
 import {
   FormControl,
@@ -10,11 +8,15 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Textarea } from "../ui/textarea";
+import { RequiredFields } from "@/types/data-types";
 
 interface TextInputFormFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> extends Omit<ControllerProps<TFieldValues, TName>, "render">,
+> extends RequiredFields<
+      Omit<ControllerProps<TFieldValues, TName>, "render">,
+      "control"
+    >,
     Omit<React.HTMLProps<HTMLTextAreaElement>, "defaultValue" | "name"> {
   label?: string;
   placeholder?: string;

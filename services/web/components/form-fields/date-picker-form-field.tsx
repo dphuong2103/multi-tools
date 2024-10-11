@@ -10,11 +10,15 @@ import {
 
 import { cn } from "@/lib/utils";
 import DatePicker from "../ui/date-picker";
+import { RequiredFields } from "@/types/data-types";
 
 interface DatePickerFormFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> extends Omit<ControllerProps<TFieldValues, TName>, "render">,
+> extends RequiredFields<
+      Omit<ControllerProps<TFieldValues, TName>, "render">,
+      "control"
+    >,
     Omit<React.InputHTMLAttributes<HTMLInputElement>, "defaultValue" | "name"> {
   label?: string;
   placeholder?: string;

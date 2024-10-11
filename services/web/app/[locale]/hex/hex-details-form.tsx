@@ -12,13 +12,17 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Dictionary } from "@/lib/dictionary";
-import { decodeHex, encodeHex, isValidUrl } from "@/lib/hex";
+import { decodeHex, encodeHex } from "@/lib/hex";
+import useDefaultFormValues from "@/lib/hooks/useDefaultFormValue";
 import useLocalStorage from "@/lib/hooks/useLocalStorage";
+import usePersistFormData from "@/lib/hooks/usePersistFormData";
+import useSyncFormParams from "@/lib/hooks/useSyncFormParams";
+import { isValidUrl } from "@/lib/url-lib";
 import { createHexFormSchema, HexFormModel } from "@/models/hex-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Copy } from "lucide-react";
 import Link from "next/link";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -26,53 +30,63 @@ interface HexDetailsFormProps {
   dictionary: Dictionary;
 }
 
+const form_key = "hex-form-key";
+const history_key = "hex-history-key";
+
+const initialValues: HexFormModel = {
+  operation: "decode",
+  input: "",
+};
+
+const operations = ["encode", "decode"];
+
 function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
+  const defaultFormValues = useDefaultFormValues<HexFormModel>(form_key, {
+    operation: {
+      initialValue: initialValues.operation,
+      validationFn: (value) => operations.includes(value),
+    },
+    input: { initialValue: initialValues.input },
+  });
+
   const form = useForm<HexFormModel>({
     resolver: zodResolver(createHexFormSchema(dictionary)),
-    defaultValues: {
-      operation: "encode",
-      value: "",
-    },
+    defaultValues: defaultFormValues,
   });
-  const {
-    formState: { isSubmitSuccessful },
-    reset,
-  } = form;
+
+  const { watch } = form;
+
+  usePersistFormData(form_key, { watch });
+  useSyncFormParams({ watch: watch, excludes: ["input"] });
 
   const [output, setOutput] = useState("");
-  const [hexHistory, setHexHistory] = useLocalStorage<
+  const [history, setHistory] = useLocalStorage<
     {
       input: string;
       output: string;
     }[]
-  >(`hex-history`, []);
+  >(history_key, []);
 
   const onValidSubmit = useCallback(
     (data: HexFormModel) => {
       const result =
         data.operation === "encode"
-          ? encodeHex(data.value)
-          : decodeHex(data.value);
+          ? encodeHex(data.input)
+          : decodeHex(data.input);
       setOutput(result);
-      if (hexHistory.length === 10) {
-        hexHistory.pop();
-      }
-      setHexHistory([
+
+      const newHistory = history.length === 10 ? history.slice(0, -1) : history;
+
+      setHistory([
         {
-          input: data.value,
+          input: data.input,
           output: result,
         },
-        ...hexHistory,
+        ...newHistory,
       ]);
     },
-    [setOutput, hexHistory, setHexHistory],
+    [setOutput, history, setHistory],
   );
-
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset({}, { keepValues: true });
-    }
-  }, [isSubmitSuccessful, reset]);
 
   const onCopyClick = useCallback(() => {
     if (!output) return;
@@ -110,7 +124,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
           <div className="flex flex-col gap-3">
             <TextAreaFormField
               control={form.control}
-              name="value"
+              name="input"
               className="w-full p-2 mt-2 prose"
               placeholder="Enter text to encode/decode"
               rows={5}
@@ -135,9 +149,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
                   </Select>
                 )}
               />
-              <Button disabled={!form.formState.isDirty}>
-                {dictionary.page.hex.buttons.convert}
-              </Button>
+              <Button>{dictionary.page.hex.buttons.convert}</Button>
             </div>
             <div className="relative">
               <Textarea
@@ -159,9 +171,9 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
           </div>
         </form>
       </Form>
-      {hexHistory.length > 0 && (
+      {history.length > 0 && (
         <Card className="prose bg-gray-500 text-white mt-2 flex flex-col gap-3">
-          {hexHistory.map((item, index) => (
+          {history.map((item, index) => (
             <div key={index} className="flex items-center">
               <div>
                 {index + 1}. <span className="text-sm">{item.input}</span> :{" "}

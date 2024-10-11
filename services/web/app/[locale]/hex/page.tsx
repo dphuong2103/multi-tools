@@ -2,7 +2,7 @@ import HexDetailsForm from "./hex-details-form";
 import Layout from "@/components/ui/layout";
 import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { Locale } from "@/i18n.config";
 
 type MetadataProps = {

@@ -20,6 +20,9 @@
       },
       "fields": {
         "input": {
+          "errors": {
+            "invalid_base64_string": "Invalid base64 string"
+          },
           "placeholder": "Enter text to encode/decode"
         }
       },

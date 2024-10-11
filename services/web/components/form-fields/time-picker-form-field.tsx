@@ -8,11 +8,15 @@ import {
   FormMessage,
 } from "../ui/form";
 import { TimePickerInput } from "../ui/time-picker-input";
+import { RequiredFields } from "@/types/data-types";
 
 interface TimePickerFormFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> extends Omit<ControllerProps<TFieldValues, TName>, "render">,
+> extends RequiredFields<
+      Omit<ControllerProps<TFieldValues, TName>, "render">,
+      "control"
+    >,
     Omit<React.InputHTMLAttributes<HTMLInputElement>, "defaultValue" | "name"> {
   label?: string;
   picker: "hours" | "minutes" | "seconds";

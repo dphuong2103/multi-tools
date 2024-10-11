@@ -9,11 +9,15 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
+import { RequiredFields } from "@/types/data-types";
 
 interface TextInputFormFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> extends Omit<ControllerProps<TFieldValues, TName>, "render">,
+> extends RequiredFields<
+      Omit<ControllerProps<TFieldValues, TName>, "render">,
+      "control"
+    >,
     Omit<React.InputHTMLAttributes<HTMLInputElement>, "defaultValue" | "name"> {
   label?: string;
   placeholder?: string;

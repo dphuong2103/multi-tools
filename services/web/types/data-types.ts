@@ -56,3 +56,8 @@ export type DropdownOption = {
 };
 
 export type SqlLanguage = (typeof sqlLanguages)[number];
+
+export type RequiredFields<T, K extends keyof T> = T & Required<Pick<T, K>>;
+
+export type LocalStorageFormKey = `${string}-form-key`;
+export type HistoryLocalStorageKey = `${string}-history-key`;

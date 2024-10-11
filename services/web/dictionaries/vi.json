@@ -20,6 +20,9 @@
       },
       "fields": {
         "input": {
+          "errors": {
+            "invalid_base64_string": "Chuỗi base64 không hợp lệ"
+          },
           "placeholder": "Nhập văn bản để mã hóa/giải mã"
         }
       },

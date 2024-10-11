@@ -1,40 +1,25 @@
 import { z } from "zod";
 import { isValidHex } from "@/lib/hex";
 import { Dictionary } from "@/lib/dictionary";
-
+export const operations = ["encode", "decode"] as const;
 export function createHexFormSchema(dictionary: Dictionary) {
-  return z.discriminatedUnion("operation", [
-    z.object({
-      operation: z.literal("encode"),
-      value: z.string().min(1, "Required"),
-    }),
-    z.object({
-      operation: z.literal("decode"),
-      value: z
-        .string()
-        .min(1, "Required")
-        .refine((val) => isValidHex(val), {
-          message: dictionary.page.hex.fields.input.errors.invalid_hex_string,
-        }),
-    }),
-  ]);
+  return z
+    .object({
+      operation: z.enum(operations),
+      input: z.string().min(1, "Required"),
+    })
+    .refine(
+      (val) => {
+        if (val.operation === "encode") return true;
+        if (isValidHex(val.input)) return true;
+        return false;
+      },
+      {
+        message: dictionary.page.hex.fields.input.errors.invalid_hex_string,
+        path: ["input"],
+      },
+    );
 }
 
-export const hexFormSchema = z.discriminatedUnion("operation", [
-  z.object({
-    operation: z.literal("encode"),
-    value: z.string().min(1, "Required"),
-  }),
-  z.object({
-    operation: z.literal("decode"),
-    value: z
-      .string()
-      .min(1, "Required")
-      .refine((val) => isValidHex(val), {
-        message: "Invalid hex input",
-      }),
-  }),
-]);
-
-export type HexFormModel = z.infer<typeof hexFormSchema>;
+export type HexFormModel = z.infer<ReturnType<typeof createHexFormSchema>>;
 export type LoginFormError = z.ZodError<HexFormModel>;
