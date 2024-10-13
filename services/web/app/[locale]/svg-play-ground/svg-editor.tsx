@@ -138,7 +138,7 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
       >
         <div
           ref={editorContainerRef}
-          className="h-3/5 md:h-full w-full md:w-3/4"
+          className="h-3/5 md:h-full w-full md:w-2/4"
         >
           <Editor
             theme={theme === "dark" ? "vs-dark" : "light"}
@@ -165,7 +165,7 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
 
         <div
           ref={resultContainerRef}
-          className="flex items-center justify-center h-2/5 md:h-full w-full md:w-1/4 "
+          className="flex items-center justify-center h-2/5 md:h-full w-full md:w-2/4 "
         >
           {imageSrc && (
             // eslint-disable-next-line @next/next/no-img-element

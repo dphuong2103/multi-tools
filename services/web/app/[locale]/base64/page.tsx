@@ -4,7 +4,7 @@ import Layout from "@/components/ui/layout";
 import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
 import { Locale, localeMapping } from "@/i18n.config";
-import siteConfigs from "@/constants/site-configs";
+import siteConfig from "@/constants/site-config";
 
 type MetadataProps = {
   params: {
@@ -26,19 +26,24 @@ export async function generateMetadata({
       locale: locale,
       type: "website",
     },
-    keywords:["base64","tools","bas64 converter","base64 encode","base64 decode"],
+    keywords: [
+      "base64",
+      "tools",
+      "bas64 converter",
+      "base64 encode",
+      "base64 decode",
+    ],
     alternates: {
-      canonical: siteConfigs.url + "/" + locale + "/base64",
-      languages:{
-        'en-US':`${siteConfigs.url}/${localeMapping.en}/base64`,
-        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}/base64`,
-      }
+      canonical: siteConfig.url + "/" + locale + "/base64",
+      languages: {
+        "en-US": `${siteConfig.url}/${localeMapping.en}/base64`,
+        "vi-VN": `${siteConfig.url}/${localeMapping.vi}/base64`,
+      },
     },
-    
   };
 }
 
-interface Base64PageProps extends LocaleParams { }
+interface Base64PageProps extends LocaleParams {}
 
 async function Base64Page({ params: { locale } }: Base64PageProps) {
   const dictionary = await getDictionary(locale);

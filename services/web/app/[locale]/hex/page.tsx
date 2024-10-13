@@ -4,7 +4,7 @@ import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
 import type { Metadata } from "next";
 import { Locale, localeMapping } from "@/i18n.config";
-import siteConfigs from "@/constants/site-configs";
+import siteConfig from "@/constants/site-config";
 
 type MetadataProps = {
   params: {
@@ -27,17 +27,17 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: siteConfigs.url + "/" + locale + "/hex",
-      languages:{
-        'en-US':`${siteConfigs.url}/${localeMapping.en}/hex`,
-        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}/hex`,
-      }
+      canonical: siteConfig.url + "/" + locale + "/hex",
+      languages: {
+        "en-US": `${siteConfig.url}/${localeMapping.en}/hex`,
+        "vi-VN": `${siteConfig.url}/${localeMapping.vi}/hex`,
+      },
     },
-    keywords:["hex","tools","hex converter","hex encode","hex decode"],
+    keywords: ["hex", "tools", "hex converter", "hex encode", "hex decode"],
   };
 }
 
-interface HexPageProps extends LocaleParams { }
+interface HexPageProps extends LocaleParams {}
 
 async function HexPage({ params: { locale } }: HexPageProps) {
   const dictionary = await getDictionary(locale);

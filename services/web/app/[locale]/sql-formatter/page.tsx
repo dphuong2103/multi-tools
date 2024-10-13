@@ -6,7 +6,7 @@ import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
 import { Locale, localeMapping } from "@/i18n.config";
 import SqlFormatter from "./sql-formatter";
-import siteConfigs from "@/constants/site-configs";
+import siteConfig from "@/constants/site-config";
 
 type MetadataProps = {
   params: {
@@ -29,16 +29,22 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: siteConfigs.url + "/" + locale + "/sql-formatter",
-      languages:{
-        'en-US':`${siteConfigs.url}/${localeMapping.en}/sql-formatter`,
-        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}/sql-formatter`,
-      }
+      canonical: siteConfig.url + "/" + locale + "/sql-formatter",
+      languages: {
+        "en-US": `${siteConfig.url}/${localeMapping.en}/sql-formatter`,
+        "vi-VN": `${siteConfig.url}/${localeMapping.vi}/sql-formatter`,
+      },
     },
-    keywords:["sql","tools","sql formatter","sql beautifier","sql minifier"],
+    keywords: [
+      "sql",
+      "tools",
+      "sql formatter",
+      "sql beautifier",
+      "sql minifier",
+    ],
   };
 }
-interface SqlFormatterPageProps extends LocaleParams { }
+interface SqlFormatterPageProps extends LocaleParams {}
 
 async function SqlFormatterPage({ params: { locale } }: SqlFormatterPageProps) {
   const dictionary = await getDictionary(locale);

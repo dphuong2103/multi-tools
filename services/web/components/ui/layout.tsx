@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "@/components/ui/nav-bar";
 import { DictionaryProps, LocaleParams, LocaleProps } from "@/types/data-types";
+import Footer from "./footer";
 
 interface LayoutProps extends DictionaryProps, LocaleProps {
   children: React.ReactNode;
@@ -13,11 +14,12 @@ function Layout({ children, title, dictionary, locale }: LayoutProps) {
       <NavBar title={title} dictionary={dictionary} locale={locale} />
       <div className="flex justify-center h-full">
         <div className="w-full max-w-7xlxl h-full">
-          <main className="flex justify-center items-start p-1 md:p-6 w-full h-full">
+          <main className="flex justify-center items-start p-1 md:p-6 md:pb-0 w-full h-full">
             {children}
           </main>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

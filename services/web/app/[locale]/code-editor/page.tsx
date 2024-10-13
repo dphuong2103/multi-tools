@@ -6,7 +6,7 @@ import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
 import { Locale, localeMapping } from "@/i18n.config";
 import CodeEditor from "./code-editor";
-import siteConfigs from "@/constants/site-configs";
+import siteConfig from "@/constants/site-config";
 
 type MetadataProps = {
   params: {
@@ -29,16 +29,22 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: siteConfigs.url + "/" + locale + "/code-editor",
-      languages:{
-        'en-US':`${siteConfigs.url}/${localeMapping.en}/code-editor`,
-        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}/code-editor`,
-      }
+      canonical: siteConfig.url + "/" + locale + "/code-editor",
+      languages: {
+        "en-US": `${siteConfig.url}/${localeMapping.en}/code-editor`,
+        "vi-VN": `${siteConfig.url}/${localeMapping.vi}/code-editor`,
+      },
     },
-    keywords:["code editor","tools","code formatter","code beautifier","code minifier"],
+    keywords: [
+      "code editor",
+      "tools",
+      "code formatter",
+      "code beautifier",
+      "code minifier",
+    ],
   };
 }
-interface CodeEditorPageProps extends LocaleParams { }
+interface CodeEditorPageProps extends LocaleParams {}
 
 async function CodeEditorPage({ params: { locale } }: CodeEditorPageProps) {
   const dictionary = await getDictionary(locale);
@@ -54,4 +60,3 @@ async function CodeEditorPage({ params: { locale } }: CodeEditorPageProps) {
 }
 
 export default CodeEditorPage;
-

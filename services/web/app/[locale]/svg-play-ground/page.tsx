@@ -6,7 +6,7 @@ import Layout from "@/components/ui/layout";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
 import { Locale, localeMapping } from "@/i18n.config";
-import siteConfigs from "@/constants/site-configs";
+import siteConfig from "@/constants/site-config";
 
 type MetadataProps = {
   params: {
@@ -29,24 +29,28 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: siteConfigs.url + "/" + locale + "/svg-play-ground",
-      languages:{
-        'en-US':`${siteConfigs.url}/${localeMapping.en}/svg-play-ground`,
-        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}/svg-play-ground`,
-      }
+      canonical: siteConfig.url + "/" + locale + "/svg-play-ground",
+      languages: {
+        "en-US": `${siteConfig.url}/${localeMapping.en}/svg-play-ground`,
+        "vi-VN": `${siteConfig.url}/${localeMapping.vi}/svg-play-ground`,
+      },
     },
-    keywords:["svg","tools","svg editor","svg playground","svg formatter"],
+    keywords: ["svg", "tools", "svg editor", "svg playground", "svg formatter"],
   };
 }
 
-interface SvgPlayGroundPageProps extends LocaleParams { }
+interface SvgPlayGroundPageProps extends LocaleParams {}
 
 async function SvgPlayGroundPage({
   params: { locale },
 }: SvgPlayGroundPageProps) {
   const dictionary = await getDictionary(locale);
   return (
-    <Layout title="SVG Playground" dictionary={dictionary} locale={locale}>
+    <Layout
+      title={dictionary.page.svgPlayGround.metaData.title}
+      dictionary={dictionary}
+      locale={locale}
+    >
       <SvgEditor dictionary={dictionary} />
     </Layout>
   );
