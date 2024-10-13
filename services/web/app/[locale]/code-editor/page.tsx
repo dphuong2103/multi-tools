@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Layout from "@/components/ui/layout";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
-import { Locale } from "@/i18n.config";
+import { Locale, localeMapping } from "@/i18n.config";
 import CodeEditor from "./code-editor";
 import siteConfigs from "@/constants/site-configs";
 
@@ -30,6 +30,10 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: siteConfigs.url + "/" + locale + "/code-editor",
+      languages:{
+        'en-US':`${siteConfigs.url}/${localeMapping.en}/code-editor`,
+        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}/code-editor`,
+      }
     },
     keywords:["code editor","tools","code formatter","code beautifier","code minifier"],
   };
@@ -50,3 +54,4 @@ async function CodeEditorPage({ params: { locale } }: CodeEditorPageProps) {
 }
 
 export default CodeEditorPage;
+

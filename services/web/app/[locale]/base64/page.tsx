@@ -3,7 +3,7 @@ import Base64DetailsForm from "./base64-details-form";
 import Layout from "@/components/ui/layout";
 import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
-import { Locale } from "@/i18n.config";
+import { Locale, localeMapping } from "@/i18n.config";
 import siteConfigs from "@/constants/site-configs";
 
 type MetadataProps = {
@@ -29,7 +29,12 @@ export async function generateMetadata({
     keywords:["base64","tools","bas64 converter","base64 encode","base64 decode"],
     alternates: {
       canonical: siteConfigs.url + "/" + locale + "/base64",
+      languages:{
+        'en-US':`${siteConfigs.url}/${localeMapping.en}/base64`,
+        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}/base64`,
+      }
     },
+    
   };
 }
 

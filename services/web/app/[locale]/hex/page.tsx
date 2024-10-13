@@ -3,7 +3,7 @@ import Layout from "@/components/ui/layout";
 import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
 import type { Metadata } from "next";
-import { Locale } from "@/i18n.config";
+import { Locale, localeMapping } from "@/i18n.config";
 import siteConfigs from "@/constants/site-configs";
 
 type MetadataProps = {
@@ -28,6 +28,10 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: siteConfigs.url + "/" + locale + "/hex",
+      languages:{
+        'en-US':`${siteConfigs.url}/${localeMapping.en}/hex`,
+        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}/hex`,
+      }
     },
     keywords:["hex","tools","hex converter","hex encode","hex decode"],
   };

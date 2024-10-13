@@ -5,7 +5,7 @@ import SvgEditor from "./svg-editor";
 import Layout from "@/components/ui/layout";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
-import { Locale } from "@/i18n.config";
+import { Locale, localeMapping } from "@/i18n.config";
 import siteConfigs from "@/constants/site-configs";
 
 type MetadataProps = {
@@ -30,6 +30,10 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: siteConfigs.url + "/" + locale + "/svg-play-ground",
+      languages:{
+        'en-US':`${siteConfigs.url}/${localeMapping.en}/svg-play-ground`,
+        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}/svg-play-ground`,
+      }
     },
     keywords:["svg","tools","svg editor","svg playground","svg formatter"],
   };

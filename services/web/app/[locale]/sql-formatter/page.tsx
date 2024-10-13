@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Layout from "@/components/ui/layout";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
-import { Locale } from "@/i18n.config";
+import { Locale, localeMapping } from "@/i18n.config";
 import SqlFormatter from "./sql-formatter";
 import siteConfigs from "@/constants/site-configs";
 
@@ -30,6 +30,10 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: siteConfigs.url + "/" + locale + "/sql-formatter",
+      languages:{
+        'en-US':`${siteConfigs.url}/${localeMapping.en}/sql-formatter`,
+        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}/sql-formatter`,
+      }
     },
     keywords:["sql","tools","sql formatter","sql beautifier","sql minifier"],
   };

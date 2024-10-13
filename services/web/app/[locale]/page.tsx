@@ -2,7 +2,8 @@ import { LinkWithLocale } from "@/components/link-with-locale";
 import { Button } from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import Layout from "@/components/ui/layout";
-import { Locale } from "@/i18n.config";
+import siteConfigs from "@/constants/site-configs";
+import { Locale, localeMapping } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
 import { Metadata } from "next";
@@ -28,6 +29,13 @@ export async function generateMetadata({
       type: "website",
     },
     keywords:["tools","multi tools","hex","base64","svg","sql","code editor"],
+    alternates: {
+      canonical: siteConfigs.url,
+      languages:{
+        'en-US':`${siteConfigs.url}/${localeMapping.en}`,
+        'vi-VN':`${siteConfigs.url}/${localeMapping.vi}`,
+      }
+    },
   };
 }
 
