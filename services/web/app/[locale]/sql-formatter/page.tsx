@@ -21,6 +21,12 @@ export async function generateMetadata({
   return {
     title: dictionary.page.sqlFormatter.metaData.title,
     description: dictionary.page.sqlFormatter.metaData.description,
+    openGraph: {
+      title: dictionary.page.sqlFormatter.metaData.title,
+      description: dictionary.page.sqlFormatter.metaData.description,
+      locale: locale,
+      type: "website",
+    }
   };
 }
 interface SqlFormatterPageProps extends LocaleParams {}

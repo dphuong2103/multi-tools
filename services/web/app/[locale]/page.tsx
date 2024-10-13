@@ -21,6 +21,12 @@ export async function generateMetadata({
   return {
     title: dictionary.page.home.metaData.title,
     description: dictionary.page.home.metaData.description,
+    openGraph: {
+      title: dictionary.page.home.metaData.title,
+      description: dictionary.page.home.metaData.description,
+      locale: locale,
+      type: "website",
+    }
   };
 }
 

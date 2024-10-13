@@ -21,6 +21,12 @@ export async function generateMetadata({
   return {
     title: dictionary.page.codeEditor.metaData.title,
     description: dictionary.page.codeEditor.metaData.description,
+    openGraph: {
+      title: dictionary.page.codeEditor.metaData.title,
+      description: dictionary.page.codeEditor.metaData.description,
+      locale: locale,
+      type: "website",
+    }
   };
 }
 interface CodeEditorPageProps extends LocaleParams {}

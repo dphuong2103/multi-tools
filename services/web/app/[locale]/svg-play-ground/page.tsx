@@ -21,9 +21,15 @@ export async function generateMetadata({
   return {
     title: dictionary.page.svgPlayGround.metaData.title,
     description: dictionary.page.svgPlayGround.metaData.description,
+    openGraph: {
+      title: dictionary.page.svgPlayGround.metaData.title,
+      description: dictionary.page.svgPlayGround.metaData.description,
+      locale: locale,
+      type: "website",
+    }
   };
 }
-interface SvgPlayGroundPageProps extends LocaleParams {}
+interface SvgPlayGroundPageProps extends LocaleParams { }
 
 async function SvgPlayGroundPage({
   params: { locale },

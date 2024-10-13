@@ -19,10 +19,16 @@ export async function generateMetadata({
   return {
     title: dictionary.page.base64.metaData.title,
     description: dictionary.page.base64.metaData.description,
+    openGraph: {
+      title: dictionary.page.base64.metaData.title,
+      description: dictionary.page.base64.metaData.description,
+      locale: locale,
+      type: "website",
+    }
   };
 }
 
-interface Base64PageProps extends LocaleParams {}
+interface Base64PageProps extends LocaleParams { }
 
 async function Base64Page({ params: { locale } }: Base64PageProps) {
   const dictionary = await getDictionary(locale);

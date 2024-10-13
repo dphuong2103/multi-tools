@@ -4,6 +4,7 @@ import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
 import type { Metadata } from "next";
 import { Locale } from "@/i18n.config";
+import siteConfigs from "@/constants/site-configs";
 
 type MetadataProps = {
   params: {
@@ -19,10 +20,16 @@ export async function generateMetadata({
   return {
     title: dictionary.page.hex.metaData.title,
     description: dictionary.page.hex.metaData.description,
+    openGraph: {
+      title: dictionary.page.hex.metaData.title,
+      description: dictionary.page.hex.metaData.description,
+      locale: locale,
+      type: "website",
+    }
   };
 }
 
-interface HexPageProps extends LocaleParams {}
+interface HexPageProps extends LocaleParams { }
 
 async function HexPage({ params: { locale } }: HexPageProps) {
   const dictionary = await getDictionary(locale);
