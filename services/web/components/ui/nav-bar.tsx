@@ -19,10 +19,10 @@ function NavBar({ title, dictionary, locale }: NavBarProps) {
           className="text-2xl font-bold flex gap-2 items-center"
         >
           <Image src={multiToolIcon} alt="Multi Tools" width={36} />
-          <span className="hidden md:inline-block">{title}</span>
+          <h1 className="hidden md:inline-block">{title}</h1>
           <span className="sr-only">Multi tools logo</span>
         </LinkWithLocale>
-        <span className="text-xl font-bold md:hidden">{title}</span>
+        <h1 className="text-xl font-bold md:hidden">{title}</h1>
         <MobileNavBar locale={locale} dictionary={dictionary} />
         <div className="gap-5 hidden md:flex">
           <NavBarLinks dictionary={dictionary} />

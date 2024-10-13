@@ -38,7 +38,7 @@ export async function generateMetadata({
       "code editor",
     ],
     alternates: {
-      canonical: siteConfig.url,
+      canonical: `${siteConfig.url}/${locale}`,
       languages: {
         "en-US": `${siteConfig.url}/${localeMapping.en}`,
         "vi-VN": `${siteConfig.url}/${localeMapping.vi}`,
