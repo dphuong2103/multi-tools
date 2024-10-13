@@ -6,6 +6,7 @@ import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
 import { Locale } from "@/i18n.config";
 import SqlFormatter from "./sql-formatter";
+import siteConfigs from "@/constants/site-configs";
 
 type MetadataProps = {
   params: {
@@ -26,10 +27,13 @@ export async function generateMetadata({
       description: dictionary.page.sqlFormatter.metaData.description,
       locale: locale,
       type: "website",
+    },
+    alternates: {
+      canonical: siteConfigs.url + "/" + locale + "/sql-formatter",
     }
   };
 }
-interface SqlFormatterPageProps extends LocaleParams {}
+interface SqlFormatterPageProps extends LocaleParams { }
 
 async function SqlFormatterPage({ params: { locale } }: SqlFormatterPageProps) {
   const dictionary = await getDictionary(locale);

@@ -4,6 +4,7 @@ import Layout from "@/components/ui/layout";
 import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
 import { Locale } from "@/i18n.config";
+import siteConfigs from "@/constants/site-configs";
 
 type MetadataProps = {
   params: {
@@ -24,6 +25,9 @@ export async function generateMetadata({
       description: dictionary.page.base64.metaData.description,
       locale: locale,
       type: "website",
+    },
+    alternates: {
+      canonical: siteConfigs.url + "/" + locale + "/base64",
     }
   };
 }

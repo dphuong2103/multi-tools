@@ -25,7 +25,11 @@ export async function generateMetadata({
       description: dictionary.page.hex.metaData.description,
       locale: locale,
       type: "website",
-    }
+    },
+    alternates: {
+      canonical: siteConfigs.url + "/" + locale + "/hex",
+    },
+    keywords:["hex","tools","hex converter","hex encode","hex decode"],
   };
 }
 

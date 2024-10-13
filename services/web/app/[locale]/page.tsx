@@ -26,7 +26,8 @@ export async function generateMetadata({
       description: dictionary.page.home.metaData.description,
       locale: locale,
       type: "website",
-    }
+    },
+    keywords:["tools","multi tools","hex","base64","svg","sql","code editor"],
   };
 }
 

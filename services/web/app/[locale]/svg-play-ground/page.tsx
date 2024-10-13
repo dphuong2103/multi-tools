@@ -6,6 +6,7 @@ import Layout from "@/components/ui/layout";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
 import { Locale } from "@/i18n.config";
+import siteConfigs from "@/constants/site-configs";
 
 type MetadataProps = {
   params: {
@@ -26,9 +27,13 @@ export async function generateMetadata({
       description: dictionary.page.svgPlayGround.metaData.description,
       locale: locale,
       type: "website",
+    },
+    alternates: {
+      canonical: siteConfigs.url + "/" + locale + "/svg-play-ground",
     }
   };
 }
+
 interface SvgPlayGroundPageProps extends LocaleParams { }
 
 async function SvgPlayGroundPage({
