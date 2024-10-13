@@ -30,7 +30,8 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: siteConfigs.url + "/" + locale + "/svg-play-ground",
-    }
+    },
+    keywords:["svg","tools","svg editor","svg playground","svg formatter"],
   };
 }
 

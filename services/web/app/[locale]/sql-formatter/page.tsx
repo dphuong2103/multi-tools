@@ -30,7 +30,8 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: siteConfigs.url + "/" + locale + "/sql-formatter",
-    }
+    },
+    keywords:["sql","tools","sql formatter","sql beautifier","sql minifier"],
   };
 }
 interface SqlFormatterPageProps extends LocaleParams { }

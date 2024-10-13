@@ -26,9 +26,10 @@ export async function generateMetadata({
       locale: locale,
       type: "website",
     },
+    keywords:["base64","tools","bas64 converter","base64 encode","base64 decode"],
     alternates: {
       canonical: siteConfigs.url + "/" + locale + "/base64",
-    }
+    },
   };
 }
 
