@@ -5,6 +5,7 @@ const siteConfig = {
   author: "Midouz",
   mail: "midouz.project@gmail.com",
   telegramLink: "https://t.me/dphuong2103",
+  siteMap: "https://multitools.site/sitemap.xml"
 } as const;
 export type SiteConfig = typeof siteConfig;
 

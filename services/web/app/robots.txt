@@ -1,4 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow:
-Sitemap: https://multitools.site/sitemap.xml
