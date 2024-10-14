@@ -202,8 +202,8 @@
         "title": "Công cụ đa chức năng để chuyển đổi chuỗi, hình ảnh,..."
       },
       "pageDescription": {
-        "description": "\"Multitools\" is a versatile web application designed to streamline various development tasks in one convenient platform. From converting hex and base64 to text to providing an online SVG code editor, SQL editor, and a multi-language code editor with execution capabilities, Multitools caters to developers and tech enthusiasts alike. Whether you need to manipulate data, write SQL queries, or code in languages like C# and Java, Multitools has you covered with an intuitive, accessible online interface.",
-        "title": "Multitools: The Ultimate Online Code and Data Conversion Toolkit"
+        "description": "\"Multitools\" là một ứng dụng web đa năng được thiết kế để tối ưu hóa các tác vụ phát triển khác nhau trên một nền tảng thuận tiện. Từ việc chuyển đổi hex và base64 sang văn bản đến cung cấp trình chỉnh sửa mã SVG trực tuyến, trình chỉnh sửa SQL, và trình soạn thảo mã đa ngôn ngữ với khả năng thực thi, Multitools phục vụ cho cả các nhà phát triển và những người đam mê công nghệ. Cho dù bạn cần thao tác dữ liệu, viết các truy vấn SQL, hay lập trình bằng các ngôn ngữ như C# và Java, Multitools sẽ hỗ trợ bạn với giao diện trực tuyến trực quan và dễ tiếp cận.",
+        "title": "Multitools: Bộ công cụ chuyển đổi mã và dữ liệu trực tuyến tối ưu"
       },
       "section": {
         "codeEditorTools": {
