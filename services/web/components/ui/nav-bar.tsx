@@ -17,14 +17,14 @@ function NavBar({ title, dictionary, locale }: NavBarProps) {
       <div className="w-full pl-6 p-2 lg:p-4 flex items-center border bottom-1 gap-2 justify-between lg:justify-start">
         <LinkWithLocale
           href="/"
-          className="text-2xl font-bold flex gap-2 items-center"
+          className="text-2xl font-bold flex gap-2 items-center select-none"
         >
           <Image src={multiToolIcon} alt="Multi Tools" width={36} />
           <span className="sr-only">Multi tools logo</span>
         </LinkWithLocale>
         <LinkWithLocale
           href={pageToRouteMapping.home}
-          className="lg:mr-auto self-center"
+          className="lg:mr-auto self-center select-none"
         >
           <h1 className="text-xl font-bold">{title}</h1>
         </LinkWithLocale>
