@@ -5,6 +5,9 @@ import { getDictionary } from "@/lib/dictionary";
 import type { Metadata } from "next";
 import { Locale, localeMapping } from "@/i18n.config";
 import siteConfig from "@/constants/site-config";
+import HowToUse from "./how-to-use";
+import Features from "./features";
+import What from "./what";
 
 type MetadataProps = {
   params: {
@@ -49,6 +52,9 @@ async function HexPage({ params: { locale } }: HexPageProps) {
     >
       <div className="w-full flex flex-col justify-center gap-2">
         <HexDetailsForm dictionary={dictionary} />
+        <HowToUse dictionary={dictionary} />
+        <Features dictionary={dictionary} />
+        <What dictionary={dictionary} />
       </div>
     </Layout>
   );

@@ -19,7 +19,7 @@ function Card({ title, className, children, titleNode }: CardProps) {
       {titleNode
         ? titleNode
         : title && (
-            <h3 className="prose text-xl font-extrabold tracking-tight lg:text-xl text-muted-foreground">
+            <h3 className="my-prose text-xl font-extrabold tracking-tight lg:text-xl text-muted-foreground">
               {title}
             </h3>
           )}

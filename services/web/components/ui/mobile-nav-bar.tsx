@@ -89,7 +89,7 @@ function MobileNavBar({ locale, dictionary }: MobileNavBarProps) {
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetTrigger asChild className="inline-block md:hidden">
+      <SheetTrigger asChild className="inline-block lg:hidden">
         <Button variant="ghost">
           <Menu className="h-6 w-6" />
         </Button>

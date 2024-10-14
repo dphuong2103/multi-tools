@@ -123,7 +123,7 @@ function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
             <TextAreaFormField
               control={form.control}
               name="input"
-              className="w-full p-2 mt-2 prose"
+              className="w-full p-2 mt-2"
               placeholder="Enter text to encode/decode"
               rows={5}
             />
@@ -170,7 +170,7 @@ function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
         </form>
       </Form>
       {history.length > 0 && (
-        <Card className="prose bg-gray-500 text-white mt-2 flex flex-col gap-3">
+        <Card className=" bg-gray-500 text-white mt-2 flex flex-col gap-3">
           {history.map((item, index) => (
             <div key={index} className="flex items-center">
               <div>

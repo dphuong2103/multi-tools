@@ -73,3 +73,7 @@
 .hide-cursor-monaco-editor .monaco-editor .cursors-layer > .cursor {
 	display: none !important;
 }
+
+.my-prose{
+  @apply prose dark:prose-invert  max-w-none;
+}

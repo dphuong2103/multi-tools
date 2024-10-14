@@ -5,6 +5,9 @@ import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
 import { Locale, localeMapping } from "@/i18n.config";
 import siteConfig from "@/constants/site-config";
+import Features from "./features";
+import HowToUse from "./how-to-use";
+import What from "./what";
 
 type MetadataProps = {
   params: {
@@ -55,6 +58,9 @@ async function Base64Page({ params: { locale } }: Base64PageProps) {
     >
       <div className="w-full flex flex-col justify-center gap-2">
         <Base64DetailsForm dictionary={dictionary} />
+        <HowToUse dictionary={dictionary} />
+        <Features dictionary={dictionary} />
+        <What dictionary={dictionary} />
       </div>
     </Layout>
   );

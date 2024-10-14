@@ -18,6 +18,36 @@
       "buttons": {
         "convert": "Convert"
       },
+      "features": {
+        "description": "The base64 converter provided by multitools.site is a free tool that helps you convert base64 to text immediately. Below are some of the main features of this online utility.",
+        "items": {
+          "item1": {
+            "description": "There are no charges associated with the usage of this online base64 converter. You can use this utility for free and make as many conversions as you desire. You don’t need to get yourself registered to download the results.",
+            "title": "100% Free"
+          },
+          "item2": {
+            "description": "You don’t need to follow any convoluted procedure or download any software for accessing this base64 decoder. It is a web-based utility that can be easily accessed with a stable internet connection.",
+            "title": "Easily Accessible"
+          },
+          "item3": {
+            "description": "he user-friendly interface of this base64 code translator allows you to translate base64 to text online without any manual effort. You don’t need to acquire professional assistance to use this online facility.",
+            "title": "User-friendly Interface"
+          },
+          "item4": {
+            "description": "The base64 code translator provides 100% accurate results. This online utility uses advanced algorithms to process your entered base64 value and convert it into accurate textual form instantly.",
+            "title": "Accurate Results"
+          },
+          "item5": {
+            "description": "This free base64 translator is compatible with all devices. Whether you’re using an Android, Mac, iOS, Linux, or Windows device, this online utility efficiently works on all devices.",
+            "title": "Compatibility"
+          },
+          "item6": {
+            "description": "This base64 code converter provides fast and secure conversion to its users. You don't have to worry about the security of your uploaded data. All the entered data is automatically removed from the database, as soon as the conversion is completed. We’ll not save or share our user’s data with any third party vender.",
+            "title": "Data Security"
+          }
+        },
+        "title": "Features of Base64 to Text Converter"
+      },
       "fields": {
         "input": {
           "errors": {
@@ -25,6 +55,16 @@
           },
           "placeholder": "Enter text to encode/decode"
         }
+      },
+      "howToUse": {
+        "description": "With our base64 to text converter, you can convert and understand lengthy numerical codes of base64 easily. Follow the below steps to use this base64 translator: In a few simple steps, you will get the specific results just the way you want your base64 values to be converted in text.",
+        "steps": {
+          "step1": "Enter text to encode/decode",
+          "step2": "Select decode or encode operation",
+          "step3": "Click on Convert button, The result will appear immediately in the result box",
+          "step4": "Click \"copy\" to use the result"
+        },
+        "title": "How to use base64 to text converter"
       },
       "metaData": {
         "description": "Convert base64 to text and base64 decode strings. Online tool for base64 decoding a string. Convert a base64 encoded text into an decoded string",
@@ -40,6 +80,10 @@
           "error": "Failed to copy to clipboard",
           "success": "Copied to clipboard"
         }
+      },
+      "what": {
+        "description": "Base64 is a group of binary-to-text encoding schemes that transforms binary data into a sequence of printable characters, limited to a set of 64 unique characters. More specifically, the source binary data is taken 6 bits at a time, then this group of 6 bits is mapped to one of 64 unique characters.",
+        "title": "What is Base64?"
       }
     },
     "codeEditor": {
@@ -84,6 +128,36 @@
       "buttons": {
         "convert": "Convert"
       },
+      "features": {
+        "description": "The hexadecimal converter provided by multitools.site is a free tool that helps you convert hexadecimal to text immediately. Below are some of the main features of this online utility.",
+        "items": {
+          "item1": {
+            "description": "There are no charges associated with the usage of this online hexadecimal converter. You can use this utility for free and make as many conversions as you desire. You don’t need to get yourself registered to download the results.",
+            "title": "100% Free"
+          },
+          "item2": {
+            "description": "You don’t need to follow any convoluted procedure or download any software for accessing this hexadecimal decoder. It is a web-based utility that can be easily accessed with a stable internet connection.",
+            "title": "Easily Accessible"
+          },
+          "item3": {
+            "description": "he user-friendly interface of this hex code translator allows you to translate hex to text online without any manual effort. You don’t need to acquire professional assistance to use this online facility.",
+            "title": "User-friendly Interface"
+          },
+          "item4": {
+            "description": "The hexadecimal code translator provides 100% accurate results. This online utility uses advanced algorithms to process your entered hex value and convert it into accurate textual form instantly.",
+            "title": "Accurate Results"
+          },
+          "item5": {
+            "description": "This free hex translator is compatible with all devices. Whether you’re using an Android, Mac, iOS, Linux, or Windows device, this online utility efficiently works on all devices.",
+            "title": "Compatibility"
+          },
+          "item6": {
+            "description": "This hex code converter provides fast and secure conversion to its users. You don't have to worry about the security of your uploaded data. All the entered data is automatically removed from the database, as soon as the conversion is completed. We’ll not save or share our user’s data with any third party vender.",
+            "title": "Data Security"
+          }
+        },
+        "title": "Features of Hex to Text Converter"
+      },
       "fields": {
         "input": {
           "errors": {
@@ -91,6 +165,16 @@
           },
           "placeholder": "Enter text to encode/decode"
         }
+      },
+      "howToUse": {
+        "description": "With our hexadecimal to text converter, you can convert and understand lengthy numerical codes of hexadecimal easily. Follow the below steps to use this hexadecimal translator: In a few simple steps, you will get the specific results just the way you want your hex values to be converted in text.",
+        "steps": {
+          "step1": "Enter text to encode/decode",
+          "step2": "Select decode or encode operation",
+          "step3": "Click on Convert button, The result will appear immediately in the result box",
+          "step4": "Click \"copy\" to use the result"
+        },
+        "title": "How to use hex to text converter"
       },
       "metaData": {
         "description": "Convert hex to text and hex decode strings. Online tool for hex decoding a string. Convert a hexadecimaly encoded text into an decoded string",
@@ -106,12 +190,20 @@
           "error": "Failed to copy to clipboard",
           "success": "Copied to clipboard"
         }
+      },
+      "what": {
+        "description": "When beginning web development, programmers use either a numerical system translator such as a hex converter or an assembly language. Assembly language comprehends the same instructions in numeric codes as a machine language, but the data commands and variables are translated into readable English alphabets, rather than just numbers.",
+        "title": "What is Hexadecimal Number System?"
       }
     },
     "home": {
       "metaData": {
         "description": "Online tools for encoding, decoding hex, base64, online editing sv images",
         "title": "Multi-Tools for converting string, image,..."
+      },
+      "pageDescription": {
+        "description": "\"Multitools\" is a versatile web application designed to streamline various development tasks in one convenient platform. From converting hex and base64 to text to providing an online SVG code editor, SQL editor, and a multi-language code editor with execution capabilities, Multitools caters to developers and tech enthusiasts alike. Whether you need to manipulate data, write SQL queries, or code in languages like C# and Java, Multitools has you covered with an intuitive, accessible online interface.",
+        "title": "Multitools: The Ultimate Online Code and Data Conversion Toolkit"
       },
       "section": {
         "codeEditorTools": {

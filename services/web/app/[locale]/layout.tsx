@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import LoadingProvider from "@/contexts/loading-provider";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import { Locale } from "@/i18n.config";
+import Footer from "@/components/ui/footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],

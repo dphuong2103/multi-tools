@@ -83,60 +83,72 @@ export default async function Home({ params: { locale } }: LocaleParams) {
   ];
 
   return (
-    <Layout title="Multi Tools" dictionary={dictionary} locale={locale}>
-      <div className="flex flex-col md:flex-row">
-        <Card title={dictionary.page.home.section.converterTools.title}>
-          <div className="flex flex-col">
-            {conveterTools.map((i) => (
-              <Button
-                variant="link"
-                key={i.href}
-                className={"w-full justify-between px-0"}
-              >
-                <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
-              </Button>
-            ))}
-          </div>
-        </Card>
-        <Card title={dictionary.page.home.section.imageTools.title}>
-          <div className="flex flex-col">
-            {imageTools.map((i) => (
-              <Button
-                variant="link"
-                key={i.href}
-                className={"w-full justify-between px-0"}
-              >
-                <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
-              </Button>
-            ))}
-          </div>
-        </Card>
-        <Card title={dictionary.page.home.section.formatterTools.title}>
-          <div className="flex flex-col">
-            {formaterTools.map((i) => (
-              <Button
-                variant="link"
-                key={i.href}
-                className={"w-full justify-between px-0"}
-              >
-                <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
-              </Button>
-            ))}
-          </div>
-        </Card>
-        <Card title={dictionary.page.home.section.codeEditorTools.title}>
-          <div className="flex flex-col">
-            {codeEditorTools.map((i) => (
-              <Button
-                variant="link"
-                key={i.href}
-                className={"w-full justify-between px-0"}
-              >
-                <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
-              </Button>
-            ))}
-          </div>
-        </Card>
+    <Layout
+      title="Multi Tools"
+      dictionary={dictionary}
+      locale={locale}
+      className="h-screen flex flex-col"
+    >
+      <div className="flex flex-col">
+        <div className="flex flex-col md:flex-row">
+          <Card title={dictionary.page.home.section.converterTools.title}>
+            <div className="flex flex-col">
+              {conveterTools.map((i) => (
+                <Button
+                  variant="link"
+                  key={i.href}
+                  className={"w-full justify-between px-0"}
+                >
+                  <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
+                </Button>
+              ))}
+            </div>
+          </Card>
+          <Card title={dictionary.page.home.section.imageTools.title}>
+            <div className="flex flex-col">
+              {imageTools.map((i) => (
+                <Button
+                  variant="link"
+                  key={i.href}
+                  className={"w-full justify-between px-0"}
+                >
+                  <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
+                </Button>
+              ))}
+            </div>
+          </Card>
+          <Card title={dictionary.page.home.section.formatterTools.title}>
+            <div className="flex flex-col">
+              {formaterTools.map((i) => (
+                <Button
+                  variant="link"
+                  key={i.href}
+                  className={"w-full justify-between px-0"}
+                >
+                  <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
+                </Button>
+              ))}
+            </div>
+          </Card>
+          <Card title={dictionary.page.home.section.codeEditorTools.title}>
+            <div className="flex flex-col">
+              {codeEditorTools.map((i) => (
+                <Button
+                  variant="link"
+                  key={i.href}
+                  className={"w-full justify-between px-0"}
+                >
+                  <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
+                </Button>
+              ))}
+            </div>
+          </Card>
+        </div>
+
+        <div className="my-prose">
+          <h2>{dictionary.page.home.pageDescription.title}</h2>
+          <p>{dictionary.page.home.pageDescription.description}</p>
+        </div>
       </div>
     </Layout>
   );

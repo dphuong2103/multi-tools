@@ -18,6 +18,36 @@
       "buttons": {
         "convert": "Chuyển đổi"
       },
+      "features": {
+        "description": "Công cụ chuyển đổi Base64 từ multitools.site là công cụ miễn phí giúp bạn chuyển đổi Base64 sang văn bản nhanh chóng. Dưới đây là một số tính năng chính của tiện ích này.",
+        "items": {
+          "item1": {
+            "description": "Không có bất kỳ chi phí nào khi sử dụng công cụ này. Bạn có thể sử dụng nó miễn phí và thực hiện bao nhiêu chuyển đổi tùy ý mà không cần đăng ký.",
+            "title": "100% Miễn Phí"
+          },
+          "item2": {
+            "description": "Bạn không cần thực hiện bất kỳ quy trình phức tạp nào hoặc tải phần mềm để sử dụng công cụ này. Đây là công cụ trực tuyến, có thể truy cập dễ dàng chỉ cần kết nối internet ổn định.",
+            "title": "Dễ dàng truy cập"
+          },
+          "item3": {
+            "description": "Giao diện thân thiện của công cụ chuyển đổi này cho phép bạn chuyển đổi Base64 sang văn bản dễ dàng mà không cần trợ giúp chuyên môn.",
+            "title": "Giao diện thân thiện với người dùng"
+          },
+          "item4": {
+            "description": "Công cụ này cung cấp kết quả chính xác 100%. Các thuật toán tiên tiến được sử dụng để chuyển đổi giá trị Base64 thành văn bản chính xác ngay lập tức.",
+            "title": "Kết quả chính xác"
+          },
+          "item5": {
+            "description": "Công cụ chuyển đổi này tương thích với tất cả các thiết bị. Cho dù bạn sử dụng Android, Mac, iOS, Linux hay Windows, công cụ trực tuyến này vẫn hoạt động hiệu quả.",
+            "title": "Tương thích"
+          },
+          "item6": {
+            "description": "Công cụ này đảm bảo việc chuyển đổi nhanh chóng và an toàn. Tất cả dữ liệu nhập vào sẽ tự động bị xóa khỏi cơ sở dữ liệu ngay khi hoàn tất chuyển đổi, không lưu trữ hay chia sẻ dữ liệu của bạn với bất kỳ bên thứ ba nào.",
+            "title": "Bảo mật dữ liệu"
+          }
+        },
+        "title": "Tính năng của công cụ chuyển đổi Base64"
+      },
       "fields": {
         "input": {
           "errors": {
@@ -25,6 +55,16 @@
           },
           "placeholder": "Nhập văn bản để mã hóa/giải mã"
         }
+      },
+      "howToUse": {
+        "description": "Với công cụ chuyển đổi Base64 của chúng tôi, bạn có thể chuyển đổi và hiểu các mã số dài của Base64 dễ dàng. Hãy làm theo các bước dưới đây để sử dụng công cụ này. Chỉ với vài bước đơn giản, bạn sẽ nhận được kết quả đúng như mong muốn.",
+        "steps": {
+          "step1": "Nhập văn bản để mã hóa/giải mã",
+          "step2": "Chọn chức năng mã hóa hoặc giải mã",
+          "step3": "Nhấn nút Chuyển đổi, kết quả sẽ hiển thị ngay lập tức",
+          "step4": "Nhấn \"sao chép\" để sử dụng kết quả"
+        },
+        "title": "Cách sử dụng công cụ chuyển đổi Base64"
       },
       "metaData": {
         "description": "Chuyển đổi base64 sang văn bản và giải mã chuỗi base64. Công cụ trực tuyến để giải mã một chuỗi base64. Chuyển đổi văn bản được mã hóa base64 thành chuỗi đã được giải mã",
@@ -40,6 +80,10 @@
           "error": "Không thể sao chép vào clipboard",
           "success": "Đã sao chép vào clipboard"
         }
+      },
+      "what": {
+        "description": "Base64 là một nhóm các phương thức mã hóa dữ liệu nhị phân thành văn bản, chuyển đổi dữ liệu nhị phân thành các ký tự có thể in được trong một tập hợp 64 ký tự độc nhất. Dữ liệu nhị phân ban đầu được chia thành từng nhóm 6 bit, mỗi nhóm này sẽ được ánh xạ vào một trong 64 ký tự.",
+        "title": "Base64 là gì?"
       }
     },
     "codeEditor": {
@@ -84,6 +128,36 @@
       "buttons": {
         "convert": "Chuyển đổi"
       },
+      "features": {
+        "description": "Công cụ chuyển đổi hex của multitools.site là một công cụ miễn phí giúp bạn chuyển đổi hex sang văn bản ngay lập tức. Dưới đây là một số tính năng chính của tiện ích trực tuyến này.",
+        "items": {
+          "item1": {
+            "description": "Không có bất kỳ khoản phí nào liên quan đến việc sử dụng công cụ chuyển đổi hex trực tuyến này. Bạn có thể sử dụng tiện ích này miễn phí và thực hiện nhiều lần chuyển đổi như bạn muốn. Bạn không cần đăng ký để tải xuống kết quả.",
+            "title": "Hoàn toàn miễn phí"
+          },
+          "item2": {
+            "description": "Bạn không cần phải tuân theo bất kỳ quy trình phức tạp nào hoặc tải xuống phần mềm nào để truy cập bộ giải mã hex này. Đây là một tiện ích dựa trên web có thể dễ dàng truy cập với kết nối internet ổn định.",
+            "title": "Dễ dàng truy cập"
+          },
+          "item3": {
+            "description": "Giao diện thân thiện của công cụ dịch mã hex này cho phép bạn dịch hex sang văn bản trực tuyến mà không cần bất kỳ nỗ lực thủ công nào. Bạn không cần phải có sự trợ giúp chuyên nghiệp để sử dụng tiện ích trực tuyến này.",
+            "title": "Giao diện thân thiện với người dùng"
+          },
+          "item4": {
+            "description": "Công cụ dịch mã hex này cung cấp kết quả 100% chính xác. Tiện ích trực tuyến này sử dụng các thuật toán tiên tiến để xử lý giá trị hex mà bạn nhập và chuyển đổi nó thành dạng văn bản chính xác ngay lập tức.",
+            "title": "Kết quả chính xác"
+          },
+          "item5": {
+            "description": "Công cụ dịch hex miễn phí này tương thích với mọi thiết bị. Cho dù bạn đang sử dụng thiết bị Android, Mac, iOS, Linux hay Windows, tiện ích trực tuyến này hoạt động hiệu quả trên tất cả các thiết bị.",
+            "title": "Tương thích"
+          },
+          "item6": {
+            "description": "Công cụ chuyển đổi mã hex này cung cấp chuyển đổi nhanh và bảo mật cho người dùng. Bạn không cần lo lắng về bảo mật dữ liệu đã tải lên. Tất cả dữ liệu đã nhập sẽ tự động bị xóa khỏi cơ sở dữ liệu ngay sau khi quá trình chuyển đổi hoàn tất. Chúng tôi không lưu trữ hoặc chia sẻ dữ liệu của người dùng với bất kỳ nhà cung cấp bên thứ ba nào.",
+            "title": "Bảo mật dữ liệu"
+          }
+        },
+        "title": "Các tính năng của công cụ chuyển đổi Hex sang Văn bản"
+      },
       "fields": {
         "input": {
           "errors": {
@@ -91,6 +165,16 @@
           },
           "placeholder": "Nhập văn bản để mã hóa/giải mã"
         }
+      },
+      "howToUse": {
+        "description": "Với công cụ chuyển đổi hex sang văn bản của chúng tôi, bạn có thể dễ dàng chuyển đổi và hiểu các mã số dài của hệ thập lục phân. Thực hiện theo các bước dưới đây để sử dụng công cụ dịch hex này: Chỉ với một vài bước đơn giản, bạn sẽ nhận được kết quả cụ thể đúng như bạn muốn khi chuyển đổi giá trị hex sang văn bản.",
+        "steps": {
+          "step1": "Nhập văn bản để mã hóa/giải mã",
+          "step2": "Chọn thao tác giải mã hoặc mã hóa",
+          "step3": "Nhấp vào nút Chuyển đổi, Kết quả sẽ xuất hiện ngay lập tức trong hộp kết quả",
+          "step4": "Nhấp vào \"sao chép\" để sử dụng kết quả"
+        },
+        "title": "Cách sử dụng công cụ chuyển đổi hex sang văn bản"
       },
       "metaData": {
         "description": "Chuyển đổi hex sang văn bản và giải mã chuỗi hex. Công cụ trực tuyến để giải mã một chuỗi hex. Chuyển đổi văn bản được mã hóa hex thành chuỗi đã được giải mã",
@@ -106,12 +190,20 @@
           "error": "Không thể sao chép vào clipboard",
           "success": "Đã sao chép vào clipboard"
         }
+      },
+      "what": {
+        "description": "Khi bắt đầu phát triển web, các lập trình viên sử dụng bộ dịch hệ thống số như bộ chuyển đổi hex hoặc ngôn ngữ assembly. Ngôn ngữ assembly hiểu các hướng dẫn bằng mã số như một ngôn ngữ máy, nhưng các lệnh dữ liệu và biến được dịch sang chữ cái tiếng Anh có thể đọc được, thay vì chỉ là các con số.",
+        "title": "Hệ thống số Hexadecimal là gì?"
       }
     },
     "home": {
       "metaData": {
         "description": "Công cụ trực tuyến để mã hóa, giải mã hex, base64 và chỉnh sửa hình ảnh SVG trực tuyến",
         "title": "Công cụ đa chức năng để chuyển đổi chuỗi, hình ảnh,..."
+      },
+      "pageDescription": {
+        "description": "\"Multitools\" is a versatile web application designed to streamline various development tasks in one convenient platform. From converting hex and base64 to text to providing an online SVG code editor, SQL editor, and a multi-language code editor with execution capabilities, Multitools caters to developers and tech enthusiasts alike. Whether you need to manipulate data, write SQL queries, or code in languages like C# and Java, Multitools has you covered with an intuitive, accessible online interface.",
+        "title": "Multitools: The Ultimate Online Code and Data Conversion Toolkit"
       },
       "section": {
         "codeEditorTools": {
