@@ -5,6 +5,7 @@ const siteConfig = {
   author: "Midouz",
   mail: "midouz.project@gmail.com",
   telegramLink: "https://t.me/dphuong2103",
-};
+} as const;
+export type SiteConfig = typeof siteConfig;
 
 export default siteConfig;

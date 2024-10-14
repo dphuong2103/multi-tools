@@ -8,7 +8,7 @@ import {
 import { ChevronDown } from "lucide-react";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
-import { Route } from "@/models/routes";
+import { pageToRouteMapping, Route } from "@/models/routes";
 import { DictionaryProps } from "@/types/data-types";
 import { LinkWithLocale } from "../link-with-locale";
 
@@ -23,29 +23,29 @@ async function NavBarLinks({ dictionary }: NavBarLinkProps) {
         {
           key: "hex",
           text: dictionary.navBar.encodeDecode.hex,
-          href: "/hex",
+          href: pageToRouteMapping.hex,
         },
         {
           key: "base64",
           text: dictionary.navBar.encodeDecode.base64,
-          href: "/base64",
+          href: pageToRouteMapping.base64,
         },
       ],
     },
     {
       key: "sql-formatter",
       text: dictionary.navBar.sqlFormatter,
-      href: "/sql-formatter",
+      href: pageToRouteMapping.sqlFormatter,
     },
     {
       key: "code-editor",
       text: dictionary.navBar.codeEditor,
-      href: "/code-editor",
+      href: pageToRouteMapping.codeEditor,
     },
     {
       key: "svg-editor",
       text: dictionary.navBar.svgEditor,
-      href: "/svg-play-ground",
+      href: pageToRouteMapping.svgPlayGround,
     },
   ];
 

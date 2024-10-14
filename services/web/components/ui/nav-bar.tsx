@@ -7,6 +7,7 @@ import Image from "next/image";
 import { DictionaryProps, LocaleProps } from "@/types/data-types";
 import LocaleSwitcher from "./locale-switcher";
 import { LinkWithLocale } from "../link-with-locale";
+import { pageToRouteMapping } from "@/models/routes";
 interface NavBarProps extends DictionaryProps, LocaleProps {
   title: string;
 }
@@ -21,7 +22,10 @@ function NavBar({ title, dictionary, locale }: NavBarProps) {
           <Image src={multiToolIcon} alt="Multi Tools" width={36} />
           <span className="sr-only">Multi tools logo</span>
         </LinkWithLocale>
-        <LinkWithLocale href="/" className="lg:mr-auto self-center">
+        <LinkWithLocale
+          href={pageToRouteMapping.home}
+          className="lg:mr-auto self-center"
+        >
           <h1 className="text-xl font-bold">{title}</h1>
         </LinkWithLocale>
         <MobileNavBar locale={locale} dictionary={dictionary} />

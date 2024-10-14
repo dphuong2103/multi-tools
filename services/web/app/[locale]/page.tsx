@@ -5,6 +5,7 @@ import Layout from "@/components/ui/layout";
 import siteConfig from "@/constants/site-config";
 import { Locale, localeMapping } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
+import { pageToRouteMapping } from "@/models/routes";
 import { LocaleParams } from "@/types/data-types";
 import { Metadata } from "next";
 
@@ -38,7 +39,7 @@ export async function generateMetadata({
       "code editor",
     ],
     alternates: {
-      canonical: `${siteConfig.url}/${locale}`,
+      canonical: `${siteConfig.url}`,
       languages: {
         "en-US": `${siteConfig.url}/${localeMapping.en}`,
         "vi-VN": `${siteConfig.url}/${localeMapping.vi}`,
@@ -53,32 +54,32 @@ export default async function Home({ params: { locale } }: LocaleParams) {
   const conveterTools = [
     {
       title: dictionary.page.home.section.converterTools.items.hex,
-      href: "/hex",
+      href: pageToRouteMapping.hex,
     },
     {
       title: dictionary.page.home.section.converterTools.items.base64,
-      href: "/base64",
+      href: pageToRouteMapping.base64,
     },
   ];
 
   const imageTools = [
     {
       title: dictionary.page.home.section.imageTools.items.svg,
-      href: "/svg-play-ground",
+      href: pageToRouteMapping.svgPlayGround,
     },
   ];
 
   const formaterTools = [
     {
       title: dictionary.page.home.section.formatterTools.items.sql,
-      href: "/sql-formatter",
+      href: pageToRouteMapping.sqlFormatter,
     },
   ];
 
   const codeEditorTools = [
     {
       title: dictionary.page.home.section.codeEditorTools.items.codeEditor,
-      href: "/code-editor",
+      href: pageToRouteMapping.codeEditor,
     },
   ];
 
