@@ -12,7 +12,7 @@ import {
   CollapsibleTrigger,
 } from "./collapsible";
 import { cn } from "@/lib/utils";
-import { Route } from "@/models/routes";
+import { pageToRouteMapping, Route } from "@/models/routes";
 import LocaleSwitcher from "./locale-switcher";
 import { DictionaryProps, LocaleProps } from "@/types/data-types";
 import { LinkWithLocale } from "../link-with-locale";
@@ -44,14 +44,14 @@ function MobileNavBar({ locale, dictionary }: MobileNavBarProps) {
         key: "encode-decode",
         items: [
           {
-            href: "/hex",
+            href: pageToRouteMapping.hex,
             children: "Hex",
             onOpenChange: onOpenChange,
             onItemSelect: onItemSelect,
             key: "hex",
           },
           {
-            href: "/base64",
+            href: pageToRouteMapping.base64,
             children: "Base 64",
             onOpenChange: onOpenChange,
             onItemSelect: onItemSelect,
@@ -64,17 +64,17 @@ function MobileNavBar({ locale, dictionary }: MobileNavBarProps) {
       {
         key: "sql-formatter",
         children: dictionary.navBar.sqlFormatter,
-        href: "/sql-formatter",
+        href: pageToRouteMapping.sqlFormatter,
       },
       {
         key: "code-editor",
         children: dictionary.navBar.codeEditor,
-        href: "/code-editor",
+        href: pageToRouteMapping.codeEditor,
       },
       {
-        href: "/svg-play-ground",
         children: dictionary.navBar.svgEditor,
         key: "svg-play-ground",
+        href: pageToRouteMapping.svgPlayGround,
       },
     ];
   }, [
