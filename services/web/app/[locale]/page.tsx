@@ -46,10 +46,10 @@ export async function generateMetadata({
     ],
     alternates: {
       canonical: `${siteConfig.url}`,
-      // languages: {
-      //   "en-US": `${siteConfig.url}/${localeMapping.en}`,
-      //   "vi-VN": `${siteConfig.url}/${localeMapping.vi}`,
-      // },
+      languages: {
+        "en-US": `${siteConfig.url}/${localeMapping.en}`,
+        "vi-VN": `${siteConfig.url}/${localeMapping.vi}`,
+      },
     },
   };
 }
