@@ -2,9 +2,16 @@ import { LinkWithLocale } from "@/components/link-with-locale";
 import { Button } from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import Layout from "@/components/ui/layout";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import siteConfig from "@/constants/site-config";
 import { Locale, localeMapping } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
+import { convert12HourTo24Hour } from "@/lib/time-picker-utils";
 import { pageToRouteMapping } from "@/models/routes";
 import { LocaleParams } from "@/types/data-types";
 import { Metadata } from "next";
@@ -48,104 +55,106 @@ export async function generateMetadata({
   };
 }
 
-export default async function Home({ params: { locale } }: LocaleParams) {
+export default async function Page({ params: { locale } }: LocaleParams) {
   const dictionary = await getDictionary(locale);
 
   const conveterTools = [
     {
-      title: dictionary.page.home.section.converterTools.items.hex,
+      title: dictionary.page.home.section.converterTools.items.hex.title,
+      tooltip: dictionary.page.home.section.converterTools.items.hex.tooltip,
       href: pageToRouteMapping.hex,
     },
     {
-      title: dictionary.page.home.section.converterTools.items.base64,
+      title: dictionary.page.home.section.converterTools.items.base64.title,
+      tooltip: dictionary.page.home.section.converterTools.items.base64.tooltip,
       href: pageToRouteMapping.base64,
     },
   ];
 
   const imageTools = [
     {
-      title: dictionary.page.home.section.imageTools.items.svg,
+      title: dictionary.page.home.section.imageTools.items.svg.title,
+      tooltip: dictionary.page.home.section.imageTools.items.svg.tooltip,
       href: pageToRouteMapping.svgPlayGround,
     },
   ];
 
   const formaterTools = [
     {
-      title: dictionary.page.home.section.formatterTools.items.sql,
+      title: dictionary.page.home.section.formatterTools.items.sql.title,
+      tooltip: dictionary.page.home.section.formatterTools.items.sql.tooltip,
       href: pageToRouteMapping.sqlFormatter,
     },
   ];
 
   const codeEditorTools = [
     {
-      title: dictionary.page.home.section.codeEditorTools.items.codeEditor,
+      title:
+        dictionary.page.home.section.codeEditorTools.items.codeEditor.title,
+      tooltip:
+        dictionary.page.home.section.codeEditorTools.items.codeEditor.tooltip,
       href: pageToRouteMapping.codeEditor,
+    },
+  ];
+
+  const sections = [
+    {
+      key: "converterTools",
+      title: dictionary.page.home.section.converterTools.title,
+      items: conveterTools,
+    },
+    {
+      key: "imageTools",
+      title: dictionary.page.home.section.imageTools.title,
+      items: imageTools,
+    },
+    {
+      key: "formaterTools",
+      title: dictionary.page.home.section.formatterTools.title,
+      items: formaterTools,
+    },
+    {
+      key: "codeEditorTools",
+      title: dictionary.page.home.section.codeEditorTools.title,
+      items: codeEditorTools,
     },
   ];
 
   return (
     <Layout
-      title="Multi Tools"
+      title={dictionary.page.home.title}
       dictionary={dictionary}
       locale={locale}
       className="h-screen flex flex-col"
     >
       <div className="flex flex-col">
         <div className="flex flex-col md:flex-row">
-          <Card title={dictionary.page.home.section.converterTools.title}>
-            <div className="flex flex-col">
-              {conveterTools.map((i) => (
-                <Button
-                  variant="link"
-                  key={i.href}
-                  className={"w-full justify-between px-0"}
-                >
-                  <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
-                </Button>
-              ))}
-            </div>
-          </Card>
-          <Card title={dictionary.page.home.section.imageTools.title}>
-            <div className="flex flex-col">
-              {imageTools.map((i) => (
-                <Button
-                  variant="link"
-                  key={i.href}
-                  className={"w-full justify-between px-0"}
-                >
-                  <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
-                </Button>
-              ))}
-            </div>
-          </Card>
-          <Card title={dictionary.page.home.section.formatterTools.title}>
-            <div className="flex flex-col">
-              {formaterTools.map((i) => (
-                <Button
-                  variant="link"
-                  key={i.href}
-                  className={"w-full justify-between px-0"}
-                >
-                  <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
-                </Button>
-              ))}
-            </div>
-          </Card>
-          <Card title={dictionary.page.home.section.codeEditorTools.title}>
-            <div className="flex flex-col">
-              {codeEditorTools.map((i) => (
-                <Button
-                  variant="link"
-                  key={i.href}
-                  className={"w-full justify-between px-0"}
-                >
-                  <LinkWithLocale href={i.href}>{i.title}</LinkWithLocale>
-                </Button>
-              ))}
-            </div>
-          </Card>
+          {sections.map((section) => (
+            <Card title={section.title} key={section.key}>
+              <div className="flex flex-col">
+                {section.items.map((i) => (
+                  <TooltipProvider delayDuration={400} key={i.href}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          variant="link"
+                          className={"w-full justify-between px-0"}
+                        >
+                          <LinkWithLocale href={i.href}>
+                            {i.title}
+                          </LinkWithLocale>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="text-sm">{i.tooltip}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                ))}
+              </div>
+            </Card>
+          ))}
         </div>
-
         <div className="my-prose">
           <h2>{dictionary.page.home.pageDescription.title}</h2>
           <p>{dictionary.page.home.pageDescription.description}</p>

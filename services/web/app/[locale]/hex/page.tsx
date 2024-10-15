@@ -3,11 +3,11 @@ import Layout from "@/components/ui/layout";
 import { LocaleParams } from "@/types/data-types";
 import { getDictionary } from "@/lib/dictionary";
 import type { Metadata } from "next";
-import { Locale, localeMapping } from "@/i18n.config";
-import siteConfig from "@/constants/site-config";
+import { Locale } from "@/i18n.config";
 import HowToUse from "./how-to-use";
 import Features from "./features";
 import What from "./what";
+import { getFullPageRouteWithDomain } from "@/models/routes";
 
 type MetadataProps = {
   params: {
@@ -30,19 +30,19 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: siteConfig.url + "/" + locale + "/hex",
+      canonical: getFullPageRouteWithDomain("hex"),
       languages: {
-        "en-US": `${siteConfig.url}/${localeMapping.en}/hex`,
-        "vi-VN": `${siteConfig.url}/${localeMapping.vi}/hex`,
+        "en-US": getFullPageRouteWithDomain("hex", "en"),
+        "vi-VN": getFullPageRouteWithDomain("hex", "vi"),
       },
     },
     keywords: ["hex", "tools", "hex converter", "hex encode", "hex decode"],
   };
 }
 
-interface HexPageProps extends LocaleParams {}
+interface PageProps extends LocaleParams {}
 
-async function HexPage({ params: { locale } }: HexPageProps) {
+async function Page({ params: { locale } }: PageProps) {
   const dictionary = await getDictionary(locale);
   return (
     <Layout
@@ -60,4 +60,4 @@ async function HexPage({ params: { locale } }: HexPageProps) {
   );
 }
 
-export default HexPage;
+export default Page;

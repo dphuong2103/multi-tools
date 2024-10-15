@@ -208,26 +208,41 @@
       "section": {
         "codeEditorTools": {
           "items": {
-            "codeEditor": "Code Editor"
+            "codeEditor": {
+              "title": "Code Editor",
+              "tooltip": "Trình chỉnh sửa mã nguồn trực tuyến với nhiều ngôn ngữ lập trình nhw C#, Java. Cho phép chạy mã nguồn trực tiếp trên trình duyệt"
+            }
           },
           "title": "Code Editor Tools"
         },
         "converterTools": {
           "items": {
-            "base64": "Base64",
-            "hex": "Hex"
+            "base64": {
+              "title": "Base64",
+              "tooltip": "Chuyển đổi Base64 sang văn bản và ngược lại"
+            },
+            "hex": {
+              "title": "Hex",
+              "tooltip": "Chuyển đổi Hex sang văn bản và ngược lại"
+            }
           },
           "title": "Công cụ chuyển đổi"
         },
         "formatterTools": {
           "items": {
-            "sql": "SQL"
+            "sql": {
+              "title": "SQL",
+              "tooltip": "Định dạng mã SQL trực tuyến, xem trước và tải xuống trực tiếp"
+            }
           },
           "title": "Công cụ định dạng"
         },
         "imageTools": {
           "items": {
-            "svg": "SVG"
+            "svg": {
+              "title": "SVG",
+              "tooltip": "Chỉnh sửa mã SVG trực tuyến, xem trước hình ảnh và tải xuống trực tiếp"
+            }
           },
           "title": "Công cụ hình ảnh"
         }

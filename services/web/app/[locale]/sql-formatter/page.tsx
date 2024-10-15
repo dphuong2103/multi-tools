@@ -7,6 +7,7 @@ import { LocaleParams } from "@/types/data-types";
 import { Locale, localeMapping } from "@/i18n.config";
 import SqlFormatter from "./sql-formatter";
 import siteConfig from "@/constants/site-config";
+import { getFullPageRouteWithDomain } from "@/models/routes";
 
 type MetadataProps = {
   params: {
@@ -29,10 +30,10 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: siteConfig.url + "/" + locale + "/sql-formatter",
+      canonical: getFullPageRouteWithDomain("sqlFormatter"),
       languages: {
-        "en-US": `${siteConfig.url}/${localeMapping.en}/sql-formatter`,
-        "vi-VN": `${siteConfig.url}/${localeMapping.vi}/sql-formatter`,
+        "en-US": getFullPageRouteWithDomain("sqlFormatter", "en"),
+        "vi-VN": getFullPageRouteWithDomain("sqlFormatter", "vi"),
       },
     },
     keywords: [
@@ -44,9 +45,9 @@ export async function generateMetadata({
     ],
   };
 }
-interface SqlFormatterPageProps extends LocaleParams {}
+interface PageProps extends LocaleParams {}
 
-async function SqlFormatterPage({ params: { locale } }: SqlFormatterPageProps) {
+async function Page({ params: { locale } }: PageProps) {
   const dictionary = await getDictionary(locale);
   return (
     <Layout
@@ -59,4 +60,4 @@ async function SqlFormatterPage({ params: { locale } }: SqlFormatterPageProps) {
   );
 }
 
-export default SqlFormatterPage;
+export default Page;

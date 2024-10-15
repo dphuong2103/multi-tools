@@ -7,6 +7,7 @@ import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
 import { Locale, localeMapping } from "@/i18n.config";
 import siteConfig from "@/constants/site-config";
+import { getFullPageRouteWithDomain } from "@/models/routes";
 
 type MetadataProps = {
   params: {
@@ -29,21 +30,19 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: siteConfig.url + "/" + locale + "/svg-play-ground",
+      canonical: getFullPageRouteWithDomain("svgPlayGround"),
       languages: {
-        "en-US": `${siteConfig.url}/${localeMapping.en}/svg-play-ground`,
-        "vi-VN": `${siteConfig.url}/${localeMapping.vi}/svg-play-ground`,
+        "en-US": getFullPageRouteWithDomain("svgPlayGround", "en"),
+        "vi-VN": getFullPageRouteWithDomain("svgPlayGround", "vi"),
       },
     },
     keywords: ["svg", "tools", "svg editor", "svg playground", "svg formatter"],
   };
 }
 
-interface SvgPlayGroundPageProps extends LocaleParams {}
+interface PageProps extends LocaleParams {}
 
-async function SvgPlayGroundPage({
-  params: { locale },
-}: SvgPlayGroundPageProps) {
+async function Page({ params: { locale } }: PageProps) {
   const dictionary = await getDictionary(locale);
   return (
     <Layout
@@ -56,4 +55,4 @@ async function SvgPlayGroundPage({
   );
 }
 
-export default SvgPlayGroundPage;
+export default Page;

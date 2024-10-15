@@ -8,6 +8,7 @@ import siteConfig from "@/constants/site-config";
 import Features from "./features";
 import HowToUse from "./how-to-use";
 import What from "./what";
+import { getFullPageRouteWithDomain } from "@/models/routes";
 
 type MetadataProps = {
   params: {
@@ -37,18 +38,18 @@ export async function generateMetadata({
       "base64 decode",
     ],
     alternates: {
-      canonical: siteConfig.url + "/" + locale + "/base64",
+      canonical: getFullPageRouteWithDomain("base64"),
       languages: {
-        "en-US": `${siteConfig.url}/${localeMapping.en}/base64`,
-        "vi-VN": `${siteConfig.url}/${localeMapping.vi}/base64`,
+        "en-US": getFullPageRouteWithDomain("base64", "en"),
+        "vi-VN": getFullPageRouteWithDomain("base64", "vi"),
       },
     },
   };
 }
 
-interface Base64PageProps extends LocaleParams {}
+interface PageProps extends LocaleParams {}
 
-async function Base64Page({ params: { locale } }: Base64PageProps) {
+async function Page({ params: { locale } }: PageProps) {
   const dictionary = await getDictionary(locale);
   return (
     <Layout
@@ -66,4 +67,4 @@ async function Base64Page({ params: { locale } }: Base64PageProps) {
   );
 }
 
-export default Base64Page;
+export default Page;

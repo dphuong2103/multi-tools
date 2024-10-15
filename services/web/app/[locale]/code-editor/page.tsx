@@ -7,6 +7,7 @@ import { LocaleParams } from "@/types/data-types";
 import { Locale, localeMapping } from "@/i18n.config";
 import CodeEditor from "./code-editor";
 import siteConfig from "@/constants/site-config";
+import { getFullPageRouteWithDomain } from "@/models/routes";
 
 type MetadataProps = {
   params: {
@@ -29,10 +30,10 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: siteConfig.url + "/" + locale + "/code-editor",
+      canonical: getFullPageRouteWithDomain("codeEditor"),
       languages: {
-        "en-US": `${siteConfig.url}/${localeMapping.en}/code-editor`,
-        "vi-VN": `${siteConfig.url}/${localeMapping.vi}/code-editor`,
+        "en-US": getFullPageRouteWithDomain("codeEditor", "en"),
+        "vi-VN": getFullPageRouteWithDomain("codeEditor", "vi"),
       },
     },
     keywords: [
@@ -44,9 +45,9 @@ export async function generateMetadata({
     ],
   };
 }
-interface CodeEditorPageProps extends LocaleParams {}
+interface PageProps extends LocaleParams {}
 
-async function CodeEditorPage({ params: { locale } }: CodeEditorPageProps) {
+async function Page({ params: { locale } }: PageProps) {
   const dictionary = await getDictionary(locale);
   return (
     <Layout
@@ -59,4 +60,4 @@ async function CodeEditorPage({ params: { locale } }: CodeEditorPageProps) {
   );
 }
 
-export default CodeEditorPage;
+export default Page;

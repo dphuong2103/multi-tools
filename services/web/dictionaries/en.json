@@ -208,26 +208,41 @@
       "section": {
         "codeEditorTools": {
           "items": {
-            "codeEditor": "Code Editor"
+            "codeEditor": {
+              "title": "Code Editor",
+              "tooltip": "A versatile online code editor supporting multiple programming languages, including C# and Java. With built-in code execution capabilities, you can write, test, and debug code right in your browser."
+            }
           },
           "title": "Code Editor Tools"
         },
         "converterTools": {
           "items": {
-            "base64": "Base64",
-            "hex": "Hex"
+            "base64": {
+              "title": "Base64",
+              "tooltip": "Encode or decode Base64 data, a common encoding scheme used for data transfer and storage. This tool helps you quickly convert Base64 strings to readable text or files."
+            },
+            "hex": {
+              "title": "Hex",
+              "tooltip": "Convert hexadecimal data to text and vice versa. Hexadecimal is a base-16 number system used in computing and digital electronics."
+            }
           },
           "title": "Converter Tools"
         },
         "formatterTools": {
           "items": {
-            "sql": "SQL"
+            "sql": {
+              "title": "SQL Formatter",
+              "tooltip": "Format SQL code online with this handy tool. Choose your preferred language, tab width, and case settings to generate clean, readable SQL scripts."
+            }
           },
           "title": "Formatter Tools"
         },
         "imageTools": {
           "items": {
-            "svg": "SVG"
+            "svg": {
+              "title": "SVG",
+              "tooltip": "Edit SVG code online with this versatile tool. Preview your SVG images and download them in various formats."
+            }
           },
           "title": "Image Tools"
         }
