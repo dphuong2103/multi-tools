@@ -10,19 +10,12 @@ import { CustomMiddleware } from "./chain";
 function getLocale(request: NextRequest): string {
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-  // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales;
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-  console.log("languages: ", languages);
-  console.log("locales: ", locales);
-  console.log("i18n.defaultLocale: ", locales, i18n.defaultLocale);
-  console.log("request.cookies.get(NEXT_LOCALE)", request.cookies.get("NEXT_LOCALE"));
   let locale: string;
   try {
     locale = !!request.cookies.get("NEXT_LOCALE")?.value
       ? request.cookies.get("NEXT_LOCALE")!.value
-      : (matchLocale(languages, locales, i18n.defaultLocale) ??
+      : (matchLocale(languages, i18n.locales, i18n.defaultLocale) ??
         i18n.defaultLocale);
   } catch {
     return i18n.defaultLocale;
