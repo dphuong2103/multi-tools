@@ -4,9 +4,8 @@ import { Metadata } from "next";
 import Layout from "@/components/ui/layout";
 import { getDictionary } from "@/lib/dictionary";
 import { LocaleParams } from "@/types/data-types";
-import { Locale, localeMapping } from "@/i18n.config";
+import { Locale } from "@/i18n.config";
 import CodeEditor from "./code-editor";
-import siteConfig from "@/constants/site-config";
 import { getFullPageRouteWithDomain } from "@/models/routes";
 
 type MetadataProps = {

@@ -11,7 +11,6 @@ import {
 import siteConfig from "@/constants/site-config";
 import { Locale, localeMapping } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
-import { convert12HourTo24Hour } from "@/lib/time-picker-utils";
 import { pageToRouteMapping } from "@/models/routes";
 import { LocaleParams } from "@/types/data-types";
 import { Metadata } from "next";

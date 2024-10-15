@@ -12,8 +12,8 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
-import { DictionaryProps, SqlLanguage } from "@/types/data-types";
-import { format, sql } from "sql-formatter";
+import { DictionaryProps } from "@/types/data-types";
+import { format } from "sql-formatter";
 import { useForm } from "react-hook-form";
 import {
   SqlFormatterFormModel,
@@ -41,7 +41,7 @@ const initialValues = {
   tabWidth: 1,
 } as SqlFormatterFormModel;
 
-interface SqlFormatterProps extends DictionaryProps {}
+interface SqlFormatterProps extends DictionaryProps { }
 
 function SqlFormatter({ dictionary }: SqlFormatterProps) {
   const { theme } = useTheme();
