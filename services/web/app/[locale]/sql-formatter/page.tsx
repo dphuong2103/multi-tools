@@ -29,7 +29,7 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: getFullPageRouteWithDomain("sqlFormatter"),
+      canonical: getFullPageRouteWithDomain("sqlFormatter", locale),
       languages: {
         "en-US": getFullPageRouteWithDomain("sqlFormatter", "en"),
         "vi-VN": getFullPageRouteWithDomain("sqlFormatter", "vi"),

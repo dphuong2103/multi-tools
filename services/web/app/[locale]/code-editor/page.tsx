@@ -29,7 +29,7 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: getFullPageRouteWithDomain("codeEditor"),
+      canonical: getFullPageRouteWithDomain("codeEditor", locale),
       languages: {
         "en-US": getFullPageRouteWithDomain("codeEditor", "en"),
         "vi-VN": getFullPageRouteWithDomain("codeEditor", "vi"),

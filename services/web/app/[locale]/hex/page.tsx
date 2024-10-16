@@ -30,7 +30,7 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: getFullPageRouteWithDomain("hex"),
+      canonical: getFullPageRouteWithDomain("hex", locale),
       languages: {
         "en-US": getFullPageRouteWithDomain("hex", "en"),
         "vi-VN": getFullPageRouteWithDomain("hex", "vi"),

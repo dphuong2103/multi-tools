@@ -38,7 +38,7 @@ export async function generateMetadata({
       "base64 decode",
     ],
     alternates: {
-      canonical: getFullPageRouteWithDomain("base64"),
+      canonical: getFullPageRouteWithDomain("base64", locale),
       languages: {
         "en-US": getFullPageRouteWithDomain("base64", "en"),
         "vi-VN": getFullPageRouteWithDomain("base64", "vi"),

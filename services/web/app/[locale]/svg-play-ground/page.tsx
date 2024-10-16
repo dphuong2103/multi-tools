@@ -29,7 +29,7 @@ export async function generateMetadata({
       type: "website",
     },
     alternates: {
-      canonical: getFullPageRouteWithDomain("svgPlayGround"),
+      canonical: getFullPageRouteWithDomain("svgPlayGround", locale),
       languages: {
         "en-US": getFullPageRouteWithDomain("svgPlayGround", "en"),
         "vi-VN": getFullPageRouteWithDomain("svgPlayGround", "vi"),
