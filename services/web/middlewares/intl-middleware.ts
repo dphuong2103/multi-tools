@@ -73,11 +73,20 @@ export function withI18nMiddleware(middleware: CustomMiddleware) {
     if (pathnameIsMissingLocale) {
       // const locale = getLocale(request);
       const locale = parseAcceptLanguage(request.headers.get('accept-language'));
+      const newUrl = new URL(
+        `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
+        request.url,
+      )
+      const userAgent = request.headers.get('user-agent') || '';
+      const isGoogleBot = userAgent.toLowerCase().includes('googlebot');
+      if (isGoogleBot) {
+        console.log('Googlebot encountered a redirect', {
+          originalUrl: request.url,
+          redirectUrl: newUrl.toString(),
+        });
+      }
       const response = NextResponse.redirect(
-        new URL(
-          `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
-          request.url,
-        ),
+        newUrl,
       );
       response.cookies.set({
         name: "NEXT_LOCALE",
