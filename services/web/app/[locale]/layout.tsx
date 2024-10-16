@@ -8,11 +8,10 @@ import LoadingProvider from "@/contexts/loading-provider";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import { Locale } from "@/i18n.config";
 
-const fontSans = FontSans({
+const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "MultiTools",
@@ -52,7 +51,7 @@ export default function RootLayout({
       <body
         className={cn(
           "h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          fontSans.className,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
