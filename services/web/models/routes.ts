@@ -22,7 +22,7 @@ const routes = [
 ] as const;
 
 export const pageToRouteMapping: Record<Page, Route> = {
-  home: "/",
+  home: "",
   hex: "/hex",
   base64: "/base64",
   svgPlayGround: "/svg-play-ground",
