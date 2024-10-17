@@ -247,13 +247,57 @@
           "title": "Công cụ hình ảnh"
         }
       },
-      "title": "Công cụ đa chức năng"
+      "title": "Công cụ đa chức năng",
+      "dataPrivacy": {
+        "title": ""
+      },
+      "whyUse": {
+        "title": "Tại sao nên chọn {siteName}?",
+        "description": "{siteName} không chỉ là một trình chỉnh sửa mã, một bộ công cụ toàn diện được xây dựng để làm cho quá trình phát triển của bạn nhanh hơn, hiệu quả hơn và an toàn hơn. Đây là những điểm nổi bật của chúng tôi:",
+        "items": {
+          "item1": {
+            "title": "Nền tảng Tất Cả Trong Một",
+            "description": "Hãy nói lời tạm biệt với việc chuyển đổi giữa các công cụ khác nhau. Với {siteName}, bạn có mọi thứ bạn cần ở một nơi, từ chạy mã, chuyển đổi dữ liệu đến các trình chỉnh sửa chuyên biệt cho SQL và SVG."
+          },
+          "item2": {
+            "title": "Tăng cường Bảo mật",
+            "description": "Chúng tôi ưu tiên bảo mật dữ liệu của bạn bằng cách sử dụng mã hóa tiêu chuẩn công nghiệp và môi trường thực thi an toàn. Dù bạn đang chạy mã hay xử lý dữ liệu nhạy cảm, {siteName} đảm bảo công việc của bạn luôn được bảo mật và riêng tư."
+          },
+          "item3": {
+            "title": "Giao diện Thân thiện với Người dùng",
+            "description": "Được thiết kế cho cả người mới bắt đầu và các nhà phát triển giàu kinh nghiệm, nền tảng của chúng tôi cung cấp giao diện sạch sẽ và trực quan, giúp bạn tập trung vào công việc quan trọng nhất."
+          },
+          "item4": {
+            "title": "Tiện lợi Dựa trên Đám mây",
+            "description": "Truy cập công cụ của bạn ở bất cứ đâu, bất cứ lúc nào. Là một nền tảng dựa trên web, {siteName} cung cấp sự linh hoạt để bạn làm việc trên các dự án của mình trên nhiều thiết bị mà không cần cài đặt hay cập nhật cục bộ."
+          }
+        }
+      },
+      "whoBenefit": {
+        "title": "Ai Có Thể Hưởng Lợi từ {siteName}?",
+        "description": "Dù bạn là nhà phát triển phần mềm, nhà phân tích dữ liệu, hay người đam mê công nghệ, {siteName} đều có điều gì đó dành cho bạn. Dưới đây là một số trường hợp sử dụng lý tưởng:",
+        "items": {
+          "item1": {
+            "title": "Các Nhà Phát triển Phần mềm",
+            "description": "Tối ưu hóa quy trình lập trình của bạn với trình chỉnh sửa mã hỗ trợ nhiều ngôn ngữ của chúng tôi, cho phép bạn viết và chạy mã một cách nhanh chóng."
+          },
+          "item2": {
+            "title": "Nhà Phân tích Dữ liệu",
+            "description": "Sử dụng các công cụ chuyển đổi dữ liệu của chúng tôi để xử lý các định dạng dữ liệu khác nhau một cách dễ dàng."
+          },
+          "item3": {
+            "title": "Nhà Thiết kế & Người Sáng tạo",
+            "description": "Chỉnh sửa mã SVG trực tiếp trong trình duyệt của bạn để tạo và thay đổi các đồ họa vector có thể mở rộng ngay lập tức."
+          }
+        }
+      }
     },
     "sqlFormatter": {
       "buttons": {
         "copy": "Sao chép",
         "format": "Định dạng",
-        "save": "Lưu"
+        "save": "Lưu",
+        "upload": "Tải lên"
       },
       "fields": {
         "dataTypeCase": {
@@ -306,7 +350,8 @@
       "buttons": {
         "copy": "Sao chép",
         "format": "Định dạng",
-        "save": "Lưu"
+        "save": "Lưu",
+        "upload": "Tải lên"
       },
       "metaData": {
         "description": "Công cụ chỉnh sửa mã SVG trực tuyến, xem trước hình ảnh và tải xuống trực tiếp",
@@ -319,6 +364,11 @@
           "success": "Đã sao chép vào clipboard"
         }
       }
+    }
+  },
+  "contextProvider": {
+    "beforeUnload": {
+      "message": "Are you sure you want to leave? Changes you made may not be saved."
     }
   }
 }

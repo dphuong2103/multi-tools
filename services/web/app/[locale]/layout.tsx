@@ -6,10 +6,14 @@ import { Toaster } from "@/components/ui/sonner";
 import LoadingProvider from "@/contexts/loading-provider";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import { Locale } from "@/i18n.config";
+import { NavigationEvents } from "@/components/navigation-events";
+import BeforeUnloadProvider from "@/contexts/before-unload-provider";
+import { getDictionary } from "@/lib/dictionary";
 
 const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 });
 
 export const metadata = {
@@ -36,7 +40,7 @@ export const metadata = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
@@ -45,6 +49,7 @@ export default function RootLayout({
     locale: Locale;
   };
 }) {
+  const dictionary = await getDictionary(params.locale);
   return (
     <html lang={params.locale}>
       <body
@@ -54,10 +59,12 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
-          <LoadingProvider>
-            <AuthProvider>{children}</AuthProvider>
-          </LoadingProvider>
-          <Toaster />
+          <BeforeUnloadProvider dictionary={dictionary}>
+            <LoadingProvider>
+              <AuthProvider>{children}</AuthProvider>
+            </LoadingProvider>
+            <Toaster />
+          </BeforeUnloadProvider>
         </ThemeProvider>
       </body>
     </html>

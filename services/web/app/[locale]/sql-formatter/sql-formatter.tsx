@@ -1,6 +1,7 @@
 "use client";
 import React, {
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -28,6 +29,7 @@ import { sqlLanguages } from "@/constants/sql-languages";
 import usePersistFormData from "@/lib/hooks/usePersistFormData";
 import useSyncFormParams from "@/lib/hooks/useSyncFormParams";
 import useDefaultFormValues from "@/lib/hooks/useDefaultFormValue";
+import { BeforeUnloadContext } from "@/contexts/before-unload-provider";
 
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 const sql_formatter_key = "sql-formatter-form-key";
@@ -85,13 +87,14 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
 
   const { watch } = form;
 
-  usePersistFormData(sql_formatter_key, { watch });
+  usePersistFormData(sql_formatter_key, { watch, excludes: ["input"] });
   useSyncFormParams({ watch: watch, excludes: ["input"] });
 
   const editorContainerRef = useRef<HTMLDivElement | null>(null);
   const resultContainerRef = useRef<HTMLDivElement | null>(null);
   const editorParentRef = useRef<HTMLDivElement | null>(null);
   const editorInstanceRef = useRef<EditorType | null>(null);
+  const { setShowPrompt } = useContext(BeforeUnloadContext);
 
   const isDraggingRef = useRef(false);
 
@@ -169,6 +172,15 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
     [],
   );
 
+  const handleEditorChange = useCallback(
+    (onChange: (value?: any) => void, value?: string) => {
+      onChange(value);
+      value ? setShowPrompt(true) : setShowPrompt(false);
+      console.log(value ? true : false);
+    },
+    [setShowPrompt],
+  );
+
   const onCopyClick = useCallback(() => {
     if (!result) return;
     try {
@@ -222,6 +234,24 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
     [dictionary.page.sqlFormatter.sqlLanguages],
   );
 
+  const onUploadClick = useCallback(() => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".sql";
+    input.onchange = (event) => {
+      const file = (event.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const result = event.target?.result as string;
+        form.setValue("input", result);
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  }, [form]);
+
   return (
     <div className="h-full w-full">
       <Form {...form}>
@@ -244,6 +274,14 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
                 type="button"
               >
                 {dictionary.page.sqlFormatter.buttons.copy}
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={onUploadClick}
+                className="hidden md:inline-block"
+                type="button"
+              >
+                {dictionary.page.sqlFormatter.buttons.upload}
               </Button>
             </div>
 
@@ -307,7 +345,9 @@ function SqlFormatter({ dictionary }: SqlFormatterProps) {
                         height="100%"
                         defaultLanguage="sql"
                         value={field.value}
-                        onChange={field.onChange}
+                        onChange={(data: any) =>
+                          handleEditorChange(field.onChange, data)
+                        }
                         options={{
                           fontSize: 14,
                           minimap: { enabled: false },

@@ -14,6 +14,15 @@ export default function usePersistFormData<T extends FieldValues>(
 ) {
   const formValue = watch();
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(formValue));
-  }, [key, formValue]);
+    if (!excludes) {
+      localStorage.setItem(key, JSON.stringify(formValue));
+      return;
+    }
+    const data = Object.fromEntries(
+      Object.entries(formValue).filter(
+        ([key]) => !excludes.includes(key as keyof T),
+      ),
+    );
+    localStorage.setItem(key, JSON.stringify(data));
+  }, [key, formValue, excludes]);
 }

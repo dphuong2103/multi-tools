@@ -1,5 +1,12 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  use,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Editor, { EditorProps } from "@monaco-editor/react";
 import styles from "./styles.module.scss";
 import { useTheme } from "next-themes";
@@ -7,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { DictionaryProps } from "@/types/data-types";
+import { BeforeUnloadContext } from "@/contexts/before-unload-provider";
 
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
@@ -21,7 +29,7 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
   const resultContainerRef = useRef<HTMLDivElement | null>(null);
   const editorParentRef = useRef<HTMLDivElement | null>(null);
   const editorInstanceRef = useRef<EditorType | null>(null);
-
+  const { setShowPrompt } = useContext(BeforeUnloadContext);
   const isDraggingRef = useRef(false);
 
   const handleGutterDrag = useRef((event: MouseEvent) => {
@@ -59,10 +67,12 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
 
   const handleEditorChange = useCallback((value?: string) => {
     if (!value) {
+      setShowPrompt(false);
       setSvgCode("");
       setImageSrc("");
       return;
     }
+    setShowPrompt(true);
     setSvgCode(value);
     try {
       const encodedSvg = `data:image/svg+xml;base64,${btoa(value)}`;
@@ -70,7 +80,7 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
     } catch (error) {
       console.error("Error encoding SVG", error);
     }
-  }, []);
+  }, [setShowPrompt]);
 
   const saveSvgToFile = useCallback(() => {
     const svgContent = editorInstanceRef.current?.getValue();
@@ -106,6 +116,23 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
     dictionary.page.svgPlayGround.toast.copy.success,
   ]);
 
+  const onUploadClick = useCallback(() => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".svg";
+    input.onchange = (event) => {
+      const file = (event.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const content = event.target?.result as string;
+        editorInstanceRef.current?.setValue(content);
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  }, []);
+
   useEffect(() => {
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -129,6 +156,13 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
           className="hidden md:inline-block"
         >
           {dictionary.page.svgPlayGround.buttons.copy}
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={onUploadClick}
+          className="hidden md:inline-block"
+        >
+          {dictionary.page.svgPlayGround.buttons.upload}
         </Button>
       </div>
 

@@ -247,13 +247,58 @@
           "title": "Image Tools"
         }
       },
-      "title": "Multi Tools"
+      "title": "Multi Tools",
+      "dataPrivacy": {
+        "title": "Data Privacy",
+        "description": "Your privacy is important to us. We promise not to store or pass on any of the data that you send to us via our online conversion, encode or decode tools. The data that you send to us will simply be converted in the way that you require and the results sent back to you. For the extra security of an encrypted connection please also enable SSL."
+      },
+      "whyUse": {
+        "title": "Why Choose {siteName}?",
+        "description": "{siteName} is more than just a code editor—it's a comprehensive toolkit built to make your development process faster, more efficient, and secure. Here’s what sets us apart:",
+        "items": {
+          "item1": {
+            "title": "All-in-One Platform",
+            "description": "Say goodbye to switching between different tools. With {siteName}, you have everything you need in one place, from code execution and data conversion to specialized editors for SQL and SVG."
+          },
+          "item2": {
+            "title": "Enhanced Security",
+            "description": "We prioritize your data security by employing industry-standard encryption and secure execution environments. Whether you’re running code or handling sensitive data, Multitools ensures your work remains private and protected."
+          },
+          "item3": {
+            "title": "User-Friendly Interface",
+            "description": "Designed for both beginners and experienced developers, our platform offers a clean and intuitive interface, enabling you to focus on what matters most—your work."
+          },
+          "item4": {
+            "title": "Cloud-Based Convenience",
+            "description": "Access your tools from anywhere, anytime. As a web-based platform, {siteName} provides the flexibility to work on your projects across devices without the need for local installations or updates."
+          }
+        }
+      },
+      "whoBenefit": {
+        "title": "Who Can Benefit from {siteName}?",
+        "description": "Whether you're a software developer, data analyst, or hobbyist, {siteName} has something for everyone. Here are some ideal use cases:",
+        "items": {
+          "item1": {
+            "title": "Software Developers",
+            "description": "Streamline your coding process with our multi-language code editor, allowing you to write and execute code quickly."
+          },
+          "item2": {
+            "title": "Data Analysts",
+            "description": "Use our data conversion tools to manipulate various data formats seamlessly."
+          },
+          "item3": {
+            "title": "Designers & Creators",
+            "description": "Edit SVG code directly in your browser to create and modify scalable vector graphics on the go."
+          }
+        }
+      }
     },
     "sqlFormatter": {
       "buttons": {
         "copy": "Copy",
         "format": "Format",
-        "save": "Save"
+        "save": "Save",
+        "upload": "Upload"
       },
       "fields": {
         "dataTypeCase": {
@@ -306,7 +351,8 @@
       "buttons": {
         "copy": "Copy",
         "format": "Format",
-        "save": "Save"
+        "save": "Save",
+        "upload": "Upload"
       },
       "metaData": {
         "description": "Online SVG code editor tool, preview image and download directly",
@@ -319,6 +365,11 @@
           "success": "Copied to clipboard"
         }
       }
+    }
+  },
+  "contextProvider": {
+    "beforeUnload": {
+      "message": "Are you sure you want to leave? Changes you made may not be saved."
     }
   }
 }

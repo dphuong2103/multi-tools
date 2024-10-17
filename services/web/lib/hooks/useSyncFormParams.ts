@@ -29,13 +29,14 @@ export default function useSyncFormParams<T extends FieldValues>({
           params.delete(key);
         }
       }
-    }
-    for (const [key, value] of Object.entries(formData)) {
-      if (excludes?.includes(key as keyof T)) continue;
-      if (value) {
-        params.set(key, value);
-      } else {
-        params.delete(key);
+    } else {
+      for (const [key, value] of Object.entries(formData)) {
+        if (excludes?.includes(key as keyof T)) continue;
+        if (value) {
+          params.set(key, value);
+        } else {
+          params.delete(key);
+        }
       }
     }
     replace(`${pathname}?${params.toString()}`);

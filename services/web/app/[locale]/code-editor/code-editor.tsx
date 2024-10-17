@@ -1,6 +1,7 @@
 "use client";
 import React, {
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -29,6 +30,7 @@ import {
 import { executeCode } from "@/lib/apis/code-editor-api";
 import { Loader2, Play } from "lucide-react";
 import axios from "axios";
+import { BeforeUnloadContext } from "@/contexts/before-unload-provider";
 type EditorType = Parameters<NonNullable<EditorProps["onMount"]>>[0];
 
 interface CodeEditorProps extends DictionaryProps {}
@@ -45,6 +47,7 @@ function CodeEditor({ dictionary }: CodeEditorProps) {
   const resultContainerRef = useRef<HTMLDivElement | null>(null);
   const editorParentRef = useRef<HTMLDivElement | null>(null);
   const editorInstanceRef = useRef<EditorType | null>(null);
+  const { setShowPrompt } = useContext(BeforeUnloadContext);
   const abortControllerRef = useRef<null | AbortController>(null);
   const isDraggingRef = useRef(false);
   const handleGutterDrag = useRef((event: MouseEvent) => {
@@ -77,13 +80,13 @@ function CodeEditor({ dictionary }: CodeEditorProps) {
     document.addEventListener("mouseup", handleGutterMouseUp);
   }, [handleGutterMouseUp]);
 
-  // const handleEditorChange = useCallback((value?: string) => {
-  //   if (!value) {
-  //     setInput("");
-  //     return;
-  //   }
-  //   setInput(value);
-  // }, []);
+  const handleEditorChange = useCallback(
+    (value?: string) => {
+      value ? setShowPrompt(true) : setShowPrompt(false);
+      console.log(value ? true : false);
+    },
+    [setShowPrompt],
+  );
 
   const onSaveClick = useCallback(() => {
     const sourceCode = editorInstanceRef.current?.getValue();
@@ -245,6 +248,7 @@ function CodeEditor({ dictionary }: CodeEditorProps) {
         >
           <Editor
             theme={theme === "dark" ? "vs-dark" : "light"}
+            onChange={handleEditorChange}
             onMount={handleEditorMount}
             height="100%"
             language={selectedLanguage}

@@ -1,5 +1,5 @@
 import { LinkWithLocale } from "@/components/link-with-locale";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import Layout from "@/components/ui/layout";
 import {
@@ -8,8 +8,10 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import siteConfig from "@/constants/site-config";
 import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
+import { parseTranslation } from "@/lib/locale-lib";
 import {
   getFullPageRouteWithDomain,
   pageToRouteMapping,
@@ -120,6 +122,31 @@ export default async function Page({ params: { locale } }: LocaleParams) {
       items: codeEditorTools,
     },
   ];
+  const whyUseItems = Object.entries(dictionary.page.home.whyUse.items).reduce(
+    (acc, [key, value]) => {
+      acc.push({ title: value.title, description: value.description });
+      return acc;
+    },
+    [] as { title: string; description: string }[],
+  );
+
+  const whyUserSection = {
+    title: dictionary.page.home.whyUse.title,
+    description: dictionary.page.home.whyUse.description,
+    items: whyUseItems,
+  };
+
+  const whoBenefitSection = {
+    title: dictionary.page.home.whoBenefit.title,
+    description: dictionary.page.home.whoBenefit.description,
+    items: Object.entries(dictionary.page.home.whoBenefit.items).reduce(
+      (acc, [key, value]) => {
+        acc.push({ title: value.title, description: value.description });
+        return acc;
+      },
+      [] as { title: string; description: string }[],
+    ),
+  };
 
   return (
     <Layout
@@ -136,15 +163,18 @@ export default async function Page({ params: { locale } }: LocaleParams) {
                 {section.items.map((i) => (
                   <TooltipProvider delayDuration={400} key={i.href}>
                     <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          variant="link"
-                          className={"w-full justify-between px-0"}
+                      <TooltipTrigger
+                        className={buttonVariants({
+                          variant: "link",
+                          className: "w-full justify-between px-0",
+                        })}
+                      >
+                        <LinkWithLocale
+                          href={i.href}
+                          className="w-full text-left"
                         >
-                          <LinkWithLocale href={i.href}>
-                            {i.title}
-                          </LinkWithLocale>
-                        </Button>
+                          {i.title}
+                        </LinkWithLocale>
                       </TooltipTrigger>
                       <TooltipContent>
                         <p className="text-sm">{i.tooltip}</p>
@@ -157,8 +187,54 @@ export default async function Page({ params: { locale } }: LocaleParams) {
           ))}
         </div>
         <div className="my-prose">
-          <h2>{dictionary.page.home.pageDescription.title}</h2>
+          <h2>
+            {parseTranslation(dictionary.page.home.pageDescription.title, {
+              siteName: siteConfig.title,
+            })}
+          </h2>
           <p>{dictionary.page.home.pageDescription.description}</p>
+        </div>
+        <div className="my-prose">
+          <h2>
+            {parseTranslation(whyUserSection.title, {
+              siteName: siteConfig.title,
+            })}
+          </h2>
+          <p>
+            {parseTranslation(whyUserSection.description, {
+              siteName: siteConfig.title,
+            })}
+          </p>
+          <ul>
+            {whyUserSection.items.map((item) => (
+              <li key={item.title}>
+                <span className="font-bold">{item.title}</span>:{" "}
+                {parseTranslation(item.description, {
+                  siteName: siteConfig.title,
+                })}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="my-prose">
+          <h2>
+            {parseTranslation(whoBenefitSection.title, {
+              siteName: siteConfig.title,
+            })}
+          </h2>
+          <p>
+            {parseTranslation(whoBenefitSection.description, {
+              siteName: siteConfig.title,
+            })}
+          </p>
+          <ul>
+            {whoBenefitSection.items.map((item) => (
+              <li key={item.title}>
+                <span className="font-bold">{item.title}</span>:{" "}
+                {item.description}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </Layout>
