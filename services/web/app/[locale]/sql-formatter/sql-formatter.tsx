@@ -41,7 +41,7 @@ const initialValues = {
   tabWidth: 1,
 } as SqlFormatterFormModel;
 
-interface SqlFormatterProps extends DictionaryProps { }
+interface SqlFormatterProps extends DictionaryProps {}
 
 function SqlFormatter({ dictionary }: SqlFormatterProps) {
   const { theme } = useTheme();

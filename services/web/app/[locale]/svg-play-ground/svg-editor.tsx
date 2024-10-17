@@ -1,6 +1,6 @@
 "use client";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import Editor, { EditorProps, Monaco } from "@monaco-editor/react";
+import Editor, { EditorProps } from "@monaco-editor/react";
 import styles from "./styles.module.scss";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";

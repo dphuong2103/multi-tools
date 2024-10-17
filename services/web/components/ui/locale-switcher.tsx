@@ -75,6 +75,7 @@ export default function LocaleSwitcher({ dictionary }: LocaleSwitcherProps) {
           ) : (
             "..."
           )}
+          <span className="sr-only">local-switcher</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
@@ -93,6 +94,7 @@ export default function LocaleSwitcher({ dictionary }: LocaleSwitcherProps) {
                 />
               }
               {item.label}
+              <span className="sr-only">{item.label}</span>
             </Link>
           </DropdownMenuItem>
         ))}

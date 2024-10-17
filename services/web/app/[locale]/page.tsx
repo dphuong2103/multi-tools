@@ -8,10 +8,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import siteConfig from "@/constants/site-config";
-import { Locale, localeMapping } from "@/i18n.config";
+import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
-import { getFullPageRouteWithDomain, pageToRouteMapping } from "@/models/routes";
+import {
+  getFullPageRouteWithDomain,
+  pageToRouteMapping,
+} from "@/models/routes";
 import { LocaleParams } from "@/types/data-types";
 import { Metadata } from "next";
 
@@ -47,8 +49,8 @@ export async function generateMetadata({
     alternates: {
       canonical: getFullPageRouteWithDomain("home", locale),
       languages: {
-        "en-US": getFullPageRouteWithDomain("home","en"),
-        "vi-VN": getFullPageRouteWithDomain("home","vi"),
+        "en-US": getFullPageRouteWithDomain("home", "en"),
+        "vi-VN": getFullPageRouteWithDomain("home", "vi"),
       },
     },
   };

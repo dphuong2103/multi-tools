@@ -19,11 +19,13 @@ function Footer() {
             <Link href={`mailto:${siteConfig.mail}`}>
               <CiMail className="w-6 h-6" />
             </Link>
+            <span className="sr-only">mail</span>
           </Button>
           <Button variant={"ghost"} asChild={false}>
             <Link href={siteConfig.telegramLink} target="blank">
               <FaTelegramPlane className="w-6 h-6" />
             </Link>
+            <span className="sr-only">telegram</span>
           </Button>
         </div>
       </div>

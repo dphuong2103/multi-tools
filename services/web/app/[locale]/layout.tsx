@@ -1,7 +1,6 @@
 import "@/app//globals.css";
 import { Inter } from "next/font/google";
 import AuthProvider from "@/contexts/auth-provider";
-import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import LoadingProvider from "@/contexts/loading-provider";

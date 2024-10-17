@@ -1,4 +1,4 @@
-import 'server-only'
+import "server-only";
 import type { Locale } from "@/i18n.config";
 import en from "@/dictionaries/en.json";
 const dictionaries = {
@@ -9,7 +9,6 @@ const dictionaries = {
 export const getDictionary = async (locale: Locale) => dictionaries[locale]();
 
 export type Dictionary = Awaited<ReturnType<typeof getDictionary>>;
-
 type Messages = typeof en;
 type Paths<Schema, Path extends string = ""> = Schema extends string
   ? Path

@@ -149,9 +149,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
                   </Select>
                 )}
               />
-              <Button disabled={form.formState.isSubmitted}>
-                {dictionary.page.hex.buttons.convert}
-              </Button>
+              <Button>{dictionary.page.hex.buttons.convert}</Button>
             </div>
             <div className="relative">
               <Textarea

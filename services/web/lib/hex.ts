@@ -21,7 +21,6 @@ export function decodeHex(input: string) {
     const charCode = parseInt(hexChar, 16);
     str += String.fromCharCode(charCode);
   }
-
   return str;
 }
 
