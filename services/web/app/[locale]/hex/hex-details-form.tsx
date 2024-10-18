@@ -141,9 +141,15 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
                     <SelectContent>
                       <SelectItem value="encode">
                         {dictionary.page.hex.operations.encode}
+                        <span className="sr-only">
+                          {dictionary.page.hex.operations.encode}
+                        </span>
                       </SelectItem>
                       <SelectItem value="decode">
                         {dictionary.page.hex.operations.decode}
+                        <span className="sr-only">
+                          {dictionary.page.hex.operations.decode}
+                        </span>
                       </SelectItem>
                     </SelectContent>
                   </Select>
@@ -158,6 +164,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
                 contentEditable={false}
                 rows={5}
                 readOnly={true}
+                aria-label="output"
               />
               <Button
                 className="absolute right-0 bottom-0 hidden md:inline-block"
@@ -166,6 +173,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
                 onClick={onCopyClick}
               >
                 <Copy />
+                <span className="sr-only">copy</span>
               </Button>
             </div>
           </div>
@@ -195,6 +203,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
                 type="button"
                 onClick={() => onHistoryCopyClick(item)}
               >
+                <span className="sr-only">copy history</span>
                 <Copy />
               </Button>
             </div>

@@ -92,6 +92,7 @@ function MobileNavBar({ locale, dictionary }: MobileNavBarProps) {
       <SheetTrigger asChild className="inline-block lg:hidden">
         <Button variant="ghost">
           <Menu className="h-6 w-6" />
+          <span className="sr-only">Menu</span>
         </Button>
       </SheetTrigger>
       <SheetContent className="flex flex-col gap-2">

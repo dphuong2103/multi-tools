@@ -15,17 +15,17 @@ function Footer() {
           © {siteConfig.title}. All Right Reserved.
         </p>
         <div>
-          <Button variant={"ghost"} asChild={false}>
+          <Button variant={"ghost"} asChild>
             <Link href={`mailto:${siteConfig.mail}`}>
               <CiMail className="w-6 h-6" />
+              <span className="sr-only">mail</span>
             </Link>
-            <span className="sr-only">mail</span>
           </Button>
-          <Button variant={"ghost"} asChild={false}>
+          <Button variant={"ghost"} asChild>
             <Link href={siteConfig.telegramLink} target="blank">
               <FaTelegramPlane className="w-6 h-6" />
+              <span className="sr-only">telegram</span>
             </Link>
-            <span className="sr-only">telegram</span>
           </Button>
         </div>
       </div>
