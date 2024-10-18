@@ -1,4 +1,9 @@
 {
+  "contextProvider": {
+    "beforeUnload": {
+      "message": "Dữ liệu của bạn có thể bị mất. Bạn có chắc chắn muốn rời khỏi trang không?"
+    }
+  },
   "navBar": {
     "codeEditor": "Trình chỉnh sửa mã nguồn",
     "encodeDecode": {
@@ -19,7 +24,7 @@
         "convert": "Chuyển đổi"
       },
       "features": {
-        "description": "Công cụ chuyển đổi Base64 từ multitools.site là công cụ miễn phí giúp bạn chuyển đổi Base64 sang văn bản nhanh chóng. Dưới đây là một số tính năng chính của tiện ích này.",
+        "description": "Công cụ chuyển đổi Base64 từ {siteName} là công cụ miễn phí giúp bạn chuyển đổi Base64 sang văn bản nhanh chóng. Dưới đây là một số tính năng chính của tiện ích này.",
         "items": {
           "item1": {
             "description": "Không có bất kỳ chi phí nào khi sử dụng công cụ này. Bạn có thể sử dụng nó miễn phí và thực hiện bao nhiêu chuyển đổi tùy ý mà không cần đăng ký.",
@@ -129,7 +134,7 @@
         "convert": "Chuyển đổi"
       },
       "features": {
-        "description": "Công cụ chuyển đổi hex của multitools.site là một công cụ miễn phí giúp bạn chuyển đổi hex sang văn bản ngay lập tức. Dưới đây là một số tính năng chính của tiện ích trực tuyến này.",
+        "description": "Công cụ chuyển đổi hex của {siteName} là một công cụ miễn phí giúp bạn chuyển đổi hex sang văn bản ngay lập tức. Dưới đây là một số tính năng chính của tiện ích trực tuyến này.",
         "items": {
           "item1": {
             "description": "Không có bất kỳ khoản phí nào liên quan đến việc sử dụng công cụ chuyển đổi hex trực tuyến này. Bạn có thể sử dụng tiện ích này miễn phí và thực hiện nhiều lần chuyển đổi như bạn muốn. Bạn không cần đăng ký để tải xuống kết quả.",
@@ -197,13 +202,16 @@
       }
     },
     "home": {
+      "dataPrivacy": {
+        "title": ""
+      },
       "metaData": {
         "description": "Công cụ trực tuyến để mã hóa, giải mã hex, base64 và chỉnh sửa hình ảnh SVG trực tuyến",
         "title": "Công cụ đa chức năng để chuyển đổi chuỗi, hình ảnh,..."
       },
       "pageDescription": {
-        "description": "\"Multitools\" là một ứng dụng web đa năng được thiết kế để tối ưu hóa các tác vụ phát triển khác nhau trên một nền tảng thuận tiện. Từ việc chuyển đổi hex và base64 sang văn bản đến cung cấp trình chỉnh sửa mã SVG trực tuyến, trình chỉnh sửa SQL, và trình soạn thảo mã đa ngôn ngữ với khả năng thực thi, Multitools phục vụ cho cả các nhà phát triển và những người đam mê công nghệ. Cho dù bạn cần thao tác dữ liệu, viết các truy vấn SQL, hay lập trình bằng các ngôn ngữ như C# và Java, Multitools sẽ hỗ trợ bạn với giao diện trực tuyến trực quan và dễ tiếp cận.",
-        "title": "Multitools: Bộ công cụ chuyển đổi mã và dữ liệu trực tuyến tối ưu"
+        "description": "\"{siteName}\" là một ứng dụng web đa năng được thiết kế để tối ưu hóa các tác vụ phát triển khác nhau trên một nền tảng thuận tiện. Từ việc chuyển đổi hex và base64 sang văn bản đến cung cấp trình chỉnh sửa mã SVG trực tuyến, trình chỉnh sửa SQL, và trình soạn thảo mã đa ngôn ngữ với khả năng thực thi, {siteName} phục vụ cho cả các nhà phát triển và những người đam mê công nghệ. Cho dù bạn cần thao tác dữ liệu, viết các truy vấn SQL, hay lập trình bằng các ngôn ngữ như C# và Java, {siteName} sẽ hỗ trợ bạn với giao diện trực tuyến trực quan và dễ tiếp cận.",
+        "title": "{siteName}: Bộ công cụ chuyển đổi mã và dữ liệu trực tuyến tối ưu"
       },
       "section": {
         "codeEditorTools": {
@@ -248,48 +256,45 @@
         }
       },
       "title": "Công cụ đa chức năng",
-      "dataPrivacy": {
-        "title": ""
-      },
-      "whyUse": {
-        "title": "Tại sao nên chọn {siteName}?",
-        "description": "{siteName} không chỉ là một trình chỉnh sửa mã, một bộ công cụ toàn diện được xây dựng để làm cho quá trình phát triển của bạn nhanh hơn, hiệu quả hơn và an toàn hơn. Đây là những điểm nổi bật của chúng tôi:",
-        "items": {
-          "item1": {
-            "title": "Nền tảng Tất Cả Trong Một",
-            "description": "Hãy nói lời tạm biệt với việc chuyển đổi giữa các công cụ khác nhau. Với {siteName}, bạn có mọi thứ bạn cần ở một nơi, từ chạy mã, chuyển đổi dữ liệu đến các trình chỉnh sửa chuyên biệt cho SQL và SVG."
-          },
-          "item2": {
-            "title": "Tăng cường Bảo mật",
-            "description": "Chúng tôi ưu tiên bảo mật dữ liệu của bạn bằng cách sử dụng mã hóa tiêu chuẩn công nghiệp và môi trường thực thi an toàn. Dù bạn đang chạy mã hay xử lý dữ liệu nhạy cảm, {siteName} đảm bảo công việc của bạn luôn được bảo mật và riêng tư."
-          },
-          "item3": {
-            "title": "Giao diện Thân thiện với Người dùng",
-            "description": "Được thiết kế cho cả người mới bắt đầu và các nhà phát triển giàu kinh nghiệm, nền tảng của chúng tôi cung cấp giao diện sạch sẽ và trực quan, giúp bạn tập trung vào công việc quan trọng nhất."
-          },
-          "item4": {
-            "title": "Tiện lợi Dựa trên Đám mây",
-            "description": "Truy cập công cụ của bạn ở bất cứ đâu, bất cứ lúc nào. Là một nền tảng dựa trên web, {siteName} cung cấp sự linh hoạt để bạn làm việc trên các dự án của mình trên nhiều thiết bị mà không cần cài đặt hay cập nhật cục bộ."
-          }
-        }
-      },
       "whoBenefit": {
-        "title": "Ai Có Thể Hưởng Lợi từ {siteName}?",
         "description": "Dù bạn là nhà phát triển phần mềm, nhà phân tích dữ liệu, hay người đam mê công nghệ, {siteName} đều có điều gì đó dành cho bạn. Dưới đây là một số trường hợp sử dụng lý tưởng:",
         "items": {
           "item1": {
-            "title": "Các Nhà Phát triển Phần mềm",
-            "description": "Tối ưu hóa quy trình lập trình của bạn với trình chỉnh sửa mã hỗ trợ nhiều ngôn ngữ của chúng tôi, cho phép bạn viết và chạy mã một cách nhanh chóng."
+            "description": "Tối ưu hóa quy trình lập trình của bạn với trình chỉnh sửa mã hỗ trợ nhiều ngôn ngữ của chúng tôi, cho phép bạn viết và chạy mã một cách nhanh chóng.",
+            "title": "Các Nhà Phát triển Phần mềm"
           },
           "item2": {
-            "title": "Nhà Phân tích Dữ liệu",
-            "description": "Sử dụng các công cụ chuyển đổi dữ liệu của chúng tôi để xử lý các định dạng dữ liệu khác nhau một cách dễ dàng."
+            "description": "Sử dụng các công cụ chuyển đổi dữ liệu của chúng tôi để xử lý các định dạng dữ liệu khác nhau một cách dễ dàng.",
+            "title": "Nhà Phân tích Dữ liệu"
           },
           "item3": {
-            "title": "Nhà Thiết kế & Người Sáng tạo",
-            "description": "Chỉnh sửa mã SVG trực tiếp trong trình duyệt của bạn để tạo và thay đổi các đồ họa vector có thể mở rộng ngay lập tức."
+            "description": "Chỉnh sửa mã SVG trực tiếp trong trình duyệt của bạn để tạo và thay đổi các đồ họa vector có thể mở rộng ngay lập tức.",
+            "title": "Nhà Thiết kế & Người Sáng tạo"
           }
-        }
+        },
+        "title": "Ai Có Thể Hưởng Lợi từ {siteName}?"
+      },
+      "whyUse": {
+        "description": "{siteName} không chỉ là một trình chỉnh sửa mã, một bộ công cụ toàn diện được xây dựng để làm cho quá trình phát triển của bạn nhanh hơn, hiệu quả hơn và an toàn hơn. Đây là những điểm nổi bật của chúng tôi:",
+        "items": {
+          "item1": {
+            "description": "Hãy nói lời tạm biệt với việc chuyển đổi giữa các công cụ khác nhau. Với {siteName}, bạn có mọi thứ bạn cần ở một nơi, từ chạy mã, chuyển đổi dữ liệu đến các trình chỉnh sửa chuyên biệt cho SQL và SVG.",
+            "title": "Nền tảng Tất Cả Trong Một"
+          },
+          "item2": {
+            "description": "Chúng tôi ưu tiên bảo mật dữ liệu của bạn bằng cách sử dụng mã hóa tiêu chuẩn công nghiệp và môi trường thực thi an toàn. Dù bạn đang chạy mã hay xử lý dữ liệu nhạy cảm, {siteName} đảm bảo công việc của bạn luôn được bảo mật và riêng tư.",
+            "title": "Tăng cường Bảo mật"
+          },
+          "item3": {
+            "description": "Được thiết kế cho cả người mới bắt đầu và các nhà phát triển giàu kinh nghiệm, nền tảng của chúng tôi cung cấp giao diện sạch sẽ và trực quan, giúp bạn tập trung vào công việc quan trọng nhất.",
+            "title": "Giao diện Thân thiện với Người dùng"
+          },
+          "item4": {
+            "description": "Truy cập công cụ của bạn ở bất cứ đâu, bất cứ lúc nào. Là một nền tảng dựa trên web, {siteName} cung cấp sự linh hoạt để bạn làm việc trên các dự án của mình trên nhiều thiết bị mà không cần cài đặt hay cập nhật cục bộ.",
+            "title": "Tiện lợi Dựa trên Đám mây"
+          }
+        },
+        "title": "Tại sao nên chọn {siteName}?"
       }
     },
     "sqlFormatter": {
@@ -364,11 +369,6 @@
           "success": "Đã sao chép vào clipboard"
         }
       }
-    }
-  },
-  "contextProvider": {
-    "beforeUnload": {
-      "message": "Dữ liệu của bạn có thể bị mất. Bạn có chắc chắn muốn rời khỏi trang không?"
     }
   }
 }

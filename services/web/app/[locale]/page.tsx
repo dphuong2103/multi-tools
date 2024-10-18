@@ -1,4 +1,4 @@
-import { LinkWithLocale } from "@/components/link-with-locale";
+import LinkWithLocale from "@/components/link-with-locale";
 import { buttonVariants } from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import Layout from "@/components/ui/layout";
@@ -10,8 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 import siteConfig from "@/constants/site-config";
 import { Locale } from "@/i18n.config";
-import { getDictionary } from "@/lib/dictionary";
-import { parseTranslation } from "@/lib/locale-lib";
+import { getDictionary, interpolateTranslations } from "@/lib/dictionary";
 import {
   getFullPageRouteWithDomain,
   pageToRouteMapping,
@@ -168,6 +167,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
                           variant: "link",
                           className: "w-full justify-between px-0",
                         })}
+                        asChild
                       >
                         <LinkWithLocale
                           href={i.href}
@@ -188,20 +188,28 @@ export default async function Page({ params: { locale } }: LocaleParams) {
         </div>
         <div className="my-prose">
           <h2>
-            {parseTranslation(dictionary.page.home.pageDescription.title, {
-              siteName: siteConfig.title,
-            })}
+            {interpolateTranslations(
+              dictionary.page.home.pageDescription.title,
+              {
+                siteName: siteConfig.title,
+              },
+            )}
           </h2>
-          <p>{dictionary.page.home.pageDescription.description}</p>
+          <p>
+            {interpolateTranslations(
+              dictionary.page.home.pageDescription.description,
+              { siteName: siteConfig.title },
+            )}
+          </p>
         </div>
         <div className="my-prose">
           <h2>
-            {parseTranslation(whyUserSection.title, {
+            {interpolateTranslations(whyUserSection.title, {
               siteName: siteConfig.title,
             })}
           </h2>
           <p>
-            {parseTranslation(whyUserSection.description, {
+            {interpolateTranslations(whyUserSection.description, {
               siteName: siteConfig.title,
             })}
           </p>
@@ -209,7 +217,7 @@ export default async function Page({ params: { locale } }: LocaleParams) {
             {whyUserSection.items.map((item) => (
               <li key={item.title}>
                 <span className="font-bold">{item.title}</span>:{" "}
-                {parseTranslation(item.description, {
+                {interpolateTranslations(item.description, {
                   siteName: siteConfig.title,
                 })}
               </li>
@@ -218,12 +226,12 @@ export default async function Page({ params: { locale } }: LocaleParams) {
         </div>
         <div className="my-prose">
           <h2>
-            {parseTranslation(whoBenefitSection.title, {
+            {interpolateTranslations(whoBenefitSection.title, {
               siteName: siteConfig.title,
             })}
           </h2>
           <p>
-            {parseTranslation(whoBenefitSection.description, {
+            {interpolateTranslations(whoBenefitSection.description, {
               siteName: siteConfig.title,
             })}
           </p>

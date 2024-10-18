@@ -1,3 +1,5 @@
+import siteConfig from "@/constants/site-config";
+import { interpolateTranslations } from "@/lib/dictionary";
 import { DictionaryProps } from "@/types/data-types";
 import React from "react";
 
@@ -19,7 +21,9 @@ function Features({ dictionary }: FeaturesProps) {
   return (
     <div className="my-prose">
       <h2>{features.title}</h2>
-      {features.description}
+      {interpolateTranslations(features.description, {
+        siteName: siteConfig.title,
+      })}
       <ul>
         {items.map((item) => (
           <li key={item.title}>

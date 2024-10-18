@@ -1,31 +1,37 @@
 "use client";
-import { Locale } from "@/i18n.config";
+import { i18n, Locale } from "@/i18n.config";
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
+import { forwardRef, LegacyRef, useMemo } from "react";
 
 interface LinkWithLocaleProps extends LinkProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export function LinkWithLocale({
-  href,
-  className,
-  children,
-  ...props
-}: LinkWithLocaleProps) {
-  const pathName = usePathname();
+const LinkWithLocale = forwardRef<any | undefined, LinkWithLocaleProps>(
+  ({ href, className, children, ...props }, ref) => {
+    const pathName = usePathname();
 
-  const currentLocale = useMemo(() => {
-    const segments = pathName.split("/");
-    const locale = segments[1] ?? ("en" as Locale);
-    return locale;
-  }, [pathName]);
+    const currentLocale = useMemo(() => {
+      const segments = pathName.split("/");
+      const locale = i18n.locales.includes(segments[1]) ? segments[1] : "en";
+      return locale;
+    }, [pathName]);
 
-  return (
-    <Link href={`/${currentLocale}${href}`} className={className} {...props}>
-      {children}
-    </Link>
-  );
-}
+    return (
+      <Link
+        href={`/${currentLocale}${href}`}
+        className={className}
+        {...props}
+        ref={ref}
+      >
+        {children}
+      </Link>
+    );
+  },
+);
+
+LinkWithLocale.displayName = "LinkWithLocale";
+
+export default LinkWithLocale;

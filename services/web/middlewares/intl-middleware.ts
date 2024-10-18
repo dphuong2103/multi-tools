@@ -82,15 +82,15 @@ export function withI18nMiddleware(middleware: CustomMiddleware) {
         `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
         request.url,
       );
-      const userAgent = request.headers.get("user-agent") || "";
-      const isGoogleBot = userAgent.toLowerCase().includes("googlebot");
-      console.log("userAgent:", userAgent);
-      if (isGoogleBot) {
-        console.log("Googlebot encountered a redirect", {
-          originalUrl: request.url,
-          redirectUrl: newUrl.toString(),
-        });
-      }
+      // const userAgent = request.headers.get("user-agent") || "";
+      // const isGoogleBot = userAgent.toLowerCase().includes("googlebot");
+      // console.log("userAgent:", userAgent);
+      // if (isGoogleBot) {
+      //   console.log("Googlebot encountered a redirect", {
+      //     originalUrl: request.url,
+      //     redirectUrl: newUrl.toString(),
+      //   });
+      // }
       const response = NextResponse.redirect(newUrl);
       response.cookies.set({
         name: "NEXT_LOCALE",

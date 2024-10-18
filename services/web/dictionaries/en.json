@@ -1,4 +1,9 @@
 {
+  "contextProvider": {
+    "beforeUnload": {
+      "message": "Are you sure you want to leave? Changes you made may not be saved."
+    }
+  },
   "navBar": {
     "codeEditor": "Code Editor",
     "encodeDecode": {
@@ -19,7 +24,7 @@
         "convert": "Convert"
       },
       "features": {
-        "description": "The base64 converter provided by multitools.site is a free tool that helps you convert base64 to text immediately. Below are some of the main features of this online utility.",
+        "description": "The base64 converter provided by {siteName} is a free tool that helps you convert base64 to text immediately. Below are some of the main features of this online utility.",
         "items": {
           "item1": {
             "description": "There are no charges associated with the usage of this online base64 converter. You can use this utility for free and make as many conversions as you desire. You don’t need to get yourself registered to download the results.",
@@ -129,7 +134,7 @@
         "convert": "Convert"
       },
       "features": {
-        "description": "The hexadecimal converter provided by multitools.site is a free tool that helps you convert hexadecimal to text immediately. Below are some of the main features of this online utility.",
+        "description": "The hexadecimal converter provided by {siteName} is a free tool that helps you convert hexadecimal to text immediately. Below are some of the main features of this online utility.",
         "items": {
           "item1": {
             "description": "There are no charges associated with the usage of this online hexadecimal converter. You can use this utility for free and make as many conversions as you desire. You don’t need to get yourself registered to download the results.",
@@ -197,13 +202,17 @@
       }
     },
     "home": {
+      "dataPrivacy": {
+        "description": "Your privacy is important to us. We promise not to store or pass on any of the data that you send to us via our online conversion, encode or decode tools. The data that you send to us will simply be converted in the way that you require and the results sent back to you. For the extra security of an encrypted connection please also enable SSL.",
+        "title": "Data Privacy"
+      },
       "metaData": {
         "description": "Online tools for encoding, decoding hex, base64, online editing sv images",
         "title": "Multi-Tools for converting string, image,..."
       },
       "pageDescription": {
-        "description": "\"Multitools\" is a versatile web application designed to streamline various development tasks in one convenient platform. From converting hex and base64 to text to providing an online SVG code editor, SQL editor, and a multi-language code editor with execution capabilities, Multitools caters to developers and tech enthusiasts alike. Whether you need to manipulate data, write SQL queries, or code in languages like C# and Java, Multitools has you covered with an intuitive, accessible online interface.",
-        "title": "Multitools: The Ultimate Online Code and Data Conversion Toolkit"
+        "description": "\"{siteName}\" is a versatile web application designed to streamline various development tasks in one convenient platform. From converting hex and base64 to text to providing an online SVG code editor, SQL editor, and a multi-language code editor with execution capabilities, {siteName} caters to developers and tech enthusiasts alike. Whether you need to manipulate data, write SQL queries, or code in languages like C# and Java, {siteName} has you covered with an intuitive, accessible online interface.",
+        "title": "{siteName} The Ultimate Online Code and Data Conversion Toolkit"
       },
       "section": {
         "codeEditorTools": {
@@ -248,49 +257,45 @@
         }
       },
       "title": "MultiTools",
-      "dataPrivacy": {
-        "title": "Data Privacy",
-        "description": "Your privacy is important to us. We promise not to store or pass on any of the data that you send to us via our online conversion, encode or decode tools. The data that you send to us will simply be converted in the way that you require and the results sent back to you. For the extra security of an encrypted connection please also enable SSL."
-      },
-      "whyUse": {
-        "title": "Why Choose {siteName}?",
-        "description": "{siteName} is more than just a code editor—it's a comprehensive toolkit built to make your development process faster, more efficient, and secure. Here’s what sets us apart:",
-        "items": {
-          "item1": {
-            "title": "All-in-One Platform",
-            "description": "Say goodbye to switching between different tools. With {siteName}, you have everything you need in one place, from code execution and data conversion to specialized editors for SQL and SVG."
-          },
-          "item2": {
-            "title": "Enhanced Security",
-            "description": "We prioritize your data security by employing industry-standard encryption and secure execution environments. Whether you’re running code or handling sensitive data, Multitools ensures your work remains private and protected."
-          },
-          "item3": {
-            "title": "User-Friendly Interface",
-            "description": "Designed for both beginners and experienced developers, our platform offers a clean and intuitive interface, enabling you to focus on what matters most—your work."
-          },
-          "item4": {
-            "title": "Cloud-Based Convenience",
-            "description": "Access your tools from anywhere, anytime. As a web-based platform, {siteName} provides the flexibility to work on your projects across devices without the need for local installations or updates."
-          }
-        }
-      },
       "whoBenefit": {
-        "title": "Who Can Benefit from {siteName}?",
         "description": "Whether you're a software developer, data analyst, or hobbyist, {siteName} has something for everyone. Here are some ideal use cases:",
         "items": {
           "item1": {
-            "title": "Software Developers",
-            "description": "Streamline your coding process with our multi-language code editor, allowing you to write and execute code quickly."
+            "description": "Streamline your coding process with our multi-language code editor, allowing you to write and execute code quickly.",
+            "title": "Software Developers"
           },
           "item2": {
-            "title": "Data Analysts",
-            "description": "Use our data conversion tools to manipulate various data formats seamlessly."
+            "description": "Use our data conversion tools to manipulate various data formats seamlessly.",
+            "title": "Data Analysts"
           },
           "item3": {
-            "title": "Designers & Creators",
-            "description": "Edit SVG code directly in your browser to create and modify scalable vector graphics on the go."
+            "description": "Edit SVG code directly in your browser to create and modify scalable vector graphics on the go.",
+            "title": "Designers & Creators"
           }
-        }
+        },
+        "title": "Who Can Benefit from {siteName}?"
+      },
+      "whyUse": {
+        "description": "{siteName} is more than just a code editor—it's a comprehensive toolkit built to make your development process faster, more efficient, and secure. Here’s what sets us apart:",
+        "items": {
+          "item1": {
+            "description": "Say goodbye to switching between different tools. With {siteName}, you have everything you need in one place, from code execution and data conversion to specialized editors for SQL and SVG.",
+            "title": "All-in-One Platform"
+          },
+          "item2": {
+            "description": "We prioritize your data security by employing industry-standard encryption and secure execution environments. Whether you’re running code or handling sensitive data, {siteName} ensures your work remains private and protected.",
+            "title": "Enhanced Security"
+          },
+          "item3": {
+            "description": "Designed for both beginners and experienced developers, our platform offers a clean and intuitive interface, enabling you to focus on what matters most—your work.",
+            "title": "User-Friendly Interface"
+          },
+          "item4": {
+            "description": "Access your tools from anywhere, anytime. As a web-based platform, {siteName} provides the flexibility to work on your projects across devices without the need for local installations or updates.",
+            "title": "Cloud-Based Convenience"
+          }
+        },
+        "title": "Why Choose {siteName}?"
       }
     },
     "sqlFormatter": {
@@ -365,11 +370,6 @@
           "success": "Copied to clipboard"
         }
       }
-    }
-  },
-  "contextProvider": {
-    "beforeUnload": {
-      "message": "Are you sure you want to leave? Changes you made may not be saved."
     }
   }
 }

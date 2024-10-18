@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 import { pageToRouteMapping, Route } from "@/models/routes";
 import LocaleSwitcher from "./locale-switcher";
 import { DictionaryProps, LocaleProps } from "@/types/data-types";
-import { LinkWithLocale } from "../link-with-locale";
+import LinkWithLocale from "../link-with-locale";
 
 interface MobileNavBarProps extends LocaleProps, DictionaryProps {}
 

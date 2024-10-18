@@ -6,7 +6,7 @@ import multiToolIcon from "@/assets/images/multi-tools-icon.svg";
 import Image from "next/image";
 import { DictionaryProps, LocaleProps } from "@/types/data-types";
 import LocaleSwitcher from "./locale-switcher";
-import { LinkWithLocale } from "../link-with-locale";
+import LinkWithLocale from "../link-with-locale";
 import { pageToRouteMapping } from "@/models/routes";
 interface NavBarProps extends DictionaryProps, LocaleProps {
   title: string;

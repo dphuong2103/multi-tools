@@ -2,7 +2,6 @@ import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./dropdown-menu";
 import { ChevronDown } from "lucide-react";
@@ -10,7 +9,7 @@ import { Button } from "./button";
 import { cn } from "@/lib/utils";
 import { pageToRouteMapping, Route } from "@/models/routes";
 import { DictionaryProps } from "@/types/data-types";
-import { LinkWithLocale } from "../link-with-locale";
+import LinkWithLocale from "../link-with-locale";
 
 interface NavBarLinkProps extends DictionaryProps {}
 
