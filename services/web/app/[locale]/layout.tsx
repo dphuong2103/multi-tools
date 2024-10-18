@@ -1,15 +1,13 @@
 import "@/app//globals.css";
 import { Inter } from "next/font/google";
-import AuthProvider from "@/contexts/auth-provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import LoadingProvider from "@/contexts/loading-provider";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import { Locale } from "@/i18n.config";
-import { NavigationEvents } from "@/components/navigation-events";
 import BeforeUnloadProvider from "@/contexts/before-unload-provider";
 import { getDictionary } from "@/lib/dictionary";
-
+import NextTopLoader from "nextjs-toploader";
 const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -61,7 +59,22 @@ export default async function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           <BeforeUnloadProvider dictionary={dictionary}>
             <LoadingProvider>
-              <AuthProvider>{children}</AuthProvider>
+              {/* <AuthProvider> */}
+              <NextTopLoader
+                color="#2299DD"
+                initialPosition={0.08}
+                crawlSpeed={200}
+                height={3}
+                crawl={true}
+                // showSpinner={true}
+                easing="ease"
+                speed={200}
+                shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+                zIndex={1600}
+                showAtBottom={false}
+              />
+              {children}
+              {/* </AuthProvider> */}
             </LoadingProvider>
             <Toaster />
           </BeforeUnloadProvider>

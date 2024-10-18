@@ -70,10 +70,23 @@
   }
 }
 
-.hide-cursor-monaco-editor .monaco-editor .cursors-layer > .cursor {
-	display: none !important;
+.hide-cursor-monaco-editor .monaco-editor .cursors-layer>.cursor {
+  display: none !important;
 }
 
-.my-prose{
-  @apply prose dark:prose-invert  max-w-none;
+.my-prose {
+  @apply prose dark:prose-invert max-w-none;
+}
+
+body {
+  transition-property: opacity, transform, filter, background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+}
+
+.page-transition {
+  opacity: 0;
+  background: black;
+  transform: translateY(40px);
+  filter: blur(12px);
 }

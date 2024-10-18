@@ -1,5 +1,5 @@
 import { LinkWithLocale } from "@/components/link-with-locale";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import Layout from "@/components/ui/layout";
 import {

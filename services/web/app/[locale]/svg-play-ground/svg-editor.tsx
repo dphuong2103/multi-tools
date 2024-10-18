@@ -65,22 +65,25 @@ function SvgEditor({ dictionary }: SvgEditorProps) {
     document.addEventListener("mouseup", handleGutterMouseUp);
   }, [handleGutterMouseUp]);
 
-  const handleEditorChange = useCallback((value?: string) => {
-    if (!value) {
-      setShowPrompt(false);
-      setSvgCode("");
-      setImageSrc("");
-      return;
-    }
-    setShowPrompt(true);
-    setSvgCode(value);
-    try {
-      const encodedSvg = `data:image/svg+xml;base64,${btoa(value)}`;
-      setImageSrc(encodedSvg);
-    } catch (error) {
-      console.error("Error encoding SVG", error);
-    }
-  }, [setShowPrompt]);
+  const handleEditorChange = useCallback(
+    (value?: string) => {
+      if (!value) {
+        setShowPrompt(false);
+        setSvgCode("");
+        setImageSrc("");
+        return;
+      }
+      setShowPrompt(true);
+      setSvgCode(value);
+      try {
+        const encodedSvg = `data:image/svg+xml;base64,${btoa(value)}`;
+        setImageSrc(encodedSvg);
+      } catch (error) {
+        console.error("Error encoding SVG", error);
+      }
+    },
+    [setShowPrompt],
+  );
 
   const saveSvgToFile = useCallback(() => {
     const svgContent = editorInstanceRef.current?.getValue();

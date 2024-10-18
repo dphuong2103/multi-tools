@@ -135,7 +135,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
                 name="operation"
                 render={({ field }) => (
                   <Select value={field.value} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-[180px] ">
+                    <SelectTrigger className="w-auto">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>

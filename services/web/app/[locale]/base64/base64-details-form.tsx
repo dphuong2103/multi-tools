@@ -56,7 +56,7 @@ function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
   });
   const { watch } = form;
 
-  usePersistFormData(form_key, { watch });
+  usePersistFormData(form_key, { watch, excludes: ["input"] });
   useSyncFormParams({ watch: watch, excludes: ["input"] });
 
   const [output, setOutput] = useState("");
@@ -123,7 +123,7 @@ function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
             <TextAreaFormField
               control={form.control}
               name="input"
-              className="w-full p-2 mt-2"
+              className="my-prose w-full p-2 mt-2"
               placeholder="Enter text to encode/decode"
               rows={5}
             />
@@ -133,7 +133,7 @@ function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
                 name="operation"
                 render={({ field }) => (
                   <Select value={field.value} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-[180px] ">
+                    <SelectTrigger className="w-auto">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
