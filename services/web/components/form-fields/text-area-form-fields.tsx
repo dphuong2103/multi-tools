@@ -39,11 +39,11 @@ function TextAreaFormField<
       name={name}
       render={({ field }) => (
         <FormItem>
-          {/* {label && (
-                        <FormLabel className="text-gray-500 dark:text-gray-500 text-xs">
-                            {label} {required && "*"}
-                        </FormLabel>
-                    )} */}
+          {label && (
+            <FormLabel className="text-xs">
+              {label} {required && "*"}
+            </FormLabel>
+          )}
           <FormControl>
             <Textarea placeholder={placeholder} {...field} {...inputProps} />
           </FormControl>

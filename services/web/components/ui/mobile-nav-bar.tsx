@@ -1,10 +1,10 @@
 "use client";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "./button";
 import { ArrowBigRightIcon, Menu } from "lucide-react";
 import { useRouter } from "next/navigation";
-import Link, { LinkProps } from "next/link";
+import { LinkProps } from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 import {
   Collapsible,

@@ -154,8 +154,8 @@ export default async function Page({ params: { locale } }: LocaleParams) {
       locale={locale}
       className="h-screen flex flex-col"
     >
-      <div className="flex flex-col">
-        <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col gap-4 pb-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
           {sections.map((section) => (
             <Card title={section.title} key={section.key}>
               <div className="flex flex-col">
@@ -186,64 +186,70 @@ export default async function Page({ params: { locale } }: LocaleParams) {
             </Card>
           ))}
         </div>
-        <div className="my-prose">
-          <h2>
-            {interpolateTranslations(
-              dictionary.page.home.pageDescription.title,
-              {
-                siteName: siteConfig.title,
-              },
-            )}
-          </h2>
-          <p>
-            {interpolateTranslations(
-              dictionary.page.home.pageDescription.description,
-              { siteName: siteConfig.title },
-            )}
-          </p>
-        </div>
-        <div className="my-prose">
-          <h2>
-            {interpolateTranslations(whyUserSection.title, {
-              siteName: siteConfig.title,
-            })}
-          </h2>
-          <p>
-            {interpolateTranslations(whyUserSection.description, {
-              siteName: siteConfig.title,
-            })}
-          </p>
-          <ul>
-            {whyUserSection.items.map((item) => (
-              <li key={item.title}>
-                <span className="font-bold">{item.title}</span>:{" "}
-                {interpolateTranslations(item.description, {
+        <Card>
+          <div className="my-prose">
+            <h2>
+              {interpolateTranslations(
+                dictionary.page.home.pageDescription.title,
+                {
                   siteName: siteConfig.title,
-                })}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="my-prose">
-          <h2>
-            {interpolateTranslations(whoBenefitSection.title, {
-              siteName: siteConfig.title,
-            })}
-          </h2>
-          <p>
-            {interpolateTranslations(whoBenefitSection.description, {
-              siteName: siteConfig.title,
-            })}
-          </p>
-          <ul>
-            {whoBenefitSection.items.map((item) => (
-              <li key={item.title}>
-                <span className="font-bold">{item.title}</span>:{" "}
-                {item.description}
-              </li>
-            ))}
-          </ul>
-        </div>
+                },
+              )}
+            </h2>
+            <p>
+              {interpolateTranslations(
+                dictionary.page.home.pageDescription.description,
+                { siteName: siteConfig.title },
+              )}
+            </p>
+          </div>
+        </Card>
+        <Card>
+          <div className="my-prose">
+            <h2>
+              {interpolateTranslations(whyUserSection.title, {
+                siteName: siteConfig.title,
+              })}
+            </h2>
+            <p>
+              {interpolateTranslations(whyUserSection.description, {
+                siteName: siteConfig.title,
+              })}
+            </p>
+            <ul>
+              {whyUserSection.items.map((item) => (
+                <li key={item.title}>
+                  <span className="font-bold">{item.title}</span>:{" "}
+                  {interpolateTranslations(item.description, {
+                    siteName: siteConfig.title,
+                  })}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Card>
+        <Card>
+          <div className="my-prose">
+            <h2>
+              {interpolateTranslations(whoBenefitSection.title, {
+                siteName: siteConfig.title,
+              })}
+            </h2>
+            <p>
+              {interpolateTranslations(whoBenefitSection.description, {
+                siteName: siteConfig.title,
+              })}
+            </p>
+            <ul>
+              {whoBenefitSection.items.map((item) => (
+                <li key={item.title}>
+                  <span className="font-bold">{item.title}</span>:{" "}
+                  {item.description}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Card>
       </div>
     </Layout>
   );

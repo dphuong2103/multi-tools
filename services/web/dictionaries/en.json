@@ -129,6 +129,29 @@
         }
       }
     },
+    "contactUs": {
+      "buttons": {
+        "clear": "Clear",
+        "send": "Send"
+      },
+      "description": "We welcome your feedback and comments, so please feel free to share them with us. We work hard to keep improving {siteName} for your benefit, and take any suggestions that you make to heart. Contact us using the email form below, and a member of our team will be in touch with you shortly.",
+      "fields": {
+        "email": {
+          "label": "Email"
+        },
+        "message": {
+          "label": "Message"
+        },
+        "name": {
+          "label": "Name"
+        }
+      },
+      "metaData": {
+        "description": "Contact us for any queries or feedback",
+        "title": "Contact Us"
+      },
+      "title": "Contact Us"
+    },
     "hex": {
       "buttons": {
         "convert": "Convert"

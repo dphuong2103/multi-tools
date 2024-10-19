@@ -129,6 +129,29 @@
         }
       }
     },
+    "contactUs": {
+      "buttons": {
+        "clear": "Xóa",
+        "send": "Gửi"
+      },
+      "description": "Chúng tôi rất hoan nghênh phản hồi và ý kiến của bạn, vì vậy hãy thoải mái chia sẻ với chúng tôi. Chúng tôi luôn nỗ lực cải thiện {siteName} vì lợi ích của bạn, và trân trọng mọi đề xuất mà bạn đưa ra. Vui lòng liên hệ với chúng tôi qua biểu mẫu email dưới đây, và một thành viên trong nhóm của chúng tôi sẽ sớm liên hệ với bạn.",
+      "fields": {
+        "email": {
+          "label": "Email"
+        },
+        "message": {
+          "label": "Tin Nhắn"
+        },
+        "name": {
+          "label": "Tên"
+        }
+      },
+      "metaData": {
+        "description": "Liên hệ với chúng tôi nếu bạn có bất kỳ câu hỏi hoặc phản hồi nào",
+        "title": "Liên Hệ Chúng Tôi"
+      },
+      "title": "Liên Hệ"
+    },
     "hex": {
       "buttons": {
         "convert": "Chuyển đổi"

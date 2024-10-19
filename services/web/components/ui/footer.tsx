@@ -8,10 +8,10 @@ function Footer() {
   return (
     <footer className="my-prose container py-2 md:py-0 md:px-6">
       <div className="flex flex-col items-center justify-between gap-2 md:gap-4 md:h-16 md:flex-row border-t-2">
-        <p className="text-balance text-center text-sm leading-loose text-muted-foreground md:text-left">
+        <p className="text-balance text-center text-sm leading-loose text-muted-foreground md:text-left !mt-0 !mb-0">
           Built by {siteConfig.author} with ❤️
         </p>
-        <p className="text-balance text-center text-sm leading-loose text-muted-foreground md:text-left">
+        <p className="text-balance text-center text-sm leading-loose text-muted-foreground md:text-left !mt-0 !mb-0">
           © {siteConfig.title}. All Right Reserved.
         </p>
         <div>

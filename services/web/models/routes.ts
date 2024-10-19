@@ -8,6 +8,7 @@ const pages = [
   "svgPlayGround",
   "sqlFormatter",
   "codeEditor",
+  "contactUs",
 ] as const;
 type Page = (typeof pages)[number];
 
@@ -19,6 +20,7 @@ const routes = [
   "/svg-play-ground",
   "/sql-formatter",
   "/code-editor",
+  "/contact-us",
 ] as const;
 
 export const pageToRouteMapping: Record<Page, Route> = {
@@ -28,6 +30,7 @@ export const pageToRouteMapping: Record<Page, Route> = {
   svgPlayGround: "/svg-play-ground",
   sqlFormatter: "/sql-formatter",
   codeEditor: "/code-editor",
+  contactUs: "/contact-us",
 } as const;
 
 export type Route = (typeof routes)[number];
