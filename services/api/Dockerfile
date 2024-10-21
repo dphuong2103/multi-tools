@@ -16,7 +16,7 @@ FROM openjdk:17-jdk-alpine
 MAINTAINER baeldung.com
 
 # Copy the jar file from the first stage
-COPY --from=build /build/target/blog-be-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /build/target/api-0.0.1-SNAPSHOT.jar app.jar
 
 # Run the jar file
 ENTRYPOINT ["java","-jar","/app.jar"]
