@@ -10,7 +10,7 @@ networks:
 services:
   api:
     image: api
-    container_name: be
+    container_name: multi-tools-api
     build:
       dockerfile: Dockerfile
       context: ./services/api
