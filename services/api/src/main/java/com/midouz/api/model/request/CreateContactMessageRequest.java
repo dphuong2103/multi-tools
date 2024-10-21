@@ -22,7 +22,7 @@ public class CreateContactMessageRequest {
     public ContactMessage convertToEntity (String ipAddress){
         return ContactMessage.builder()
                 .name(this.name)
-                .email(this.name)
+                .email(this.email)
                 .ipAddress(ipAddress)
                 .message(this.message)
                 .build();

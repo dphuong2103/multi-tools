@@ -42,7 +42,6 @@ function ContactUsFormDetails({ dictionary }: ContactUsFormDetailsProps) {
           message: data.message,
           name: data.name,
         });
-        setValue("message", "");
         toast.success(dictionary.page.contactUs.toast.submit.success);
       } catch (e) {
         if (e instanceof AxiosError) {
