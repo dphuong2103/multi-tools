@@ -61,3 +61,19 @@ export type RequiredFields<T, K extends keyof T> = T & Required<Pick<T, K>>;
 
 export type LocalStorageFormKey = `${string}-form-key`;
 export type HistoryLocalStorageKey = `${string}-history-key`;
+
+export type TError = {
+  code: string;
+  en: string;
+  vn: string;
+};
+
+export interface ApiResponse<T> {
+  isSuccess: boolean;
+  data: T;
+  errors: Error[];
+}
+
+export interface FailedApiResponse extends ApiResponse<null | undefined> {
+  isSuccess: false;
+}

@@ -4,14 +4,18 @@ import TextAreaFormField from "@/components/form-fields/text-area-form-fields";
 import TextInputFormField from "@/components/form-fields/text-input-form-field";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
+import { createContactMessage } from "@/lib/apis/contact-us-api";
+import { parseErrorMessage } from "@/lib/toast-message";
 import {
   ContactUsFormModel,
   contactUsFormSchema,
 } from "@/models/contact-us-form";
 import { DictionaryProps } from "@/types/data-types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AxiosError } from "axios";
 import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const defaultValues: ContactUsFormModel = {
   name: "",
@@ -27,16 +31,36 @@ function ContactUsFormDetails({ dictionary }: ContactUsFormDetailsProps) {
     defaultValues: defaultValues,
   });
 
-  const { control, handleSubmit } = form;
+  const { control, handleSubmit, setValue } = form;
 
-  const onValidSubmit = useCallback((data: ContactUsFormModel) => {
-    try {
-      setIsLoading(true);
-    } catch (e) {
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+  const onValidSubmit = useCallback(
+    async (data: ContactUsFormModel) => {
+      try {
+        setIsLoading(true);
+        await createContactMessage({
+          email: data.email,
+          message: data.message,
+          name: data.name,
+        });
+        setValue("message", "");
+        toast.success(dictionary.page.contactUs.toast.submit.success);
+      } catch (e) {
+        if (e instanceof AxiosError) {
+          toast.error(parseErrorMessage(e.response?.data.errors, "en"));
+        } else {
+          toast.error(dictionary.page.contactUs.toast.submit.error);
+        }
+        console.log("error", e);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [
+      dictionary.page.contactUs.toast.submit.error,
+      dictionary.page.contactUs.toast.submit.success,
+      setValue,
+    ],
+  );
 
   const onClearClick = useCallback(() => {
     form.reset(defaultValues);

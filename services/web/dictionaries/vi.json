@@ -146,6 +146,12 @@
           "label": "Tên"
         }
       },
+      "toast":{
+        "submit":{
+          "success":"Tin nhắn đã được gửi thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể",
+          "error":"Có lỗi xảy ra khi gửi. Vui lòng thử lại sau"
+        }
+      },
       "metaData": {
         "description": "Liên hệ với chúng tôi nếu bạn có bất kỳ câu hỏi hoặc phản hồi nào",
         "title": "Liên Hệ Chúng Tôi"

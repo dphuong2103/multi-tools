@@ -150,7 +150,13 @@
         "description": "Contact us for any queries or feedback",
         "title": "Contact Us"
       },
-      "title": "Contact Us"
+      "title": "Contact Us",
+      "toast":{
+        "submit":{
+          "success":"Message sent successfully, we will get back to you soon",
+          "error":"Failed to send message! Please try again later"
+        }
+      }
     },
     "hex": {
       "buttons": {

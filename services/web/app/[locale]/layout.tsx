@@ -76,7 +76,7 @@ export default async function RootLayout({
               {children}
               {/* </AuthProvider> */}
             </LoadingProvider>
-            <Toaster />
+            <Toaster richColors />
           </BeforeUnloadProvider>
         </ThemeProvider>
       </body>
