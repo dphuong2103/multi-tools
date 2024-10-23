@@ -62,6 +62,7 @@ function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
   const [output, setOutput] = useState("");
   const [history, setHistory] = useLocalStorage<
     {
+      id: number;
       input: string;
       output: string;
     }[]
@@ -77,6 +78,7 @@ function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
       const newHistory = history.length === 10 ? history.slice(0, -1) : history;
       setHistory([
         {
+          id: new Date().getTime(),
           input: data.input,
           output: result,
         },
@@ -172,7 +174,7 @@ function Base64DetailsForm({ dictionary }: Base64DetailsFormProps) {
       {history.length > 0 && (
         <Card className=" bg-gray-500 text-white mt-2 flex flex-col gap-3">
           {history.map((item, index) => (
-            <div key={index} className="flex items-center">
+            <div key={item.id ?? index} className="flex items-center">
               <div>
                 {index + 1}. <span className="text-sm">{item.input}</span> :{" "}
                 {isValidUrl(item.output) ? (

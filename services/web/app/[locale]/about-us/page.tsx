@@ -55,7 +55,7 @@ async function page({ params: { locale } }: PageProps) {
   return (
     <Layout locale={locale} dictionary={dictionary} title={siteConfig.title}>
       <div className="my-prose flex flex-col gap-4">
-        <h2 className="text-center">About Us</h2>
+        <h2 className="text-center">{dictionary.page.aboutUs.title}</h2>
         <Card>
           <p>
             {interpolateTranslations(dictionary.page.aboutUs.description, {

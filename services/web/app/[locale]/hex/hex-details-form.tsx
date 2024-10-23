@@ -62,6 +62,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
   const [output, setOutput] = useState("");
   const [history, setHistory] = useLocalStorage<
     {
+      id: number;
       input: string;
       output: string;
     }[]
@@ -79,6 +80,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
 
       setHistory([
         {
+          id: new Date().getTime(),
           input: data.input,
           output: result,
         },
@@ -182,7 +184,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
       {history.length > 0 && (
         <Card className=" bg-gray-500 text-white mt-2 flex flex-col gap-3">
           {history.map((item, index) => (
-            <div key={index} className="flex items-center">
+            <div key={item.id ?? index} className="flex items-center">
               <div>
                 {index + 1}. <span className="text-sm">{item.input}</span> :{" "}
                 {isValidUrl(item.output) ? (

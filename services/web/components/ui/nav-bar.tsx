@@ -14,7 +14,7 @@ interface NavBarProps extends DictionaryProps, LocaleProps {
 function NavBar({ title, dictionary, locale }: NavBarProps) {
   return (
     <nav>
-      <div className="w-full pl-6 p-2 lg:p-4 flex items-center border bottom-1 gap-2 justify-between lg:justify-start">
+      <div className="w-full pl-6 p-2 lg:p-4 flex items-center border-b bottom-1 gap-2 justify-between lg:justify-start">
         <LinkWithLocale
           href="/"
           className="text-2xl font-bold flex gap-2 items-center select-none"

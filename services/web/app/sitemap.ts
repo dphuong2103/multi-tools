@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: getFullPageRouteWithDomain("home"),
       lastModified: new Date(),
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
       priority: 1,
       alternates: {
         languages: {
@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: getFullPageRouteWithDomain("hex"),
       lastModified: new Date(),
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
       priority: 1,
       alternates: {
         languages: {
@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: getFullPageRouteWithDomain("base64"),
       lastModified: new Date(),
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
       priority: 1,
       alternates: {
         languages: {
@@ -42,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: getFullPageRouteWithDomain("svgPlayGround"),
       lastModified: new Date(),
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
       priority: 1,
       alternates: {
         languages: {
@@ -54,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: getFullPageRouteWithDomain("sqlFormatter"),
       lastModified: new Date(),
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
       priority: 1,
       alternates: {
         languages: {
@@ -66,12 +66,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: getFullPageRouteWithDomain("codeEditor"),
       lastModified: new Date(),
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
       priority: 1,
       alternates: {
         languages: {
           en: getFullPageRouteWithDomain("codeEditor", "en"),
           vi: getFullPageRouteWithDomain("codeEditor", "vi"),
+        },
+      },
+    },
+    {
+      url: getFullPageRouteWithDomain("aboutUs"),
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+      alternates: {
+        languages: {
+          en: getFullPageRouteWithDomain("aboutUs", "en"),
+          vi: getFullPageRouteWithDomain("aboutUs", "vi"),
+        },
+      },
+    },
+    {
+      url: getFullPageRouteWithDomain("contactUs"),
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+      alternates: {
+        languages: {
+          en: getFullPageRouteWithDomain("contactUs", "en"),
+          vi: getFullPageRouteWithDomain("contactUs", "vi"),
         },
       },
     },
