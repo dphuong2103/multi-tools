@@ -1,9 +1,42 @@
 import Card from "@/components/ui/card";
 import Layout from "@/components/ui/layout";
 import siteConfig from "@/constants/site-config";
+import { Locale } from "@/i18n.config";
 import { getDictionary, interpolateTranslations } from "@/lib/dictionary";
+import { getFullPageRouteWithDomain } from "@/models/routes";
 import { LocaleParams } from "@/types/data-types";
+import { Metadata } from "next";
 import React from "react";
+
+type MetadataProps = {
+  params: {
+    locale: Locale;
+  };
+};
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
+  const locale = params.locale;
+  const dictionary = await getDictionary(locale);
+  return {
+    title: dictionary.page.aboutUs.metaData.title,
+    description: dictionary.page.aboutUs.metaData.description,
+    openGraph: {
+      title: dictionary.page.aboutUs.metaData.title,
+      description: dictionary.page.aboutUs.metaData.description,
+      locale: locale,
+      type: "website",
+    },
+    alternates: {
+      canonical: getFullPageRouteWithDomain("aboutUs", locale),
+      languages: {
+        "en-US": getFullPageRouteWithDomain("aboutUs", "en"),
+        "vi-VN": getFullPageRouteWithDomain("aboutUs", "vi"),
+      },
+    },
+    keywords: [],
+  };
+}
 
 interface PageProps extends LocaleParams {}
 async function page({ params: { locale } }: PageProps) {
