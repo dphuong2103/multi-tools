@@ -22,7 +22,7 @@ import { createHexFormSchema, HexFormModel } from "@/models/hex-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Copy } from "lucide-react";
 import Link from "next/link";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -56,7 +56,7 @@ function HexDetailsForm({ dictionary }: HexDetailsFormProps) {
 
   const { watch } = form;
 
-  usePersistFormData(form_key, { watch });
+  usePersistFormData(form_key, { watch, excludes: ["input"] });
   useSyncFormParams({ watch: watch, excludes: ["input"] });
 
   const [output, setOutput] = useState("");

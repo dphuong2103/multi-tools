@@ -28,7 +28,7 @@ function Layout({
       <div className="container flex justify-center h-full">
         <div className="w-full max-w-7xlxl h-full">
           <div className="flex flex-col h-full">
-            <main className="flex justify-center items-start p-1 md:p-6 md:pb-0 w-full flex-1">
+            <main className="flex justify-center items-start p-1 md:p-6 md:pb-0 w-full flex-1 pb-2">
               {children}
             </main>
             <Footer />

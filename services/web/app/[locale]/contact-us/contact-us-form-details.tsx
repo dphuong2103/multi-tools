@@ -57,7 +57,6 @@ function ContactUsFormDetails({ dictionary }: ContactUsFormDetailsProps) {
     [
       dictionary.page.contactUs.toast.submit.error,
       dictionary.page.contactUs.toast.submit.success,
-      setValue,
     ],
   );
 

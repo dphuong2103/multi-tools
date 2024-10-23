@@ -1,8 +1,8 @@
 "use client";
-import { i18n, Locale } from "@/i18n.config";
+import { i18n } from "@/i18n.config";
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
-import { forwardRef, LegacyRef, useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 
 interface LinkWithLocaleProps extends LinkProps {
   children: React.ReactNode;

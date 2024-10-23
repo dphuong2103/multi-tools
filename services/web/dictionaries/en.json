@@ -19,6 +19,61 @@
     "svgEditor": "SVG Editor"
   },
   "page": {
+    "aboutUs": {
+      "description": "The {siteName} provides many tools in different fields, all with the same primary focus: helping our clients generate greater business by use of online services.",
+      "metaData": {
+        "description": "About us",
+        "title": "About Us"
+      },
+      "recommended": {
+        "description": "Since launching, {siteName} has quickly become a go-to platform for developers, designers, and data enthusiasts. Our suite of online tools has powered hundreds of successful projects, making complex tasks more accessible to everyone. Whether you're optimizing code, formatting SQL, or converting data formats, our tools are trusted by thousands of users worldwide.At Multitools, we take pride in delivering high-quality, efficient solutions that keep up with the ever-evolving demands of the tech world.",
+        "title": "Highly Recommended"
+      },
+      "title": "About Us",
+      "whatWeDo": {
+        "description": "We specialize in creating versatile, user-friendly tools for developers and tech professionals. Our platform offers a variety of free, intuitive utilities designed to simplify workflows and improve productivity. From code editors supporting multiple programming languages to hex and base64 converters,... our mission is to provide powerful tools that are both accessible and easy to use.",
+        "items": {
+          "item1": {
+            "description": "Effortlessly decode hexadecimal values.",
+            "title": "Hex to Text Converter"
+          },
+          "item2": {
+            "description": "Quickly convert Base64-encoded data into human-readable formats.",
+            "title": "Base64 Converter"
+          },
+          "item3": {
+            "description": "Experiment with scalable vector graphics in real-time.",
+            "title": "SVG Play Ground"
+          },
+          "item4": {
+            "description": "Organize and beautify SQL queries for improved readability.",
+            "title": "SQL Formatter"
+          },
+          "item5": {
+            "description": "A flexible, multi-language code editor built right into your browser.",
+            "title": "Code Editor"
+          }
+        },
+        "title": "What We Do"
+      },
+      "whyChoose": {
+        "items": {
+          "item1": {
+            "description": "All of our tools are 100% free to use.",
+            "title": "Free Access"
+          },
+          "item2": {
+            "description": "Designed with simplicity in mind, our tools are perfect for both beginners and advanced users.",
+            "title": "User-Friendly Interface"
+          },
+          "item3": {
+            "description": "We're constantly adding new features and tools based on user feedback.",
+            "title": "Continuous Innovation"
+          }
+        },
+        "title": "Why Choose {siteName}?"
+      }
+    },
     "base64": {
       "buttons": {
         "convert": "Convert"
@@ -151,10 +206,10 @@
         "title": "Contact Us"
       },
       "title": "Contact Us",
-      "toast":{
-        "submit":{
-          "success":"Message sent successfully, we will get back to you soon",
-          "error":"Failed to send message! Please try again later"
+      "toast": {
+        "submit": {
+          "error": "Failed to send message! Please try again later",
+          "success": "Message sent successfully, we will get back to you soon"
         }
       }
     },

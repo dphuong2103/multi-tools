@@ -12,7 +12,7 @@ function Card({ title, className, children, titleNode }: CardProps) {
   return (
     <div
       className={cn(
-        "flex flex-col gap-2 bg-card p-4 rounded-xl w-full shadow border",
+        "flex flex-col gap-2 bg-card p-4 rounded-md w-full shadow-md border",
         className,
       )}
     >

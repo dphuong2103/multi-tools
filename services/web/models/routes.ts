@@ -9,6 +9,7 @@ const pages = [
   "sqlFormatter",
   "codeEditor",
   "contactUs",
+  "aboutUs",
 ] as const;
 type Page = (typeof pages)[number];
 
@@ -21,6 +22,7 @@ const routes = [
   "/sql-formatter",
   "/code-editor",
   "/contact-us",
+  "/about-us",
 ] as const;
 
 export const pageToRouteMapping: Record<Page, Route> = {
@@ -31,6 +33,7 @@ export const pageToRouteMapping: Record<Page, Route> = {
   sqlFormatter: "/sql-formatter",
   codeEditor: "/code-editor",
   contactUs: "/contact-us",
+  aboutUs: "/about-us",
 } as const;
 
 export type Route = (typeof routes)[number];

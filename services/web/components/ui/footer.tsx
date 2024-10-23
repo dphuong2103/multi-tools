@@ -4,10 +4,26 @@ import { Button } from "./button";
 import Link from "next/link";
 import { CiMail } from "react-icons/ci";
 import { FaTelegramPlane } from "react-icons/fa";
+import LinkWithLocale from "../link-with-locale";
+import { pageToRouteMapping } from "@/models/routes";
+
 function Footer() {
   return (
-    <footer className="my-prose container py-2 md:py-0 md:px-6">
-      <div className="flex flex-col items-center justify-between gap-2 md:gap-4 md:h-16 md:flex-row border-t-2">
+    <footer className="container py-2 md:py-0 md:px-6  border-t-2">
+      <div className="flex gap-2 justify-center">
+        <Button asChild variant="link">
+          <LinkWithLocale href={pageToRouteMapping.aboutUs}>
+            About Us
+          </LinkWithLocale>
+        </Button>
+
+        <Button asChild variant="link">
+          <LinkWithLocale href={pageToRouteMapping.contactUs}>
+            Contact us
+          </LinkWithLocale>
+        </Button>
+      </div>
+      <div className="flex flex-col items-center justify-between gap-2 md:gap-4 md:h-16 md:flex-row my-prose">
         <p className="text-balance text-center text-sm leading-loose text-muted-foreground md:text-left !mt-0 !mb-0">
           Built by {siteConfig.author} with ❤️
         </p>
